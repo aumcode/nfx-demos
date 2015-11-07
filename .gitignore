@@ -3,6 +3,7 @@
 
 # ntc templates
 *.auto.cs
+Output/
 
 # User-specific files
 *.suo
