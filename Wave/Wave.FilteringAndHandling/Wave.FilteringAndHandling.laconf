@@ -1,0 +1,53 @@
+﻿application
+{
+    wave
+    {
+        server
+        {
+            prefix { name="http://+:8080/" }
+
+            dispatcher
+            {
+                filter
+                {
+                    name="DumpErrors"
+                    type="NFX.Wave.Filters.ErrorFilter, NFX.Wave"
+                    show-dump 
+                    {
+                        match { name="localhost"}
+                    }
+                }
+
+                filter
+                {    
+                    name="RedirectTest"
+                    type="NFX.Wave.Filters.RedirectFilter, NFX.Wave"
+                    match { path="/Test/RedirectHome" var { name="redirect-url" default="http://itadapter.com" } }
+                    match { path="/Test/RedirectToVideo" var { name="redirect-url" default="http://www.youtube.com/channel/UCDNMtzPd0lCXgfeMZvTeN8Q" } }
+                }
+
+                filter
+                {
+                    name="CustomRedirectTest"
+                    type="Wave.FilteringAndHandling.Customization.CustomFilter, Wave.FilteringAndHandling"
+                    match { path="/Test/UnexistingAction1" var { name="new-action" default="Index" } }
+                    match { path="/Test/UnexistingAction2" var { name="new-action" default="UnexistingAction1" } }
+                }
+
+                handler
+                {
+                    type="NFX.Wave.Handlers.MVCHandler, NFX.Wave"
+                    type-location { assembly="Wave.FilteringAndHandling.exe" ns { name="Wave.FilteringAndHandling.Controllers" } }
+                    match { path="/{type=Test}/{mvc-action=Index}" }
+                }
+
+                handler
+                {
+                    type="NFX.Wave.Handlers.MVCHandler, NFX.Wave"
+                    type-location { assembly="Wave.FilteringAndHandling.exe" ns { name="Wave.FIlteringAndHandling.Controllers" } }
+                    match { path="/mypath/{type}/{mvc-action}" }
+                }
+            }
+        }
+    }
+}

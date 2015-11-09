@@ -1,0 +1,53 @@
+﻿#<laconf>
+  compiler
+  {
+    using { ns="NFX" }
+    using { ns="NFX.Wave" }
+    using { ns="NFX.Wave.Templatization" }
+    base-class-name="NFX.Wave.Templatization.WaveTemplate"
+    namespace="Wave.FilteringAndHandling.Pages"
+  }
+#</laconf>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #root {
+      margin-top: 40px;
+      margin-left: 40px;
+      font-family: Verdana;
+      font-size: 18px;
+    }
+
+    .link {
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    Test filtering:<br />
+    <div class="link">
+      1. <a href="http://localhost:8080/bad_url">/bad_url</a> - to show error dump (<b>ErrorFilter</b> in action)<br />
+    </div>
+    <div class="link">
+      2. <a href="http://localhost:8080/Test/RedirectHome">/Test/RedirectHome</a> or <a href="http://localhost:8080/Test/RedirectToVideo">/Test/RedirectToVideo</a> - to return redirected responce (<b>RedirectFilter</b> in action)<br />
+    </div>
+    <div class="link">
+      3. <a href="http://localhost:8080/Test/UnexistingAction1">/Test/UnexistingAction1</a> - to redirect to http://localhost:8080/Test/Index (<b>CustomFilter</b> in action)<br />
+    </div>
+    <div class="link">
+      4. <a href="http://localhost:8080/Test/UnexistingAction2">/Test/UnexistingAction2</a> - to redirect to http://localhost:8080/Test/UnexistingAction1 (<b>CustomFilter</b> in action)<br />
+    </div>
+
+    Test handling:
+    <div class="link">
+      1. <a href="http://localhost:8080/Test/Index">/Test/Index</a> to handle request by Index action of Test controller (<b>MVCHandler</b> in action)<br />
+    </div>
+    <div class="link">
+      2. <a href="http://localhost:8080/mypath/Test/Index">localhost:8080/mypath/Test/Index</a> to handle request by Index action of Test controller (<b>MVCHandler</b> in action)<br />
+    </div>
+  </div>
+</body>
+</html>
