@@ -4,7 +4,7 @@
     {
         server
         {
-            prefix { name="http://+:8081/" }
+            prefix { name="http://+:8080/" }
 
             dispatcher
             {

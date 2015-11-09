@@ -1,5 +1,5 @@
 ﻿using NFX.Wave.MVC;
-using Wave.HelloWorld.Pages;
+using Wave.ViewEngine.Pages;
 
 namespace Wave.ViewEngine.Controllers
 {
@@ -12,5 +12,17 @@ namespace Wave.ViewEngine.Controllers
             int age = 36;
             return new LocalVars { Name = name, Age = age };
         } 
+
+        [Action]
+        public object TestStatements()
+        {
+            return new Statements();
+        }
+
+        [Action]
+        public object TestMasterPage()
+        {
+            return new Page();
+        }
     }
 }

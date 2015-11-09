@@ -71,6 +71,15 @@
     <Compile Include="Pages\LocalVars.htm.auto.cs">
       <DependentUpon>LocalVars.htm</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Master.htm.auto.cs">
+      <DependentUpon>Master.htm</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Page.htm.auto.cs">
+      <DependentUpon>Page.htm</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Statements.htm.auto.cs">
+      <DependentUpon>Statements.htm</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -86,6 +95,9 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Pages\LocalVars.htm" />
+    <Content Include="Pages\Master.htm" />
+    <Content Include="Pages\Page.htm" />
+    <Content Include="Pages\Statements.htm" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

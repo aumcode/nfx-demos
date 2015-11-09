@@ -1,0 +1,75 @@
+﻿#<laconf>
+  compiler
+  {
+    using { ns="NFX" }
+    using { ns="NFX.Wave" }
+    using { ns="NFX.Wave.Templatization" }
+    base-class-name="NFX.Wave.Templatization.WaveTemplate"
+    namespace="Wave.ViewEngine.Pages"
+    abstract="true"
+  }
+#</laconf>
+
+#[class]
+
+  public virtual string Title { get { return "This is Master page"; } }
+  protected abstract void renderHeader();
+  protected abstract void renderBody();
+  protected abstract void renderFooter();
+
+#[render]
+<!DOCTYPE html>
+<html>
+<head>
+  <title>?[Title]</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    td {
+      text-align: center
+    }
+
+    #root {
+      height: 100%;
+      width: 100%;
+    }
+
+    #header {
+      background: #cfdceb;
+      height: 60px;
+    }
+
+    #body {
+      background: #d9f8e1;
+    }
+
+    #footer {
+      background: #fcc39c;
+      height: 60px;
+    }
+
+    .text {
+      font-family: Verdana;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <table id="root">
+    <tr id="header">
+      <td>@[renderHeader();]</td>
+    </tr>
+    <tr id="body">
+      <td>@[renderBody();]</td>
+    </tr>
+    <tr id="footer">
+      <td>@[renderFooter();]</td>
+    </tr>
+  </table>
+</body>
+</html>
+

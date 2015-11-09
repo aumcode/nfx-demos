@@ -1,0 +1,26 @@
+﻿#<laconf>
+  compiler
+  {
+    using { ns="NFX" }
+    using { ns="NFX.Wave" }
+    using { ns="NFX.Wave.Templatization" }
+    base-class-name="Wave.ViewEngine.Pages.Master"
+    namespace="Wave.ViewEngine.Pages"
+  }
+#</laconf>
+
+#[class]
+
+  public override string Title { get { return "This page inherits from Master page"; } }
+
+#[override renderHeader()]
+
+<div class="text">Overridden header</div>
+
+#[override renderBody()]
+
+<div class="text">Overridden body</div>
+
+#[override renderFooter()]
+
+<div class="text">Overridden footer</div>

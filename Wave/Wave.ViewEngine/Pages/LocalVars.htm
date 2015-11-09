@@ -1,12 +1,12 @@
 ﻿ #<laconf>
-    compiler
-    {
-        using { ns="NFX" }
-        using { ns="NFX.Wave" }
-        using { ns="NFX.Wave.Templatization" }
-        base-class-name="NFX.Wave.Templatization.WaveTemplate"
-        namespace="Wave.HelloWorld.Pages"
-    }
+  compiler
+  {
+    using { ns="NFX" }
+    using { ns="NFX.Wave" }
+    using { ns="NFX.Wave.Templatization" }
+    base-class-name="NFX.Wave.Templatization.WaveTemplate"
+    namespace="Wave.ViewEngine.Pages"
+  }
 #</laconf>
 
 #[class]
@@ -18,19 +18,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        #root {
-            width: 100%;
-            margin-top: 100px;
-            text-align: center;
-            font-family: Verdana;
-            font-size: 20px;
-        }
-    </style>
+  <style>
+    #root {
+      width: 100%;
+      text-align: center;
+      font-family: Verdana;
+      font-size: 18px;
+    }
+
+    .block {
+      margin-top: 18px;
+    }
+  </style>
 </head>
 <body>
-    <div id="root">
-        My name is <b>?[Name]</b>. I'm <b>?[Age]</b> years old.
+  <div id="root">
+    <div class="block">
+      My name is <b>?[Name]</b>. I'm <b>?[Age]</b> years old.
     </div>
+    <div class="block">
+      Current date-time is <b>?[DateTime.Now]</b>
+    </div>
+  </div>
 </body>
 </html>

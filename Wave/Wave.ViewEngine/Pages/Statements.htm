@@ -1,0 +1,58 @@
+﻿#<laconf>
+  compiler
+  {
+    using { ns="NFX" }
+    using { ns="NFX.Wave" }
+    using { ns="NFX.Wave.Templatization" }
+    base-class-name="NFX.Wave.Templatization.WaveTemplate"
+    namespace="Wave.ViewEngine.Pages"
+  }
+#</laconf>
+
+#[class]
+
+    private string[] m_Names = new[] { "Jack", "Ivan", "Anna", "Victor" };
+    private bool m_Flag = true;
+
+#[render]
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    div {
+      font-family: Verdana;
+      font-size: 18px;
+    }
+
+    .header {
+      margin-top: 30px;
+      font-weight: bold;
+    }
+
+    #root {
+      width: 100%;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <div class="header">'For' loop test:</div>
+    @[for (var i=0; i<m_Names.Length; i++){]
+      <div>?[i]: ?[m_Names[i]]</div>
+    @[}]
+
+    <div class="header">'Foreach' loop test:</div>
+    @[foreach (var name in m_Names){]
+      <div>?[name]</div>
+    @[}]
+
+    <div class="header">'If/else' statement test:</div>
+    @[if(m_Flag){]
+      <div>flag is true</div>
+    @[} else {]
+      <div>flag is false</div>
+    @[}]
+  </div>
+</body>
+</html>
