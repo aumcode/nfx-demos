@@ -29,24 +29,31 @@
   <div id="root">
     Test filtering:<br />
     <div class="link">
-      1. <a href="http://localhost:8080/bad_url">/bad_url</a> - to show error dump (<b>ErrorFilter</b> in action)<br />
+      1. <a href="http://localhost:8080/bad_url">/bad_url</a> - to show error dump (<b>ErrorFilter</b> in action).
     </div>
     <div class="link">
-      2. <a href="http://localhost:8080/Test/RedirectHome">/Test/RedirectHome</a> or <a href="http://localhost:8080/Test/RedirectToVideo">/Test/RedirectToVideo</a> - to return redirected responce (<b>RedirectFilter</b> in action)<br />
+      2. <a href="http://localhost:8080/Test/RedirectHome">/Test/RedirectHome</a> or <a href="http://localhost:8080/Test/RedirectToVideo">/Test/RedirectToVideo</a> - to return redirected responce (<b>RedirectFilter</b> in action).
     </div>
     <div class="link">
-      3. <a href="http://localhost:8080/Test/UnexistingAction1">/Test/UnexistingAction1</a> - to redirect to http://localhost:8080/Test/Index (<b>CustomFilter</b> in action)<br />
+      3. <a href="http://localhost:8080/Test/UnexistingAction1">/Test/UnexistingAction1</a> - to redirect to http://localhost:8080/Test/Index (<b>CustomFilter</b> in action).
     </div>
     <div class="link">
-      4. <a href="http://localhost:8080/Test/UnexistingAction2">/Test/UnexistingAction2</a> - to redirect to http://localhost:8080/Test/UnexistingAction1 (<b>CustomFilter</b> in action)<br />
+      4. <a href="http://localhost:8080/Test/UnexistingAction2">/Test/UnexistingAction2</a> - to redirect to http://localhost:8080/Test/UnexistingAction1 (<b>CustomFilter</b> in action).>
     </div>
+    <br />
 
-    Test handling:
+    Test handling:<br />
     <div class="link">
-      1. <a href="http://localhost:8080/Test/Index">/Test/Index</a> to handle request by Index action of Test controller (<b>MVCHandler</b> in action)<br />
+      1. <a href="http://localhost:8080/Test/Box">/Test/Box</a> to handle request by Box action of Test controller (<b>MVCHandler</b> in action).
     </div>
     <div class="link">
-      2. <a href="http://localhost:8080/mypath/Test/Index">localhost:8080/mypath/Test/Index</a> to handle request by Index action of Test controller (<b>MVCHandler</b> in action)<br />
+      2. <a href="http://localhost:8080/mypath/Test/Box?color=ff7f00">/mypath/Test/Box?color=ff7f00</a> to handle request by Box action of Test controller with parameter(<b>MVCHandler</b> in action).
+    </div>
+    <div class="link">
+      3. <a href="http://localhost:8080/dump">/dump</a> - to see output of current context (<b>ContextDumpHandler</b> in action).
+    </div>
+    <div class="link">
+      4. <a href="http://localhost:8080/custom/RandomPeople?cnt=10">/custom/RandomPeople?cnt=1</a> to see <b>CustomHandler</b> in action.
     </div>
   </div>
 </body>

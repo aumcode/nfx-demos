@@ -46,8 +46,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="NFX.Wave, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\NFX.2.0.0.8\lib\NFX.Wave.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="NFX.Web, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\NFX.2.0.0.8\lib\NFX.Web.dll</HintPath>
@@ -69,6 +69,10 @@
   <ItemGroup>
     <Compile Include="Controllers\Test.cs" />
     <Compile Include="Customization\CustomFilter.cs" />
+    <Compile Include="Customization\CustomHandler.cs" />
+    <Compile Include="Pages\Box.htm.auto.cs">
+      <DependentUpon>Box.htm</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Index.htm.auto.cs">
       <DependentUpon>Index.htm</DependentUpon>
     </Compile>
@@ -81,8 +85,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <Content Include="Pages\Box.htm" />
     <Content Include="Pages\Index.htm" />
     <None Include="ReadMe.txt" />
   </ItemGroup>

@@ -10,6 +10,7 @@
             {
                 filter
                 {
+                    order=1
                     name="DumpErrors"
                     type="NFX.Wave.Filters.ErrorFilter, NFX.Wave"
                     show-dump 
@@ -20,6 +21,7 @@
 
                 filter
                 {    
+                    order=2
                     name="RedirectTest"
                     type="NFX.Wave.Filters.RedirectFilter, NFX.Wave"
                     match { path="/Test/RedirectHome" var { name="redirect-url" default="http://itadapter.com" } }
@@ -28,6 +30,7 @@
 
                 filter
                 {
+                    order=3
                     name="CustomRedirectTest"
                     type="Wave.FilteringAndHandling.Customization.CustomFilter, Wave.FilteringAndHandling"
                     match { path="/Test/UnexistingAction1" var { name="new-action" default="Index" } }
@@ -36,16 +39,32 @@
 
                 handler
                 {
-                    type="NFX.Wave.Handlers.MVCHandler, NFX.Wave"
-                    type-location { assembly="Wave.FilteringAndHandling.exe" ns { name="Wave.FilteringAndHandling.Controllers" } }
-                    match { path="/{type=Test}/{mvc-action=Index}" }
+                    order=0
+                    type="NFX.Wave.Handlers.ContextDumpHandler, NFX.Wave"
+                    match { path="dump" }
                 }
 
                 handler
                 {
+                    order=1
                     type="NFX.Wave.Handlers.MVCHandler, NFX.Wave"
                     type-location { assembly="Wave.FilteringAndHandling.exe" ns { name="Wave.FIlteringAndHandling.Controllers" } }
-                    match { path="/mypath/{type}/{mvc-action}" }
+                    match { path="/mypath/{type}/{mvc-action}" var { query-name="*" } }
+                }
+
+                handler
+                {    
+                    order=2    
+                    type="Wave.FilteringAndHandling.Customization.CustomHandler, Wave.FilteringAndHandling"
+                    match { path="/custom/RandomPeople" var { query-name="*" } }
+                }
+
+                handler
+                {
+                    order=3
+                    type="NFX.Wave.Handlers.MVCHandler, NFX.Wave"
+                    type-location { assembly="Wave.FilteringAndHandling.exe" ns { name="Wave.FilteringAndHandling.Controllers" } }
+                    match { path="/{type=Test}/{mvc-action=Index}" var { query-name="*" } }
                 }
             }
         }
