@@ -68,7 +68,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Pages\Another.htm" />
     <Compile Include="Controllers\Test.cs" />
     <Compile Include="Pages\Another.htm.auto.cs">
       <DependentUpon>Another.htm</DependentUpon>
@@ -88,6 +87,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Pages\Another.htm" />
     <Content Include="Pages\Index.htm" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

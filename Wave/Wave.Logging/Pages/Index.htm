@@ -1,0 +1,40 @@
+﻿#<laconf>
+  compiler
+  {
+    using { ns="NFX" }
+    using { ns="NFX.Wave" }
+    using { ns="NFX.Wave.Templatization" }
+    base-class-name="NFX.Wave.Templatization.WaveTemplate"
+    namespace="Wave.Logging.Pages"
+  }
+ #</laconf>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #root {
+      margin: 40px;
+      font-family: Verdana;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    After the application started log file occurs in the place specified in 
+    Wave.Logging.laconf configuration file.<br/>
+    Log file initially contains some application general info and also 
+    'before' and 'after' start page loading events.
+    <br/>
+    <br/>
+    You can click one on the following links:
+    <div>
+      <a href="http://localhost:8080/Test/Another">/Test/Another</a> - to go to another page and log this action
+    </div>
+    <div>
+      <a href="http://localhost:8080/Test/WrongURL">/Test/WrongURL</a> - to get HTTP request error and log it
+    </div>
+  </div>
+</body>
+</html>
