@@ -10,6 +10,17 @@
             {
                 handler
                 {
+                    type="NFX.Wave.Handlers.FileDownloadHandler, NFX.Wave"
+                    root-path=$"Resources/"
+                    match 
+                    { 
+                        path="/res/{*filePath}"
+                        var { name="attachment" query-name="a" default="false" } 
+                    }
+                }
+
+                handler
+                {
                     type="NFX.Wave.Handlers.MVCHandler, NFX.Wave"
                     type-location { assembly="Wave.Resources.exe" ns { name="Wave.Resources.Controllers" } }
                     match { path="/{type=Test}/{mvc-action=Index}" var { query-name="*" } }

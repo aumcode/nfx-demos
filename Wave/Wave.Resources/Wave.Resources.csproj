@@ -77,22 +77,35 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Resources\files\persons.json" />
     <None Include="Wave.Resources.laconf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Pages\Index.htm" />
     <None Include="ReadMe.txt" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resources\Files\" />
-    <Folder Include="Resources\Scripts\" />
-    <Folder Include="Resources\Styles\" />
+    <Content Include="Pages\Index.htm" />
+    <None Include="Resources\files\data.xml" />
+    <Content Include="Resources\scripts\jquery-1.11.0.min.js" />
+    <None Include="Resources\scripts\default.js" />
+    <None Include="Resources\files\info.txt" />
+    <None Include="Resources\styles\general.css" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>"$(SolutionDir)packages\NFX.2.0.0.9\tools\ntc" "$(ProjectDir)Pages\*.htm" -r -ext ".auto.cs" /src</PreBuildEvent>
+    <PreBuildEvent>"$(SolutionDir)packages\NFX.2.0.0.9\tools\ntc" "$(ProjectDir)Pages\*.htm" -r -ext ".auto.cs" /src
+if not exist "$(TargetDir)resources" mkdir "$(TargetDir)resources"
+if not exist "$(TargetDir)resources\files" mkdir "$(TargetDir)resources\files"
+if not exist "$(TargetDir)resources\scripts" mkdir "$(TargetDir)resources\scripts"
+if not exist "$(TargetDir)resources\styles" mkdir "$(TargetDir)resources\styles"</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /Y "$(ProjectDir)resources\files" "$(TargetDir)resources\files"
+xcopy /Y "$(ProjectDir)resources\scripts" "$(TargetDir)resources\scripts"
+xcopy /Y "$(ProjectDir)resources\styles" "$(TargetDir)resources\styles"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

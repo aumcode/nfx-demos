@@ -1,0 +1,27 @@
+[
+  {
+    name: "John",
+    age: 31,
+    email: asdrea@gm.com
+  },
+  {
+    name: "Ann",
+    age: 14,
+    email: freta@gm.com
+  },
+  {
+    name: "Ivan",
+    age: 45,
+    email: burges@reta.com
+  },
+  {
+    name: "Steve",
+    age: 29,
+    email: dreauser@gm.com
+  },
+  {
+    name: "Jack",
+    age: 32,
+    email: restrer@tren.com
+  }
+]

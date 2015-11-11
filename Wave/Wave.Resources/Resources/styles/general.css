@@ -1,0 +1,13 @@
+﻿#root {
+  margin: 40px;
+  font-family: Verdana;
+  font-size: 18px;
+}
+
+#footer {
+  margin-top: 20px;
+}
+
+.link {
+  margin: 10px 0;
+}

@@ -92,7 +92,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>"$(SolutionDir)packages\NFX.2.0.0.9\tools\ntc" "$(ProjectDir)Pages\*.htm" -r -ext ".auto.cs" /src</PreBuildEvent>
+    <PreBuildEvent>"$(SolutionDir)packages\NFX.2.0.0.9\tools\ntc" "$(ProjectDir)Pages\*.htm" -r -ext ".auto.cs" /src
+if not exist "$(TargetDir)logs" mkdir "$(TargetDir)logs"</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

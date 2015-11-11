@@ -1,0 +1,14 @@
+﻿<root>
+  <manager name="John" age="31" email="asdrea@gm.com">
+      <employee name="Ann" age="19" email="retypo@gm.com"/>
+      <employee name="Jake" age="20" email="retyr@gm.com"/>
+      <employee name="John" age="34" email="rest@gm.com"/>
+      <employee name="John" age="36" email="ressar@gm.com"/>
+      <employee name="Ivan" age="20" email="rewir@gm.com"/>
+  </manager>
+    <manager name="Jack" age="31" email="rewqs@gm.com">
+        <employee name="Victor" age="19" email="retypo@gm.com"/>
+        <employee name="Ivan" age="20" email="retyr1234@gm.com"/>
+        <employee name="John" age="34" email="rest1990@gm.com"/>
+    </manager>
+</root>
