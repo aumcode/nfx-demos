@@ -1,0 +1,67 @@
+﻿application
+{
+    // initial logging settings
+    log 
+    { 
+        destination 
+        {            
+            name="TestLogDestination" 
+            type="NFX.Log.Destinations.CSVFileDestination, NFX" 
+
+            // this is the path to your log file on disk relative to executing 
+            // assembly. Empty path in quotes corresponds project *.exe location.
+            // Ensure the path physically exists before use it here.
+            path=$""   
+                       
+            name-time-format='yyyyMMdd' 
+            generate-failover-msg=false 
+        } 
+    } 
+
+    wave
+    {
+        server
+        {
+            prefix { name="http://+:8080/" }
+
+            dispatcher
+            {
+                // put this filter before any other if you want to log any dispatching events
+                filter
+                {   
+                    order=0
+                    name="Log All" 
+                    type="NFX.Wave.Filters.LoggingFilter, NFX.Wave"   
+                    before
+                    {
+                        match { name="all" }
+                    }
+                    after
+                    {
+                        match { name="all" }
+                    }
+                }
+
+                // use this filter to intercept any server dispatching errors.
+                // add 'log' section to log intercepted errors
+                filter
+                {
+                    order=1
+                    name="Errors"
+                    type="NFX.Wave.Filters.ErrorFilter, NFX.Wave"
+                    log 
+                    {
+                        match { name="all" }
+                    }
+                }
+
+                handler
+                {
+                    type="NFX.Wave.Handlers.MVCHandler, NFX.Wave"
+                    type-location { assembly="Wave.Logging.exe" ns { name="Wave.Logging.Controllers" } }
+                    match { path="/{type=Test}/{mvc-action=Index}" }
+                }
+            }
+        }
+    }
+}
