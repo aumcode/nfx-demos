@@ -1,0 +1,31 @@
+﻿#<laconf>
+  compiler
+  {
+    using { ns="NFX" }
+    using { ns="NFX.Wave" }
+    using { ns="NFX.Wave.Templatization" }
+    base-class-name="NFX.Wave.Templatization.WaveTemplate"
+    abstract="true"
+    namespace="Wave.DbApplication.Pages"
+  }  
+#</laconf>
+
+#[class]
+
+  protected abstract void renderBody();
+
+#[render]
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Verdana;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  @[renderBody();]
+</body>
+</html>

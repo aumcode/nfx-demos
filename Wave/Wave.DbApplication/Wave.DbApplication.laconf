@@ -1,0 +1,20 @@
+﻿application
+{
+    wave
+    {
+        server
+        {
+            prefix { name="http://localhost:8080/" }
+
+            dispatcher
+            {
+                handler
+                {
+                    type="NFX.Wave.Handlers.MVCHandler, NFX.Wave"
+                    type-location { assembly="Wave.DbApplication.exe" ns { name="Wave.DbApplication.Controllers" } }
+                    match { path="/{type}/{mvc-action}" var { query-name="*" } }
+                }
+            }
+        }
+    }
+}

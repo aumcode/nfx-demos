@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Logging", "Wave\Wave.L
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.Resources", "Wave\Wave.Resources\Wave.Resources.csproj", "{66DCD2A5-6104-45F2-97EA-2DDFFA5D8058}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.DbApplication", "Wave\Wave.DbApplication\Wave.DbApplication.csproj", "{BCDE7161-8337-4D61-8FDB-76E2AB4920E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{66DCD2A5-6104-45F2-97EA-2DDFFA5D8058}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66DCD2A5-6104-45F2-97EA-2DDFFA5D8058}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66DCD2A5-6104-45F2-97EA-2DDFFA5D8058}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCDE7161-8337-4D61-8FDB-76E2AB4920E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCDE7161-8337-4D61-8FDB-76E2AB4920E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCDE7161-8337-4D61-8FDB-76E2AB4920E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCDE7161-8337-4D61-8FDB-76E2AB4920E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,5 +64,6 @@ Global
 		{ABD9C01B-7FD2-43E7-A12A-C0E7A17B9F2D} = {CF218F91-25FA-4C43-A3F2-9645F4CF8E3C}
 		{5E80C88E-1D0A-42E1-8EF0-64DAE65B927D} = {CF218F91-25FA-4C43-A3F2-9645F4CF8E3C}
 		{66DCD2A5-6104-45F2-97EA-2DDFFA5D8058} = {CF218F91-25FA-4C43-A3F2-9645F4CF8E3C}
+		{BCDE7161-8337-4D61-8FDB-76E2AB4920E5} = {CF218F91-25FA-4C43-A3F2-9645F4CF8E3C}
 	EndGlobalSection
 EndGlobal

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{59D84247-8B06-428D-AA5D-C5050C2E9F60}</ProjectGuid>
+    <ProjectGuid>{BCDE7161-8337-4D61-8FDB-76E2AB4920E5}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Wave.ViewEngine</RootNamespace>
-    <AssemblyName>Wave.ViewEngine</AssemblyName>
+    <RootNamespace>Wave.DbApplication</RootNamespace>
+    <AssemblyName>Wave.DbApplication</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -27,7 +27,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\Output\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -68,41 +68,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\Engine.cs" />
-    <Compile Include="Pages\LocalVars.htm.auto.cs">
-      <DependentUpon>LocalVars.htm</DependentUpon>
+    <Compile Include="Controllers\Contacts.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Pages\Index.htm.auto.cs">
+      <DependentUpon>Index.htm</DependentUpon>
     </Compile>
     <Compile Include="Pages\Master.htm.auto.cs">
       <DependentUpon>Master.htm</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Page.htm.auto.cs">
-      <DependentUpon>Page.htm</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Statements.htm.auto.cs">
-      <DependentUpon>Statements.htm</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Data\Scripts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\Schema\database-schema.rschema" />
     <None Include="packages.config" />
-    <None Include="Wave.ViewEngine.laconf">
+    <None Include="Wave.DbApplication.laconf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="Pages\LocalVars.htm" />
+    <Content Include="Data\Schema\db.auto.tables.MySQL.sql">
+      <DependentUpon>database-schema.rschema</DependentUpon>
+    </Content>
+    <Content Include="Pages\Index.htm" />
     <Content Include="Pages\Master.htm" />
-    <Content Include="Pages\Page.htm" />
-    <Content Include="Pages\Statements.htm" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>"$(SolutionDir)packages\NFX.2.0.0.9\tools\ntc" "$(ProjectDir)Pages\*.htm" -r -ext ".auto.cs" /src</PreBuildEvent>
+    <PreBuildEvent>"$(SolutionDir)packages\NFX.2.0.0.9\tools\ntc" "$(ProjectDir)Pages\*.htm" -r -ext ".auto.cs" /src
+"$(SolutionDir)packages\NFX.2.0.0.9\tools\rsc" "$(ProjectDir)Data\Schema\database-schema.rschema" /o out-name-prefix=db.auto.</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,0 +1,42 @@
+﻿#<laconf>
+  compiler
+  {
+    using { ns="System.Collections.Generic" }
+    using { ns="Wave.DbApplication.Models" }
+    using { ns="NFX" }
+    using { ns="NFX.Wave" }
+    using { ns="NFX.Wave.Templatization" }
+    base-class-name="Wave.DbApplication.Pages.Master"
+    namespace="Wave.DbApplication.Pages"
+  } 
+#</laconf>
+
+#[class]
+
+  public List<Person> Persons { get; set; }
+
+#[override renderBody()]
+<div>
+  <table>
+    <thead>
+       <tr>
+         <td>First Name</td>
+         <td>Middle Name</td>
+         <td>Last Name</td>
+         <td>Date of Birth</td>
+         <td>E-Mail</td>
+       </tr>
+    </thead>
+    <tbody>
+      @[foreach (var person in Persons){]
+        <tr>
+          <td>?[person.FirstName]</td>
+          <td>?[person.MiddleName]</td>
+          <td>?[person.LastName]</td>
+          <td>?[person.DOB]</td>
+          <td>?[person.EMail]</td>
+        </tr>
+      @[}]
+    </tbody>
+  </table>
+</div>
