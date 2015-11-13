@@ -68,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppContext.cs" />
     <Compile Include="Controllers\Contacts.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Pages\Edit.htm.auto.cs">
@@ -97,6 +98,9 @@
     <Content Include="Data\Schema\db.auto.tables.MySQL.sql">
       <DependentUpon>database-schema.rschema</DependentUpon>
     </Content>
+    <EmbeddedResource Include="Data\Scripts\GetPersonByID.mys.sql" />
+    <Content Include="Resources\wv.gui.js" />
+    <Content Include="Resources\wv.js" />
     <EmbeddedResource Include="Data\Scripts\DeletePerson.mys.sql" />
     <EmbeddedResource Include="Data\Scripts\GetAllPersons.mys.sql" />
     <Content Include="Pages\Edit.htm" />

@@ -56,6 +56,7 @@
 <div>
   <div id="title">Contacts</div>
   <table id="table-contacts" cellpadding="6">
+    @[if (Persons != null && Persons.Count > 0){]
     <thead id="table-header">
        <tr>
          <td>First Name</td>
@@ -66,7 +67,6 @@
        </tr>
     </thead>
     <tbody>
-      @[if (Persons != null && Persons.Count > 0)]
       @[foreach (var person in Persons){]
         <tr id="?[person.ID]">
           <td>?[person.FirstName]</td>
@@ -76,7 +76,7 @@
           <td>?[person.EMail]</td>
           <td>
             <div class="edit-container">
-              <a class="edit-button-container" href="/Contacts/Upsert?personId=?[person.ID]">
+              <a class="edit-button-container" href="/Contacts/Edit?personId=?[person.ID]">
                 <img class="edit-button" src="/res/icon-edit.png"/>
               </a>
               <a class="edit-button-container" onclick="deletePerson('?[person.ID]')">
@@ -87,9 +87,10 @@
         </tr>
       @[}]
     </tbody>
+    @[}]
   </table>
   <div id="link-add">
-    <a href="/Contacts/Upsert">add contact</a>
+    <a href="/Contacts/Edit">add contact</a>
   </div>
 </div>
 

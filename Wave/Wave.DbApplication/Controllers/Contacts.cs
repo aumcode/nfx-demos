@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using Wave.DbApplication.Models;
 using NFX.Wave.MVC;
 using Wave.DbApplication.Pages;
-using NFX;
-using NFX.DataAccess.MySQL;
 using NFX.DataAccess.CRUD;
 
 namespace Wave.DbApplication.Controllers
@@ -15,18 +13,10 @@ namespace Wave.DbApplication.Controllers
         [Action]
         public object Index()
         {
-            //var persons = new List<Person>
-            //{
-            //    new Person { ID=Guid.NewGuid().ToString("N"), FirstName="Sergey", LastName="Polyanskikh", EMail="mathf@rambler.ru" },
-            //    new Person { ID=Guid.NewGuid().ToString("N"), FirstName="Fedor", LastName="Lubenskii", EMail="lubenskiif@mail.ru" },
-            //    new Person { ID=Guid.NewGuid().ToString("N"), FirstName="Grant", LastName="Kesyan", EMail="grant_k@gmail.com" },
-            //}; 
-
             var persons = new List<Person>();
 
-            var data = App.DataStore as MySQLDataStore;
             var query = new Query("Data.Scripts.GetAllPersons", typeof(Person));
-            var set = data.Load(query);
+            var set = AppContext.DataStore.Load(query);
             if (set != null && set.Any())
             {
                 persons.AddRange(set[0].Cast<Person>());
@@ -38,30 +28,39 @@ namespace Wave.DbApplication.Controllers
         [Action]
         public void Delete(string personId)
         {
-            var data = App.DataStore as MySQLDataStore;
             var query = new Query("Data.Scripts.DeletePerson")
                             {
                                 new Query.Param("id", personId)
                             };
-            data.ExecuteWithoutFetch(query);
+            AppContext.DataStore.ExecuteWithoutFetch(query);
         }
 
         [Action]
-        public object Upsert(string personId)
+        public object Edit(string personId)
         {
-            var person = new Person
+            Person person;
+            if (personId != null)
             {
-                ID = Guid.NewGuid().ToString("N"),
-                FirstName = "A",
-                MiddleName = "B",
-                LastName = "C",
-                DOB = DateTime.Now,
-                EMail = "abretok@gmail.com"
-            };
-            var data = App.DataStore as MySQLDataStore;
-            data.Insert(person);
+                var query = new Query("Data.Scripts.GetPersonByID", typeof(Person))
+                            {
+                                new Query.Param("id", personId)
+                            };
+                person = AppContext.DataStore.LoadOneRow(query) as Person;
+            }
+            else
+            {
+                person = new Person { ID = Guid.NewGuid().ToString("N") };
+            }
 
             return new Edit { Person = person };
+        }
+
+        [Action]
+        public object Save(Person person)
+        {
+            AppContext.DataStore.Upsert(person);
+
+            return new Index();
         }
     }
 }

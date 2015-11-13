@@ -1,9 +1,11 @@
 ﻿#<laconf>
   compiler
   {
+    using { ns="System" }
     using { ns="NFX" }
     using { ns="NFX.Wave" }
     using { ns="NFX.Wave.Templatization" }
+    using { ns="Wave.DbApplication" }
     using { ns="Wave.DbApplication.Models" }
     base-class-name="Wave.DbApplication.Pages.Master"
     namespace="Wave.DbApplication.Pages"
@@ -12,9 +14,34 @@
 
 #[class]
 
+  private Exception m_ValidationError;
+
   public Person Person { get; set; }
 
 #[override renderBody()]
 <div>
-  EDIT ?[Person.ID]
+  <form id="v1" data-wv-rid="v1" action="/Contacts/Save" method="POST" novalidate>
+    <div data-wv-fname="ID" class="hidden"></div>
+    <div data-wv-fname="FirstName"></div>
+    <div data-wv-fname="MiddleName"></div>
+    <div data-wv-fname="LastName"></div>
+    <div data-wv-fname="DOB"></div>
+    <div data-wv-fname="EMail"></div>
+    <input type="submit" value="Submit"/>
+  </form>
 </div>
+
+<script>
+
+  var record = new WAVE.RecordModel.Record(?[:AppContext.FormJSON(Person, m_ValidationError)]);
+  var rview = new WAVE.RecordModel.RecordView("v1", record);
+
+  $('#form-edit-submit').submit(function () { 
+    
+  })
+
+  @[if (m_ValidationError != null){]
+     WAVE.GUI.toast('Data validation error.<br/>Please, reenter data carefully.', 'error', 5000);
+  @[}]
+
+</script>
