@@ -20,5 +20,18 @@ namespace Wave.DbApplication.Controllers
 
             return new Index { Persons = persons };
         }
+
+        [Action]
+        public void Delete(string personId)
+        {
+
+        }
+
+        [Action]
+        public object Upsert(string personId)
+        {
+            var person = new Person { ID = personId };
+            return new Edit { Person = person };
+        }
     }
 }

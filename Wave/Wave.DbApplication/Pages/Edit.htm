@@ -1,0 +1,20 @@
+﻿#<laconf>
+  compiler
+  {
+    using { ns="NFX" }
+    using { ns="NFX.Wave" }
+    using { ns="NFX.Wave.Templatization" }
+    using { ns="Wave.DbApplication.Models" }
+    base-class-name="Wave.DbApplication.Pages.Master"
+    namespace="Wave.DbApplication.Pages"
+  }
+#</laconf>
+
+#[class]
+
+  public Person Person { get; set; }
+
+#[override renderBody()]
+<div>
+  EDIT ?[Person.ID]
+</div>

@@ -15,10 +15,48 @@
 
   public List<Person> Persons { get; set; }
 
+#[override renderStyles()]
+<style>
+  #table-contacts {
+    text-align: left;
+    margin: 0 auto;
+  }                           
+
+  #table-header {
+    font-size: 18px;
+    background: #bad4f6;
+    text-align: center; 
+  }
+
+  #title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  #link-add {
+    margin: 30px 0;
+  }
+
+  .edit-container {
+    display: table;
+    margin: 0;
+  }
+
+  .edit-button-container {
+    display: table-cell;
+  }
+
+  .edit-button {
+    height: 20px;
+    margin: 3px;
+  }
+</style>
+
 #[override renderBody()]
 <div>
-  <table>
-    <thead>
+  <div id="title">Contacts</div>
+  <table id="table-contacts" cellpadding="6">
+    <thead id="table-header">
        <tr>
          <td>First Name</td>
          <td>Middle Name</td>
@@ -28,15 +66,46 @@
        </tr>
     </thead>
     <tbody>
+      @[if (Persons != null && Persons.Count > 0)]
       @[foreach (var person in Persons){]
-        <tr>
+        <tr id="?[person.ID]">
           <td>?[person.FirstName]</td>
           <td>?[person.MiddleName]</td>
           <td>?[person.LastName]</td>
           <td>?[person.DOB]</td>
           <td>?[person.EMail]</td>
+          <td>
+            <div class="edit-container">
+              <a class="edit-button-container" href="/Contacts/Upsert?personId=?[person.ID]">
+                <img class="edit-button" src="res/icon-edit.png"/>
+              </a>
+              <a class="edit-button-container" onclick="deletePerson('?[person.ID]')">
+                <img class="edit-button" src="res/icon-delete.png"/>
+              </a>
+            </div>
+          </td>
         </tr>
       @[}]
     </tbody>
   </table>
+  <div id="link-add">
+    <a href="/Contacts/Upsert">add contact</a>
+  </div>
 </div>
+
+<script type="text/javascript">
+  function deletePerson(id) {
+    var request = new XMLHttpRequest();
+    request.open("POST", "/Contacts/Delete?personId="+id);
+    request.onreadystatechange = function() {
+      if (request.readyState == 4 && request.status == 200) {
+        var row = $('#'+id);
+        row.remove();
+        var count = $('#table-contacts tr').length;
+        if (count == 1)
+          $('#table-contacts').css('display', 'none');
+      }
+    }
+    request.send();
+  }
+</script>

@@ -91,6 +91,7 @@
   <ItemGroup>
     <Content Include="Pages\Index.htm" />
     <None Include="Resources\files\data.xml" />
+    <None Include="Resources\files\icon.png" />
     <Content Include="Resources\scripts\jquery-1.11.0.min.js" />
     <None Include="Resources\scripts\default.js" />
     <None Include="Resources\files\info.txt" />

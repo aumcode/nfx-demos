@@ -70,6 +70,9 @@
   <ItemGroup>
     <Compile Include="Controllers\Contacts.cs" />
     <Compile Include="Models\Person.cs" />
+    <Compile Include="Pages\Edit.htm.auto.cs">
+      <DependentUpon>Edit.htm</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Index.htm.auto.cs">
       <DependentUpon>Index.htm</DependentUpon>
     </Compile>
@@ -96,13 +99,21 @@
     <Content Include="Data\Schema\db.auto.tables.MySQL.sql">
       <DependentUpon>database-schema.rschema</DependentUpon>
     </Content>
+    <Content Include="Pages\Edit.htm" />
     <Content Include="Pages\Index.htm" />
     <Content Include="Pages\Master.htm" />
+    <None Include="Resources\jquery-1.11.0.min.js" />
+    <None Include="Resources\icon-delete.png" />
+    <None Include="Resources\icon-edit.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>"$(SolutionDir)packages\NFX.2.0.0.9\tools\ntc" "$(ProjectDir)Pages\*.htm" -r -ext ".auto.cs" /src
-"$(SolutionDir)packages\NFX.2.0.0.9\tools\rsc" "$(ProjectDir)Data\Schema\database-schema.rschema" /o out-name-prefix=db.auto.</PreBuildEvent>
+"$(SolutionDir)packages\NFX.2.0.0.9\tools\rsc" "$(ProjectDir)Data\Schema\database-schema.rschema" /o out-name-prefix=db.auto.
+if not exist "$(TargetDir)resources" mkdir "$(TargetDir)resources"</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /Y "$(ProjectDir)resources" "$(TargetDir)resources"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

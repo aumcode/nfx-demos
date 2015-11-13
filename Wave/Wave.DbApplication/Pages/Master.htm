@@ -13,6 +13,7 @@
 #[class]
 
   protected abstract void renderBody();
+  protected virtual void renderStyles() { }
 
 #[render]
 <!DOCTYPE html>
@@ -21,11 +22,21 @@
   <style>
     body {
       font-family: Verdana;
-      font-size: 18px;
+      font-size: 17px;
+    }
+
+    #root {
+      text-align: center;
+      margin: 40px 0;
+      width: 100%;
     }
   </style>
+  @[renderStyles();]
+  <script src="res/jquery-1.11.0.min.js"></script>
 </head>
 <body>
-  @[renderBody();]
+  <div id="root">
+    @[renderBody();]
+  </div>
 </body>
 </html>
