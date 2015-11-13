@@ -82,9 +82,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\Scripts\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Data\Schema\database-schema.rschema" />
     <None Include="packages.config" />
@@ -99,6 +97,8 @@
     <Content Include="Data\Schema\db.auto.tables.MySQL.sql">
       <DependentUpon>database-schema.rschema</DependentUpon>
     </Content>
+    <EmbeddedResource Include="Data\Scripts\DeletePerson.mys.sql" />
+    <EmbeddedResource Include="Data\Scripts\GetAllPersons.mys.sql" />
     <Content Include="Pages\Edit.htm" />
     <Content Include="Pages\Index.htm" />
     <Content Include="Pages\Master.htm" />

@@ -1,5 +1,12 @@
 ﻿application
 {
+    data-store
+    {
+        type="NFX.DataAccess.MySQL.MySQLDataStore, NFX.MySQL"
+        connect-string="Server=localhost;Database=contacts;Uid=root;Pwd=mathf1235"
+        script-assembly="Wave.DbApplication"
+    }
+
     wave
     {
         server
