@@ -1,0 +1,39 @@
+﻿#<laconf>
+  compiler
+  {
+    using { ns="NFX" }
+    using { ns="NFX.Wave" }
+    using { ns="NFX.Wave.Templatization" }
+    base-class-name="NFX.Wave.Templatization.WaveTemplate"
+    namespace="Wave.Resources.Pages"
+  } 
+#</laconf>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="res/styles/general.css" type="text/css">
+  <script src="res/scripts/jquery-1.11.0.min.js"></script>
+  <script src="res/scripts/default.js"></script>
+</head>
+<body>
+  <div id="root">
+    <div id="title"></div>
+    <img src="res/files/icon.png" style="margin: 40px"/>
+    <br/>
+    Click one of the following links:
+    <div class="link">
+      <a href="http://localhost:8080/res/files/info.txt?a=true">/res/files/info.txt?a=true</a> - to download text resource file info.txt.
+    </div>
+    <div class="link">
+      <a href="http://localhost:8080/res/files/data.xml">/res/files/data.xml</a> - to see contents of xml resource file data.xml.
+    </div>
+    <div class="link">
+      <a href="http://localhost:8080/res/files/persons.json">/res/files/persons.json</a> - to see contents of json resource file persons.json.
+    </div>
+    <div id="footer">
+      All styles and javascripts acted on this page are also downloaded from disk by <b>FileDownloadHandler</b>.
+    </div>
+  </div>
+</body>
+</html>

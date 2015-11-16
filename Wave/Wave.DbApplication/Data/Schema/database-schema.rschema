@@ -1,0 +1,19 @@
+﻿schema
+{
+    TID="TVarchar(32)"
+    TName="TVarchar(32)"
+
+    table=person
+    {
+        comment="Persons"
+
+        column=ID { type=$(/$TID) required=true comment="Person's unique identifier" }
+        column=FirstName { type=$(/$TName) required=true comment="Person's first name" }
+        column=MiddleName { type=$(/$TName) required=false comment="Person's middle name" }
+        column=LastName { type=$(/$TName) required=true comment="Person's last name" }
+        column=DOB { type=TDateTime required=false comment="Person's date of birth" }
+        column=EMail { type=TEMail required=true comment="Person's e-mail" }
+
+        primary-key { column=ID{} }
+    }
+}

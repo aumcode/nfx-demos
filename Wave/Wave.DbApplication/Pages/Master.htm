@@ -1,0 +1,48 @@
+﻿#<laconf>
+  compiler
+  {
+    using { ns="NFX" }
+    using { ns="NFX.Wave" }
+    using { ns="NFX.Wave.Templatization" }
+    base-class-name="NFX.Wave.Templatization.WaveTemplate"
+    abstract="true"
+    namespace="Wave.DbApplication.Pages"
+  }  
+#</laconf>
+
+#[class]
+
+  protected abstract void renderBody();
+  protected virtual void renderStyles() { }
+
+#[render]
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Verdana;
+      font-size: 17px;
+    }
+
+    #root {
+      text-align: center;
+      margin: 40px 0;
+      width: 100%;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+  @[renderStyles();]
+  <script src="/res/jquery-1.11.0.min.js"></script>
+  <script src="/res/wv.js"></script>
+  <script src="/res/wv.gui.js"></script>
+</head>
+<body>
+  <div id="root">
+    @[renderBody();]
+  </div>
+</body>
+</html>

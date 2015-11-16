@@ -1,0 +1,29 @@
+﻿#<laconf>
+  compiler
+  {
+    using { ns="NFX" }
+    using { ns="NFX.Wave" }
+    using { ns="NFX.Wave.Templatization" }
+    base-class-name="NFX.Wave.Templatization.WaveTemplate"
+    namespace="Wave.Logging.Pages"
+  }
+#</laconf>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #root {
+      margin: 100px;
+      text-align: center;
+      font-family: Verdana;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    The action has been logged. <a href="http://localhost:8080/Test/Index">back</a>
+  </div>
+</body>
+</html>

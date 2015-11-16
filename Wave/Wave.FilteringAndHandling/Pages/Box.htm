@@ -1,0 +1,33 @@
+﻿#<laconf>
+  compiler
+  {
+    using { ns="NFX" }
+    using { ns="NFX.Wave" }
+    using { ns="NFX.Wave.Templatization" }
+    base-class-name="NFX.Wave.Templatization.WaveTemplate"
+    namespace="Wave.FilteringAndHandling.Pages"
+  }
+ #</laconf>
+
+#[class]
+
+  public string Color { get; set; }
+
+#[render]
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #box {
+      height: 100px;
+      width: 150px;
+      margin: auto;
+      margin-top: 100px;
+      background: ?[Color];
+    }
+  </style>
+</head>
+<body>
+  <div id="box"></div>
+</body>
+</html>

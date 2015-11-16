@@ -1,0 +1,34 @@
+﻿application
+{
+    data-store
+    {
+        type="NFX.DataAccess.MySQL.MySQLDataStore, NFX.MySQL"
+        connect-string="Server=localhost;Database=contacts;Uid=root;Pwd=mathf1235"
+        script-assembly="Wave.DbApplication"
+    }
+
+    wave
+    {
+        server
+        {
+            prefix { name="http://localhost:8080/" }
+
+            dispatcher
+            {
+                handler
+                {
+                    type="NFX.Wave.Handlers.FileDownloadHandler, NFX.Wave"
+                    root-path=$"Resources/"
+                    match { path="/res/{*filePath}" }
+                }
+
+                handler
+                {
+                    type="NFX.Wave.Handlers.MVCHandler, NFX.Wave"
+                    type-location { assembly="Wave.DbApplication.exe" ns { name="Wave.DbApplication.Controllers" } }
+                    match { path="/{type=Contacts}/{mvc-action=Index}" var { query-name="*" } }
+                }
+            }
+        }
+    }
+}
