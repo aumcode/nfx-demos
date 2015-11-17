@@ -1,0 +1,281 @@
+﻿
+.wvError 
+{
+   color: rgba(255,40,10, 0.7);
+   background-color: #fff0e0;
+   background: linear-gradient(to right, rgba(255,161,79,0) 0%,rgba(255,161,79,0.15) 2%,rgba(254,171,86,0.23) 3%,rgba(247,229,131,0.22) 9%,rgba(255,180,114,0.2) 18%,rgba(239,239,239,0.08) 69%,rgba(239,239,239,0) 100%);
+   padding-left: 8px;
+   font-size: 0.9em;
+}
+.wvRequired 
+{
+  font-weight: normal;
+  text-shadow: 0px 0px 1px rgba(0,0,255, 0.65);  
+}
+
+.wvRequired:before 
+{
+  content: "* "
+}
+
+.wvModified
+ {
+  border-bottom: 2px dotted #80de40;
+}
+
+.wvToast
+{
+    display: block;
+    position: fixed;
+    background: black;
+    border: 1px solid #808080;
+    width: auto;
+    padding: 8px;
+    top: 45%;
+    left: 50%;
+    color: white;
+    box-shadow: 2px 2px 10px #888888;
+}
+
+
+.wvToast_hint_top 
+{
+    display: block;
+    position: fixed;
+    background-color: #e6f0a3;
+    background: linear-gradient(to bottom, #e6f0a3 0%,#d2e638 50%,#c3d825 51%,#dbf043 100%);
+    border: 1px solid #c0c0c0;
+    border-radius: 8px;
+    width: auto;
+    padding: 8px;
+    top: 2%;
+    left: 50%;
+    color: #202020;
+    box-shadow: 2px 2px 10px #202020;
+    font-size: 0.85em;
+}
+
+.wvToast_hint_bottom 
+{
+    display: block;
+    position: fixed;
+    background-color: #e6f0a3;
+    background: linear-gradient(to bottom, #e6f0a3 0%,#d2e638 50%,#c3d825 51%,#dbf043 100%);
+    border: 1px solid #c0c0c0;
+    border-radius: 8px;
+    width: auto;
+    padding: 8px;
+    top: 85%;
+    left: 50%;
+    color: #202020;
+    box-shadow: 2px 2px 10px #202020;
+    font-size: 0.85em;
+}
+
+.wvToast_info 
+{
+    display: block;
+    position: fixed;
+    background: #90ff70;
+    border: 1px solid #40bc20;
+    width: auto;
+    padding: 8px;
+    top: 45%;
+    left: 50%;
+    color: #104000;
+    box-shadow: 2px 2px 10px #888888;
+}
+
+.wvToast_white 
+{
+    display: block;
+    position: fixed;
+    background: #ffffff;
+    border: 1px solid #b0b0b0;
+    width: auto;
+    padding: 8px;
+    top: 45%;
+    left: 50%;
+    color: #505050;
+    box-shadow: 2px 2px 10px #888888;
+}
+
+.wvToast_warning 
+{
+    display: block;
+    position: fixed;
+    background: #fff070;
+    border: 1px solid #bcbc00;
+    width: auto;
+    padding: 8px;
+    top: 45%;
+    left: 50%;
+    color: #405000;
+    box-shadow: 2px 2px 10px #888888;
+}
+
+.wvToast_error 
+{
+    display: block;
+    position: fixed;
+    background: #ff5040;
+    border: 1px solid #ff8080;
+    width: auto;
+    padding: 8px;
+    top: 45%;
+    left: 50%;
+    color: white;
+    box-shadow: 2px 2px 10px #888888;
+}
+
+.checkableLabel
+ {  
+    display: inline-block;  
+    cursor: pointer;  
+    position: relative;  
+    padding-left: 40px;  
+    margin-right: 40px;  
+    height: 32px;
+    padding-top: 5px;
+ }  
+
+input[type=radio],input[type=checkbox] { display: none; }
+
+.checkableLabel:before
+{  
+    background-image: url("/res/FormElements.png"); 
+    background-size: 133px 66px;
+    background-repeat: no-repeat;
+    content: "";  
+    display: inline-block;  
+    width: 32px;  
+    height: 32px;  
+    position: absolute;  
+    left: 0;
+    top: 0;
+    /* border: 1px solid gray; */
+} 
+
+/*Enabled*/
+input[type=checkbox] + .checkableLabel:before { background-position: -1px -1px;  }
+input[type=checkbox]:checked + .checkableLabel:before { background-position: -33px -1px; }
+input[type=radio] + .checkableLabel:before { background-position: -66px -1px;  }
+input[type=radio]:checked + .checkableLabel:before { background-position: -98px -1px; }
+
+/* Disabled */
+input[type=checkbox]:disabled + .checkableLabel:before { background-position: -1px -34px;  }
+input[type=checkbox]:disabled:checked + .checkableLabel:before { background-position: -33px -34px; }
+input[type=radio]:disabled + .checkableLabel:before { background-position: -66px -34px;  }
+input[type=radio]:disabled:checked + .checkableLabel:before { background-position: -98px -34px; }
+
+*::-webkit-input-placeholder {
+   color: #c0d0c0;
+}
+
+*:-moz-placeholder { 
+   color: #c0d0c0;  
+   opacity: 1;
+}
+
+*::-moz-placeholder {
+   color: #c0d0c0;
+   opacity: 1;   
+}
+
+*:-ms-input-placeholder {
+   color: #c0d0c0;
+}
+
+/* IOS fix*/
+input[type="submit"] { -webkit-appearance:none; -webkit-border-radius:0; }
+
+
+input[type=text],input[type=password],input[type=date],input[type=datetime],input[type=tel],input[type=email],select,textarea
+{
+    border:  1px solid #a0a0a0;
+    font-family: inherit;
+    font-size: 1.1em;
+   -webkit-appearance: none
+   -moz-appearance: none; 
+    background: #f5fff5;
+    width: 100%;
+    color: #4080d0;
+    border-radius: 4px;
+    padding: 5px;
+    box-shadow: inset 0px 0px 3px rgba(40,100,200, 0.7);
+    resize: none;
+}
+
+input[type=text]:focus,input[type=password]:focus,input[type=date]:focus,input[type=datetime]:focus,input[type=tel]:focus,input[type=email]:focus,select:focus
+{
+    background-color: #f0ffd7;
+    border: 1px solid #5080c0;
+}
+
+input[type=text]:disabled,input[type=password]:disabled,input[type=date]:disabled,input[type=datetime]:disabled,input[type=tel]:disabled,input[type=email]:disabled,select:disabled
+{
+    background-color: #e0e0e0;
+    color: #b0b0b0;
+    border: 1px solid #808080;
+}
+
+/* Dialogs */
+.wvCurtain
+{
+    background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAF0lEQVQImWNgQAW+cAKJxs3xZWBgYAAANwIBz+0UkPgAAAAASUVORK5CYII=) repeat;
+}
+        
+.wvDialogBase 
+{
+    display: block;
+    position: fixed;
+    background: #3866de;
+    border: 1px solid #808080;
+    border-radius: 4px;
+    padding: 6px;
+    color: white;
+    box-shadow: 6px 6px 10px #888888;
+}
+
+.dlgYellow
+{
+   background: linear-gradient(to bottom, #e2f055 0%,#b2b92a 50%,#8f9a01 51%,#f0e82d 100%);  
+}
+
+.dlgGreen
+ {
+   background: linear-gradient(to bottom, #bfd255 0%,#8eb92a 50%,#588701 51%,#9ecb2d 100%);
+}
+
+.wvDialogTitle 
+{
+    background: #2020c0;
+    color: white;
+    font-size: 1.37em;
+    font-weight: bold;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.dlgYellow > .wvDialogTitle 
+{
+    background: red;
+}
+
+.dlgGreen > .wvDialogTitle 
+{
+    background: linear-gradient(to bottom, #45484d 0%,#000000 100%);
+}
+
+.wvDialogContent 
+{
+    display: block;
+    background: #f4f4f0;
+    background-image: url("/res/FormHatch-2.png");
+    color: #404060;
+    border: 1px solid #7070ff;
+    padding: 4px;
+    margin-top: 6px;
+    border-radius: 4px;
+    overflow: auto;
+}

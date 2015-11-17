@@ -34,15 +34,27 @@
     .hidden {
       display: none;
     }
+
+    input[type="date"]::-webkit-calendar-picker-indicator,
+    input[type="date"]::-webkit-inner-spin-button{
+      display: none;
+      -webkit-appearance: none;
+    }
   </style>
   @[renderStyles();]
-  <script src="/res/jquery-1.11.0.min.js"></script>
-  <script src="/res/wv.js"></script>
-  <script src="/res/wv.gui.js"></script>
+  <link rel="stylesheet" href="/res/common.css" type="text/css">
+  <script src="/stock/site/script/jquery-1.11.0.min.js"></script>
+  <script src="/stock/site/script/wv.js"></script>
+  <script src="/stock/site/script/wv.gui.js"></script>
 </head>
-<body>
+<body> <!--@@[Zaza(25);]-->
   <div id="root">
     @[renderBody();]
   </div>
 </body>
 </html>
+
+<!--
+##[Zaza(int number)]
+you have submitted number: ??[number]
+  -->

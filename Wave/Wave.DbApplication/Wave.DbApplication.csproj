@@ -35,27 +35,27 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NFX.2.0.0.9\lib\MySql.Data.dll</HintPath>
+      <HintPath>..\..\packages\NFX.2.0.0.10\lib\MySql.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NFX, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NFX.2.0.0.9\lib\NFX.dll</HintPath>
+      <HintPath>..\..\packages\NFX.2.0.0.10\lib\NFX.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NFX.MySQL, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NFX.2.0.0.9\lib\NFX.MySQL.dll</HintPath>
+      <HintPath>..\..\packages\NFX.2.0.0.10\lib\NFX.MySQL.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NFX.Wave, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NFX.2.0.0.9\lib\NFX.Wave.dll</HintPath>
+      <HintPath>..\..\packages\NFX.2.0.0.10\lib\NFX.Wave.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NFX.Web, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NFX.2.0.0.9\lib\NFX.Web.dll</HintPath>
+      <HintPath>..\..\packages\NFX.2.0.0.10\lib\NFX.Web.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NFX.WinForms, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NFX.2.0.0.9\lib\NFX.WinForms.dll</HintPath>
+      <HintPath>..\..\packages\NFX.2.0.0.10\lib\NFX.WinForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -99,21 +99,20 @@
       <DependentUpon>database-schema.rschema</DependentUpon>
     </Content>
     <EmbeddedResource Include="Data\Scripts\GetPersonByID.mys.sql" />
-    <Content Include="Resources\wv.gui.js" />
-    <Content Include="Resources\wv.js" />
-    <EmbeddedResource Include="Data\Scripts\DeletePerson.mys.sql" />
+    <Content Include="Resources\common.css" />
+    <Content Include="Resources\FormElements.png" />
+    <Content Include="Resources\FormHatch-2.png" />
     <EmbeddedResource Include="Data\Scripts\GetAllPersons.mys.sql" />
     <Content Include="Pages\Edit.htm" />
     <Content Include="Pages\Index.htm" />
     <Content Include="Pages\Master.htm" />
-    <None Include="Resources\jquery-1.11.0.min.js" />
     <None Include="Resources\icon-delete.png" />
     <None Include="Resources\icon-edit.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>"$(SolutionDir)packages\NFX.2.0.0.9\tools\ntc" "$(ProjectDir)Pages\*.htm" -r -ext ".auto.cs" /src
-"$(SolutionDir)packages\NFX.2.0.0.9\tools\rsc" "$(ProjectDir)Data\Schema\database-schema.rschema" /o out-name-prefix=db.auto.
+    <PreBuildEvent>"$(SolutionDir)packages\NFX.2.0.0.10\tools\ntc" "$(ProjectDir)Pages\*.htm" -r -ext ".auto.cs" /src
+"$(SolutionDir)packages\NFX.2.0.0.10\tools\rsc" "$(ProjectDir)Data\Schema\database-schema.rschema" /o out-name-prefix=db.auto.
 if not exist "$(TargetDir)resources" mkdir "$(TargetDir)resources"</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>

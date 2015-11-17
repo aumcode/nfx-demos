@@ -1,6 +1,7 @@
 ﻿#<laconf>
   compiler
   {
+    using { ns="System.Linq" }
     using { ns="System.Collections.Generic" }
     using { ns="Wave.DbApplication.Models" }
     using { ns="NFX" }
@@ -13,7 +14,7 @@
 
 #[class]
 
-  public List<Person> Persons { get; set; }
+  public IEnumerable<Person> Persons { get; set; }
 
 #[override renderStyles()]
 <style>
@@ -56,7 +57,7 @@
 <div>
   <div id="title">Contacts</div>
   <table id="table-contacts" cellpadding="6">
-    @[if (Persons != null && Persons.Count > 0){]
+    @[if (Persons != null && Persons.Any()){]
     <thead id="table-header">
        <tr>
          <td>First Name</td>
@@ -93,6 +94,11 @@
     <a href="/Contacts/Edit">add contact</a>
   </div>
 </div>
+
+<!--
+this is how you invoke the view
+@@[new Edit{ Person = new Person() }.Render(Context, null);]
+-->
 
 <script type="text/javascript">
   function deletePerson(id) {

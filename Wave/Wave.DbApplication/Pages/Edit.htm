@@ -14,33 +14,48 @@
 
 #[class]
 
-  private Exception m_ValidationError;
-
+  public Exception ValidationError { get; set; }
   public Person Person { get; set; }
 
+#[override renderStyles()]
+<style>
+  #form-container {
+    width: 300px;
+    display: inline-block;
+    margin: auto;
+  }
+</style>
+
 #[override renderBody()]
-<div>
-  <form id="v1" data-wv-rid="v1" action="/Contacts/Save" method="POST" novalidate>
+<div id="form-container">
+  <form id="frmContact" data-wv-rid="v1" action="/contacts/edit" method="POST" novalidate>
     <div data-wv-fname="ID" class="hidden"></div>
     <div data-wv-fname="FirstName"></div>
     <div data-wv-fname="MiddleName"></div>
     <div data-wv-fname="LastName"></div>
     <div data-wv-fname="DOB"></div>
     <div data-wv-fname="EMail"></div>
-    <input type="submit" value="Submit"/>
+    <input type="submit" value="Submit" />
   </form>
 </div>
 
 <script>
 
-  var record = new WAVE.RecordModel.Record(?[:AppContext.FormJSON(Person, m_ValidationError)]);
-  var rview = new WAVE.RecordModel.RecordView("v1", record);
+  var REC = new WAVE.RecordModel.Record(?[:AppContext.FormJSON(Person, ValidationError)]);
+  var RVIEW = new WAVE.RecordModel.RecordView("v1", REC);
 
-  $('#form-edit-submit').submit(function () { 
-    
+  $('#frmContact').submit(function (e) { 
+    if (!REC.validate())
+    {
+      WAVE.GUI.toast('Please correct all validation errors marked in red','error');
+      e.preventDefault();
+      return false;
+    }
+    REC.resetModified();
+    return true;
   })
 
-  @[if (m_ValidationError != null){]
+  @[if (ValidationError != null){]
      WAVE.GUI.toast('Data validation error.<br/>Please, reenter data carefully.', 'error', 5000);
   @[}]
 

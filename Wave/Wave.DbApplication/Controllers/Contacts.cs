@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-using Wave.DbApplication.Models;
+
+using NFX;
 using NFX.Wave.MVC;
+using NFX.DataAccess.CRUD; 
+
+using Wave.DbApplication.Models;
 using Wave.DbApplication.Pages;
-using NFX.DataAccess.CRUD;
 
 namespace Wave.DbApplication.Controllers
 {
@@ -13,33 +16,25 @@ namespace Wave.DbApplication.Controllers
         [Action]
         public object Index()
         {
-            var persons = new List<Person>();
-
             var query = new Query("Data.Scripts.GetAllPersons", typeof(Person));
-            var set = AppContext.DataStore.Load(query);
-            if (set != null && set.Any())
-            {
-                persons.AddRange(set[0].Cast<Person>());
-            }
+            var persons = AppContext.DataStore
+                                    .LoadOneRowset(query)
+                                    .AsEnumerableOf<Person>();
 
-            return new Index { Persons = persons };
+            return new Index { Persons = persons as IEnumerable<Person> };
         }
 
         [Action]
         public void Delete(string personId)
         {
-            var query = new Query("Data.Scripts.DeletePerson")
-                            {
-                                new Query.Param("id", personId)
-                            };
-            AppContext.DataStore.ExecuteWithoutFetch(query);
+            AppContext.DataStore.Delete(new Person { ID = personId });
         }
 
-        [Action]
-        public object Edit(string personId)
+        [Action(name: "edit", order: 0, matchScript: "match{methods=GET}")]
+        public object GetEdit(string personId)
         {
-            Person person;
-            if (personId != null)
+            Person person = null;
+            if (personId.IsNotNullOrWhiteSpace())
             {
                 var query = new Query("Data.Scripts.GetPersonByID", typeof(Person))
                             {
@@ -47,20 +42,33 @@ namespace Wave.DbApplication.Controllers
                             };
                 person = AppContext.DataStore.LoadOneRow(query) as Person;
             }
-            else
-            {
-                person = new Person { ID = Guid.NewGuid().ToString("N") };
-            }
+
+            if (person == null)
+              person = new Person { ID = Guid.NewGuid().ToString("N") };
 
             return new Edit { Person = person };
         }
 
-        [Action]
-        public object Save(Person person)
+        [Action(name: "edit", order: 0, matchScript: "match{methods=POST}")]
+        public object SaveEdit(Person person)
         {
-            AppContext.DataStore.Upsert(person);
+            if (person == null)
+                person = new Person { ID = Guid.NewGuid().ToString("N") };
 
-            return new Index();
+            var error = person.Validate();
+            if (error == null)
+            {
+                AppContext.DataStore.Upsert(person);
+                if (WorkContext.RequestedJSON)
+                  return new ClientRecord(person, null);
+                else
+                  return new Redirect("/");
+            }
+
+            if (WorkContext.RequestedJSON)
+              return new ClientRecord(person, error);
+            else
+              return new Edit { Person = person, ValidationError = error };
         }
     }
 }

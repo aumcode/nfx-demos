@@ -14,9 +14,21 @@
             prefix { name="http://localhost:8080/" }
 
             dispatcher
-            {
+            {  
+                filter
+                {
+                    order=1
+                    name="DumpErrors"
+                    type="NFX.Wave.Filters.ErrorFilter, NFX.Wave"
+                    show-dump 
+                    {
+                        match { name="localhost"}
+                    }
+                }
+
                 handler
                 {
+                    order=0
                     type="NFX.Wave.Handlers.FileDownloadHandler, NFX.Wave"
                     root-path=$"Resources/"
                     match { path="/res/{*filePath}" }
@@ -24,6 +36,16 @@
 
                 handler
                 {
+                    order=100
+                    name="Stock Content Embedded Site"
+                    order=1000
+                    type="NFX.Wave.Handlers.StockContentSiteHandler, NFX.Wave"
+                    match{ path="/stock/{*path}"}
+                }
+
+                handler
+                {
+                    order=200
                     type="NFX.Wave.Handlers.MVCHandler, NFX.Wave"
                     type-location { assembly="Wave.DbApplication.exe" ns { name="Wave.DbApplication.Controllers" } }
                     match { path="/{type=Contacts}/{mvc-action=Index}" var { query-name="*" } }
