@@ -6,7 +6,7 @@ Here you can find different demo projects that cover basics and some advanced sc
 <br/>
 <ul>
 <li><a href="https://github.com/aumcode/nfx">https://github.com/aumcode/nfx</a> - the latest public version of the library.</li>
-<li><a href="https://www.youtube.com/channel/UCDNMtzPd0lCXgfeMZvTeN8Q">https://www.youtube.com/channel/UCDNMtzPd0lCXgfeMZvTeN8Q</a> - related videos.</li>
+<li><a href="https://www.youtube.com/channel/UCDNMtzPd0lCXgfeMZvTeN8Q">https://www.youtube.com/user/itadapterinc</a> - related videos.</li>
 <li><a href="https://github.com/aumcode/serbench">https://github.com/aumcode/serbench</a> - NFX ultra-fast serializer benchmarks.</li>
 </ul>
 
@@ -26,12 +26,12 @@ You can find <a href="https://github.com/aumcode/nfx/tree/master/Source/NFX.Wave
 
 <a href="https://github.com/aumcode/nfx-demos/tree/master/Wave/Wave.Resources">Wave.Resources</a> - the application demonstrates how you can address different resources such as css, javascripts, flat files, images etc.
 
-<a href="https://github.com/aumcode/nfx-demos/tree/master/Wave/Wave.ViewEngine">Wave.ViewEngine</a> - the application demonstrates different capabilities of <b>NFX.Wave</b> html templatization engine. You can embed any code in your html template pages, which then will be rendered by server into valid html. You can also embed a pice of html into another views for reusability purposes.
+<a href="https://github.com/aumcode/nfx-demos/tree/master/Wave/Wave.ViewEngine">Wave.ViewEngine</a> - the application demonstrates different capabilities of <b>NFX.Wave</b> html templatization engine. You can embed any code in your html template pages, which then will be rendered by server into a valid html. You can also embed a piece of html into another views for reusability purposes (partial views).
 
-<a href="https://github.com/aumcode/nfx-demos/tree/master/Wave/Wave.DbApplication">Wave.DbApplication</a> - a simple web application with MySQL database backend. The application demonstrates work with simple CRUD operations over MySQL database.
+<a href="https://github.com/aumcode/nfx-demos/tree/master/Wave/Wave.DbApplication">Wave.DbApplication</a> - a simple web application with MySQL database backend. The application demonstrates working with simple CRUD operations over MySQL database.
 
 <h4>
 NFX.Glue Demos
 </h4>
 
-will be soon
+...in progress
