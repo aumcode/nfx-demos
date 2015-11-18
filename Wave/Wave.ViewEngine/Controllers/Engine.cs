@@ -24,5 +24,11 @@ namespace Wave.ViewEngine.Controllers
         {
             return new Page();
         }
+
+        [Action]
+        public object TestViewEmbedding()
+        {
+            return new ViewEmbedding();
+        }
     }
 }

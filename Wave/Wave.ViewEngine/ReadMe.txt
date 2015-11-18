@@ -11,5 +11,7 @@ http://localhost:8080/Engine/TestStatements
 http://localhost:8080/Engine/TestMasterPage 
     - to see how you can use Master page as a base class for your pages,
       and also how to define and override its render methods.
+http://localhost:8080/Engine/TestViewEmbedding 
+    - to see how you can embed a reuseble piece of html into another page.
 
 Administrator privileges are required to start the application.

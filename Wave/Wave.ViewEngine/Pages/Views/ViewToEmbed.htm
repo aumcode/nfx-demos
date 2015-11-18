@@ -1,0 +1,33 @@
+﻿#<laconf>
+  compiler 
+  {
+    using { ns="NFX" }
+    using { ns="NFX.Wave" }
+    using { ns="NFX.Wave.Templatization" }
+    base-class-name="NFX.Wave.Templatization.WaveTemplate"
+    namespace="Wave.ViewEngine.Pages.Views" 
+  }
+#</laconf>  
+
+#[class]
+
+  public string Text { get; set; }
+
+#[render]
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #rect {
+      margin: 10px;
+      background: yellowgreen;
+      display: inline-block;
+      margin: auto;
+      height: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div id="rect">This is an embedded view: ?[Text]</div>
+</body>
+</html>

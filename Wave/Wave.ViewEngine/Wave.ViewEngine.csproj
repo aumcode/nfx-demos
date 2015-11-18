@@ -81,8 +81,16 @@
     <Compile Include="Pages\Statements.htm.auto.cs">
       <DependentUpon>Statements.htm</DependentUpon>
     </Compile>
+    <Content Include="Pages\ViewEmbedding.htm" />
+    <Compile Include="Pages\ViewEmbedding.htm.auto.cs">
+      <DependentUpon>ViewEmbedding.htm</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Views\ViewToEmbed.htm.auto.cs">
+      <DependentUpon>ViewToEmbed.htm</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Pages\Views\ViewToEmbed.htm" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

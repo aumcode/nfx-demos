@@ -1,0 +1,41 @@
+﻿#<laconf>
+  compiler
+  {
+    using { ns="NFX" }
+    using { ns="NFX.Wave" }
+    using { ns="NFX.Wave.Templatization" }
+    using { ns="Wave.ViewEngine.Pages.Views" }             
+    base-class-name="NFX.Wave.Templatization.WaveTemplate"
+    namespace="Wave.ViewEngine.Pages"
+  }
+#</laconf>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #root {
+      width: 100%;
+      text-align: center;
+      font-family: Verdana;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    @[new ViewToEmbed{ Text = "1" }.Render(Context, null);]
+    @[new ViewToEmbed{ Text = "2" }.Render(Context, null);]
+    @[new ViewToEmbed{ Text = "3" }.Render(Context, null);]
+    <br />
+    <br />
+    <div><b>This is how you can write and invoke methods directly in html:</b></div>
+    <div>@[TestMethod(25);]</div>
+  </div>
+</body>
+</html>
+
+#[TestMethod(int number)]
+you have submitted number: ?[number]
+
+
