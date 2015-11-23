@@ -6,4 +6,4 @@ Start the application and enter one of the following URL:
 http://localhost:8080.
 
 You have MySQL database engine to be istalled to run the app.
-Administrator privileges are also required to start the application.
+Administrator privileges are also required.
