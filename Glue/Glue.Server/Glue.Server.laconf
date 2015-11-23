@@ -1,0 +1,23 @@
+﻿application
+{    
+    glue
+    {   
+        bindings
+        {
+            binding
+            {
+                name="sync"
+                type="NFX.Glue.Native.SyncBinding, NFX"
+            }
+        }
+        
+        servers
+        {
+            server
+            {
+                node="sync://localhost:8080"
+                contract-servers="Glue.Server.EchoService, Glue.Server"
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+﻿application
+{    
+    glue
+    {   
+        bindings
+        {
+            binding
+            {
+                name="sync"
+                type="NFX.Glue.Native.SyncBinding, NFX"
+            }
+        }
+    }
+}
