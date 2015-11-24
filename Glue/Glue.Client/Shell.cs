@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using System.Net.Sockets;
 using NFX;
-using NFX.Glue;
 using Glue.Contracts.Services.GluedClients;
 using Glue.Contracts.DataContracts;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 namespace Glue.Client
 {
@@ -15,17 +17,18 @@ namespace Glue.Client
 
         private const string ECHO_SERVICE_NODE = "sync://localhost:8080";
         private const string STATEFUL_SERVICE_NODE = "sync://localhost:8081";
-        private const string STATELESS_SERVICE_NODE = "sync://localhost:8082";
         private const string DATACONTRACT_SINGLETON_SERVICE_NODE = "sync://localhost:8083";
+        private const string HIGH_LOAD_SERVICE_NODE = "sync://localhost:8084";
 
         private const string CONNECTION_ERROR = "ERROR: connection failed.";
         private const string INTEGER_ERROR = "ERROR: please, enter integer number.";
         private const string STATEFUL_ERROR = "ERROR: unknown state of the service. Try to Init service first.";
-        private const string PERSON_DATA_ERROR = "ERROR: incorrect person data";
 
         private const string PERSON_ADDED_MESSAGE = "Person '{0}' successfully added.";
         private const string NO_PERSON_FOUND_MESSAGE = "No person found";
         private const string PERSONS_FOUND_MESSAGE = "Found persons ({0}):\n{1}";
+        private const string NONE = "-";
+        private const int LOAD_WARMUP_ITERATIONS = 1000;
 
         #endregion
 
@@ -36,19 +39,27 @@ namespace Glue.Client
             citizenshipBox.DataSource = Enum.GetValues(typeof(Country));
         }
 
+        #region Fields
+
+        private StatefulServiceClient m_StatefulServiceClient;
+
+        #endregion Fields
+
         #region Echo Test
 
         private void OnButtonEchoClick(object sender, EventArgs e)
         {
             try
             {
-                var client = new EchoServiceClient(ECHO_SERVICE_NODE);
-                var responce = client.Echo(inputEcho.Text);
-                responceEcho.Text = responce;
+                using (var client = new EchoServiceClient(ECHO_SERVICE_NODE))
+                {
+                    var responce = client.Echo(inputEcho.Text);
+                    responceEcho.Text = responce;
+                }
             }
-            catch (SocketException)
+            catch (Exception error)
             {
-                responceEcho.Text = CONNECTION_ERROR;
+                responceEcho.Text = error.ToMessageWithType();
             }
         }
 
@@ -56,28 +67,46 @@ namespace Glue.Client
 
         #region Stateful Service Test
 
+        private void OnButtonStatelessInitClick(object sender, EventArgs e)
+        {
+            try
+            {
+                m_StatefulServiceClient = new StatefulServiceClient(STATEFUL_SERVICE_NODE);
+                m_StatefulServiceClient.Init();
+            } 
+            catch (Exception error)
+            {
+                responseState.Text = error.ToMessageWithType();
+            }
+        }
+
+        private void OnButtonStatelessDoneClick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (m_StatefulServiceClient != null)
+                {
+                    m_StatefulServiceClient.Done();
+                    m_StatefulServiceClient.Dispose();
+                }
+            } 
+            catch (Exception error)
+            {
+                responseState.Text = error.ToMessageWithType();
+            }
+        }
+
         private void OnButtonStatelessAddClick(object sender, EventArgs e)
         {
             try
             {
-                int number;
-                if (!int.TryParse(inputAdd.Text, out number))
-                {
-                    responceState.Text = INTEGER_ERROR;
-                    return;
-                }
-
-                var client = new StatefulServiceClient(STATEFUL_SERVICE_NODE);
-                client.Add(number);
-                responceState.Text = "";
+                int number = inputAdd.Text.AsInt();
+                m_StatefulServiceClient.Add(number);
+                responseState.Text = "";
             }
-            catch (RemoteException)
+            catch (Exception error)
             {
-                responceState.Text = STATEFUL_ERROR;
-            }
-            catch (SocketException)
-            {
-                responceState.Text = CONNECTION_ERROR;
+                responseState.Text = error.ToMessageWithType();
             }
         }
 
@@ -85,16 +114,11 @@ namespace Glue.Client
         {
             try
             {
-                var client = new StatefulServiceClient(STATEFUL_SERVICE_NODE);
-                responceState.Text = client.GetValue().ToString();
+                responseState.Text = m_StatefulServiceClient.GetValue().ToString();
             }
-            catch (RemoteException ex)
+            catch (Exception error)
             {
-                responceState.Text = STATEFUL_ERROR;
-            }
-            catch (SocketException)
-            {
-                responceState.Text = CONNECTION_ERROR;
+                responseState.Text = error.ToMessageWithType();
             }
         }
 
@@ -104,22 +128,18 @@ namespace Glue.Client
 
         private void OnButtonAddPersonClick(object sender, EventArgs e)
         {
-            var person = CreatePerson();
-            if (person == null)
-            {
-                addPersonResult.Text = PERSON_DATA_ERROR;
-                return;
-            }
-
             try
             {
-                var client = new PersonServiceClient(DATACONTRACT_SINGLETON_SERVICE_NODE);
-                client.Set(person);
-                addPersonResult.Text = PERSON_ADDED_MESSAGE.Args(person.Name);
+                using (var client = new PersonServiceClient(DATACONTRACT_SINGLETON_SERVICE_NODE))
+                {
+                    var person = CreatePerson();
+                    client.Set(person);
+                    addPersonResult.Text = PERSON_ADDED_MESSAGE.Args(person.Name);
+                }
             }
-            catch (SocketException)
+            catch (Exception error)
             {
-                addPersonResult.Text = CONNECTION_ERROR;
+                addPersonResult.Text = error.ToMessageWithType();
             }
         }
 
@@ -127,8 +147,11 @@ namespace Glue.Client
         {
             try
             {
-                var client = new PersonServiceClient(DATACONTRACT_SINGLETON_SERVICE_NODE);
-                var result = client.FindByName(findBox.Text);
+                List<Person> result;
+                using (var client = new PersonServiceClient(DATACONTRACT_SINGLETON_SERVICE_NODE))
+                {
+                    result = client.FindByName(findBox.Text);
+                }
 
                 if (result == null || !result.Any())
                     findResult.Text = NO_PERSON_FOUND_MESSAGE;
@@ -137,9 +160,9 @@ namespace Glue.Client
                                             .Args(result.Count,
                                                   string.Join(Environment.NewLine, result.Select(p => p.ToString())));
             }
-            catch (SocketException)
+            catch (Exception error)
             {
-                findResult.Text = CONNECTION_ERROR;
+                findResult.Text = error.ToMessageWithType();
             }
         }
 
@@ -147,18 +170,43 @@ namespace Glue.Client
         {
             var name = nameBox.Text;
             var dob = dobBox.Value;
-            int height;
-            if (!int.TryParse(heightBox.Text, out height))
-            {
-                return null;
-            }
-            Country citizenship;
-            if (!Enum.TryParse<Country>(citizenshipBox.SelectedValue.ToString(), out citizenship))
-            {
-                return null;
-            }
+            int height = heightBox.Text.AsInt();
+            var o = new object();
+            var citizenship = citizenshipBox.SelectedValue.AsEnum<Country>(Country.Unknown);
 
             return new Person { Name = name, DOB = dob, Height = height, Citizenship = citizenship };
+        }
+
+        #endregion
+
+        #region High Load Test
+
+        public void OnButtonElemStartClick(object sender, EventArgs e)
+        {
+            try
+            {
+                using (var client = new HighLoadServiceClient(HIGH_LOAD_SERVICE_NODE))
+                {
+                    var iter = iterationsBox.Text.AsInt(LOAD_WARMUP_ITERATIONS);
+                    var timer = new Stopwatch();
+                    timer.Start();
+
+                    if (chkParallel.Checked)
+                        Parallel.For(0, iter, i => client.Ping());
+                    else
+                        for (int i = 0; i < iter; i++)
+                            client.Ping();
+
+                    timer.Stop();
+
+                    totalTime.Text = timer.Elapsed.TotalMilliseconds.ToString();
+                    performance.Text = (iter / timer.Elapsed.TotalSeconds).AsInt().ToString();
+                }
+            }
+            catch (Exception)
+            {
+                performance.Text = CONNECTION_ERROR;
+            }
         }
 
         #endregion

@@ -69,6 +69,7 @@
     <Compile Include="DataContracts\Person.cs" />
     <Compile Include="Services\IEchoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IHighLoadService.cs" />
     <Compile Include="Services\IPersonService.cs" />
     <Compile Include="Services\IStatefulService.cs" />
   </ItemGroup>

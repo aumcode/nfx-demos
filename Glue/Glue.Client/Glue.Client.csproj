@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GluedClients\EchoServiceClient.cs" />
+    <Compile Include="GluedClients\HighLoadServiceClient.cs" />
     <Compile Include="GluedClients\PersonServiceClient.cs" />
     <Compile Include="GluedClients\StatefulServiceClient.cs" />
     <Compile Include="Program.cs" />

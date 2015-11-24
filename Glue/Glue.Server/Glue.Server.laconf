@@ -1,5 +1,28 @@
 ﻿application
-{    
+{  
+    disk-root=$"c:\nfx\"
+
+    object-store 
+    { 
+        name="Main Object Store"
+        guid="76F44831-E92A-42BB-9294-E806300405C9"
+        object-life-span-ms="180000"
+        bucket-count="1024"
+                 
+        provider
+        { 
+            name="Disk Object Store Provider"
+            type="NFX.ApplicationModel.Volatile.NOPObjectStoreProvider"
+            //load-limit="0"
+            //root-path=$(/$disk-root)
+            ////format="msbinary"
+            //known-types 
+            //{
+            //  known{ type="BusinessLogic.PatientRecord, BusinessLogic" }
+            //}
+        }
+    }
+  
     glue
     {   
         bindings
@@ -29,6 +52,12 @@
             {
                 node="sync://localhost:8083"
                 contract-servers="Glue.Server.Services.PersonService, Glue.Server"
+            }
+
+            server
+            {
+                node="sync://localhost:8084"
+                contract-servers="Glue.Server.Services.HighLoadService, Glue.Server"
             }
         }
     }

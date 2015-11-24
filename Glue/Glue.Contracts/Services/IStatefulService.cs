@@ -3,7 +3,7 @@
 namespace Glue.Contracts.Services
 {
     [Glued]      
-    [LifeCycle(ServerInstanceMode.Stateful, 600000)]
+    [LifeCycle(ServerInstanceMode.Stateful, 1000000)]
     public interface IStatefulService
     {    
         [Constructor]
