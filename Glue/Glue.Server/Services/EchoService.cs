@@ -1,6 +1,6 @@
 ﻿using Glue.Contracts.Services;
 
-namespace Glue.Server
+namespace Glue.Server.Services
 {
     public class EchoService : IEchoService
     {

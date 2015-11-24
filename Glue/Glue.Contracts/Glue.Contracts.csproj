@@ -64,8 +64,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataContracts\Country.cs" />
+    <Compile Include="DataContracts\Location.cs" />
+    <Compile Include="DataContracts\Person.cs" />
     <Compile Include="Services\IEchoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IPersonService.cs" />
+    <Compile Include="Services\IStatefulService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -76,7 +81,7 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>"$(SolutionDir)packages\NFX.2.0.0.10\tools\gluec" "$(OutDir)Glue.Contracts.dll" /o out="$(SolutionDir)Glue\Glue.Client"</PostBuildEvent>
+    <PostBuildEvent>"$(SolutionDir)packages\NFX.2.0.0.10\tools\gluec" "$(OutDir)Glue.Contracts.dll" /o out="$(SolutionDir)Glue\Glue.Client\GluedClients"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

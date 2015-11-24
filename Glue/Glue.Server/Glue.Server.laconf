@@ -16,7 +16,19 @@
             server
             {
                 node="sync://localhost:8080"
-                contract-servers="Glue.Server.EchoService, Glue.Server"
+                contract-servers="Glue.Server.Services.EchoService, Glue.Server"
+            }
+
+            server
+            {
+                node="sync://localhost:8081"
+                contract-servers="Glue.Server.Services.StatefulService, Glue.Server"
+            }
+
+            server
+            {
+                node="sync://localhost:8083"
+                contract-servers="Glue.Server.Services.PersonService, Glue.Server"
             }
         }
     }

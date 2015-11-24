@@ -69,9 +69,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EchoService.cs" />
+    <Compile Include="Services\EchoService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\PersonService.cs" />
+    <Compile Include="Services\StatefulService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
