@@ -4,7 +4,11 @@ namespace Glue.Server.Services
 {
     public class HighLoadService : IHighLoadService
     {
-        public void Ping()
+        public void Ping1()
+        {
+        }
+
+        public void Ping2()
         {
         }
     }

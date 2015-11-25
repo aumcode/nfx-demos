@@ -44,6 +44,7 @@
             this.inputAdd = new System.Windows.Forms.TextBox();
             this.responseState = new System.Windows.Forms.Label();
             this.tabDataContract = new System.Windows.Forms.TabPage();
+            this.label7 = new System.Windows.Forms.Label();
             this.dataContractResult = new System.Windows.Forms.Label();
             this.findButton = new System.Windows.Forms.Button();
             this.findBox = new System.Windows.Forms.TextBox();
@@ -57,6 +58,9 @@
             this.personDOB = new System.Windows.Forms.Label();
             this.personName = new System.Windows.Forms.Label();
             this.tabHighLoad = new System.Windows.Forms.TabPage();
+            this.chkOneWay = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.highLoadResult = new System.Windows.Forms.Label();
             this.chkParallel = new System.Windows.Forms.CheckBox();
             this.totalTime = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -65,14 +69,22 @@
             this.performance = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.startElemButton = new System.Windows.Forms.Button();
-            this.highLoadResult = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.tabSecurity = new System.Windows.Forms.TabPage();
+            this.tbUID = new System.Windows.Forms.TextBox();
+            this.tbUPwd = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tbMessage = new System.Windows.Forms.TextBox();
+            this.btnSecureSend = new System.Windows.Forms.Button();
+            this.lblSecureResponse = new System.Windows.Forms.Label();
+            this.chkPresident = new System.Windows.Forms.CheckBox();
             this.tabControl.SuspendLayout();
             this.tabEcho.SuspendLayout();
             this.tabStateful.SuspendLayout();
             this.tabDataContract.SuspendLayout();
             this.tabHighLoad.SuspendLayout();
+            this.tabSecurity.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -84,6 +96,7 @@
             this.tabControl.Controls.Add(this.tabStateful);
             this.tabControl.Controls.Add(this.tabDataContract);
             this.tabControl.Controls.Add(this.tabHighLoad);
+            this.tabControl.Controls.Add(this.tabSecurity);
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -251,6 +264,15 @@
             this.tabDataContract.Text = "Data Contract Test";
             this.tabDataContract.UseVisualStyleBackColor = true;
             // 
+            // label7
+            // 
+            this.label7.Font = new System.Drawing.Font("Verdana", 8F);
+            this.label7.Location = new System.Drawing.Point(20, 17);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(717, 67);
+            this.label7.TabIndex = 18;
+            this.label7.Text = resources.GetString("label7.Text");
+            // 
             // dataContractResult
             // 
             this.dataContractResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -371,6 +393,7 @@
             // 
             // tabHighLoad
             // 
+            this.tabHighLoad.Controls.Add(this.chkOneWay);
             this.tabHighLoad.Controls.Add(this.label1);
             this.tabHighLoad.Controls.Add(this.highLoadResult);
             this.tabHighLoad.Controls.Add(this.chkParallel);
@@ -388,10 +411,41 @@
             this.tabHighLoad.Text = "High Load Test";
             this.tabHighLoad.UseVisualStyleBackColor = true;
             // 
+            // chkOneWay
+            // 
+            this.chkOneWay.AutoSize = true;
+            this.chkOneWay.Checked = true;
+            this.chkOneWay.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkOneWay.Location = new System.Drawing.Point(407, 161);
+            this.chkOneWay.Name = "chkOneWay";
+            this.chkOneWay.Size = new System.Drawing.Size(94, 24);
+            this.chkOneWay.TabIndex = 28;
+            this.chkOneWay.Text = "one-way";
+            this.chkOneWay.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Verdana", 8F);
+            this.label1.Location = new System.Drawing.Point(23, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(704, 59);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "The imitation of hight-load server.\r\nEnter iterations number and press \'Start\'. Y" +
+    "ou can also choose between parallel and syncronous version of the test.";
+            // 
+            // highLoadResult
+            // 
+            this.highLoadResult.Font = new System.Drawing.Font("Verdana", 8F);
+            this.highLoadResult.Location = new System.Drawing.Point(0, 328);
+            this.highLoadResult.Name = "highLoadResult";
+            this.highLoadResult.Size = new System.Drawing.Size(757, 183);
+            this.highLoadResult.TabIndex = 26;
+            this.highLoadResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // chkParallel
             // 
             this.chkParallel.AutoSize = true;
-            this.chkParallel.Location = new System.Drawing.Point(355, 162);
+            this.chkParallel.Location = new System.Drawing.Point(296, 161);
             this.chkParallel.Name = "chkParallel";
             this.chkParallel.Size = new System.Drawing.Size(85, 24);
             this.chkParallel.TabIndex = 25;
@@ -472,33 +526,104 @@
             this.startElemButton.UseVisualStyleBackColor = true;
             this.startElemButton.Click += new System.EventHandler(this.OnButtonElemStartClick);
             // 
-            // highLoadResult
+            // tabSecurity
             // 
-            this.highLoadResult.Font = new System.Drawing.Font("Verdana", 8F);
-            this.highLoadResult.Location = new System.Drawing.Point(0, 328);
-            this.highLoadResult.Name = "highLoadResult";
-            this.highLoadResult.Size = new System.Drawing.Size(757, 183);
-            this.highLoadResult.TabIndex = 26;
-            this.highLoadResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tabSecurity.Controls.Add(this.chkPresident);
+            this.tabSecurity.Controls.Add(this.lblSecureResponse);
+            this.tabSecurity.Controls.Add(this.tbMessage);
+            this.tabSecurity.Controls.Add(this.btnSecureSend);
+            this.tabSecurity.Controls.Add(this.label10);
+            this.tabSecurity.Controls.Add(this.label9);
+            this.tabSecurity.Controls.Add(this.label8);
+            this.tabSecurity.Controls.Add(this.tbUPwd);
+            this.tabSecurity.Controls.Add(this.tbUID);
+            this.tabSecurity.Location = new System.Drawing.Point(4, 29);
+            this.tabSecurity.Name = "tabSecurity";
+            this.tabSecurity.Size = new System.Drawing.Size(760, 511);
+            this.tabSecurity.TabIndex = 4;
+            this.tabSecurity.Text = "Security";
+            this.tabSecurity.UseVisualStyleBackColor = true;
             // 
-            // label7
+            // tbUID
             // 
-            this.label7.Font = new System.Drawing.Font("Verdana", 8F);
-            this.label7.Location = new System.Drawing.Point(20, 17);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(717, 67);
-            this.label7.TabIndex = 18;
-            this.label7.Text = resources.GetString("label7.Text");
+            this.tbUID.Location = new System.Drawing.Point(274, 72);
+            this.tbUID.Name = "tbUID";
+            this.tbUID.Size = new System.Drawing.Size(204, 26);
+            this.tbUID.TabIndex = 0;
             // 
-            // label1
+            // tbUPwd
             // 
-            this.label1.Font = new System.Drawing.Font("Verdana", 8F);
-            this.label1.Location = new System.Drawing.Point(23, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(704, 59);
-            this.label1.TabIndex = 27;
-            this.label1.Text = "The imitation of hight-load server.\r\nEnter iterations number and press \'Start\'. Y" +
-    "ou can also choose between parallel and syncronous version of the test.";
+            this.tbUPwd.Location = new System.Drawing.Point(274, 105);
+            this.tbUPwd.Name = "tbUPwd";
+            this.tbUPwd.Size = new System.Drawing.Size(204, 26);
+            this.tbUPwd.TabIndex = 1;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(190, 77);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(64, 20);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "User ID";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(190, 111);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(78, 20);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "Password";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.Color.Blue;
+            this.label10.Location = new System.Drawing.Point(244, 28);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(247, 20);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "Use clinton/billy or obama/chicago";
+            // 
+            // tbMessage
+            // 
+            this.tbMessage.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbMessage.Location = new System.Drawing.Point(145, 171);
+            this.tbMessage.Name = "tbMessage";
+            this.tbMessage.Size = new System.Drawing.Size(333, 32);
+            this.tbMessage.TabIndex = 5;
+            // 
+            // btnSecureSend
+            // 
+            this.btnSecureSend.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnSecureSend.Location = new System.Drawing.Point(484, 171);
+            this.btnSecureSend.Name = "btnSecureSend";
+            this.btnSecureSend.Size = new System.Drawing.Size(92, 36);
+            this.btnSecureSend.TabIndex = 6;
+            this.btnSecureSend.Text = "Send";
+            this.btnSecureSend.UseVisualStyleBackColor = true;
+            this.btnSecureSend.Click += new System.EventHandler(this.btnSecureSend_Click);
+            // 
+            // lblSecureResponse
+            // 
+            this.lblSecureResponse.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblSecureResponse.Location = new System.Drawing.Point(3, 221);
+            this.lblSecureResponse.Name = "lblSecureResponse";
+            this.lblSecureResponse.Size = new System.Drawing.Size(754, 290);
+            this.lblSecureResponse.TabIndex = 7;
+            this.lblSecureResponse.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // chkPresident
+            // 
+            this.chkPresident.AutoSize = true;
+            this.chkPresident.Location = new System.Drawing.Point(274, 141);
+            this.chkPresident.Name = "chkPresident";
+            this.chkPresident.Size = new System.Drawing.Size(101, 24);
+            this.chkPresident.TabIndex = 8;
+            this.chkPresident.Text = "president";
+            this.chkPresident.UseVisualStyleBackColor = true;
             // 
             // Shell
             // 
@@ -518,6 +643,8 @@
             this.tabDataContract.PerformLayout();
             this.tabHighLoad.ResumeLayout(false);
             this.tabHighLoad.PerformLayout();
+            this.tabSecurity.ResumeLayout(false);
+            this.tabSecurity.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -563,5 +690,16 @@
         private System.Windows.Forms.Label highLoadResult;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox chkOneWay;
+        private System.Windows.Forms.TabPage tabSecurity;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox tbUPwd;
+        private System.Windows.Forms.TextBox tbUID;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox tbMessage;
+        private System.Windows.Forms.Button btnSecureSend;
+        private System.Windows.Forms.Label lblSecureResponse;
+        private System.Windows.Forms.CheckBox chkPresident;
     }
 }

@@ -74,6 +74,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\HighLoadService.cs" />
     <Compile Include="Services\PersonService.cs" />
+    <Compile Include="Services\SecureService.cs" />
     <Compile Include="Services\StatefulService.cs" />
   </ItemGroup>
   <ItemGroup>

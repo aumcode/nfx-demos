@@ -17,35 +17,35 @@ using NFX.Glue.Protocol;
 namespace Glue.Contracts.Services.GluedClients
 {
   ///<summary>
-  /// Client for glued contract Glue.Contracts.Services.IPersonService server.
+  /// Client for glued contract Glue.Contracts.Services.ISecureService server.
   /// Each contract method has synchronous and asynchronous versions, the later denoted by 'Async_' prefix.
   /// May inject client-level inspectors here like so:
   ///   client.MsgInspectors.Register( new YOUR_CLIENT_INSPECTOR_TYPE());
   ///</summary>
-  public class PersonServiceClient : ClientEndPoint, @Glue.@Contracts.@Services.@IPersonService
+  public class SecureServiceClient : ClientEndPoint, @Glue.@Contracts.@Services.@ISecureService
   {
 
   #region Static Members
 
      private static TypeSpec s_ts_CONTRACT;
-     private static MethodSpec @s_ms_Set_0;
-     private static MethodSpec @s_ms_FindByName_1;
+     private static MethodSpec @s_ms_Echo_0;
+     private static MethodSpec @s_ms_PresidentEcho_1;
 
      //static .ctor
-     static PersonServiceClient()
+     static SecureServiceClient()
      {
-         var t = typeof(@Glue.@Contracts.@Services.@IPersonService);
+         var t = typeof(@Glue.@Contracts.@Services.@ISecureService);
          s_ts_CONTRACT = new TypeSpec(t);
-         @s_ms_Set_0 = new MethodSpec(t.GetMethod("Set", new Type[]{ typeof(@Glue.@Contracts.@DataContracts.@Person) }));
-         @s_ms_FindByName_1 = new MethodSpec(t.GetMethod("FindByName", new Type[]{ typeof(@System.@String) }));
+         @s_ms_Echo_0 = new MethodSpec(t.GetMethod("Echo", new Type[]{ typeof(@System.@String) }));
+         @s_ms_PresidentEcho_1 = new MethodSpec(t.GetMethod("PresidentEcho", new Type[]{ typeof(@System.@String) }));
      }
   #endregion
 
   #region .ctor
-     public PersonServiceClient(string node, Binding binding = null) : base(node, binding) { ctor(); }
-     public PersonServiceClient(Node node, Binding binding = null) : base(node, binding) { ctor(); }
-     public PersonServiceClient(IGlue glue, string node, Binding binding = null) : base(glue, node, binding) { ctor(); }
-     public PersonServiceClient(IGlue glue, Node node, Binding binding = null) : base(glue, node, binding) { ctor(); }
+     public SecureServiceClient(string node, Binding binding = null) : base(node, binding) { ctor(); }
+     public SecureServiceClient(Node node, Binding binding = null) : base(node, binding) { ctor(); }
+     public SecureServiceClient(IGlue glue, string node, Binding binding = null) : base(glue, node, binding) { ctor(); }
+     public SecureServiceClient(IGlue glue, Node node, Binding binding = null) : base(glue, node, binding) { ctor(); }
 
      //common instance .ctor body
      private void ctor()
@@ -57,7 +57,7 @@ namespace Glue.Contracts.Services.GluedClients
 
      public override Type Contract
      {
-       get { return typeof(@Glue.@Contracts.@Services.@IPersonService); }
+       get { return typeof(@Glue.@Contracts.@Services.@ISecureService); }
      }
 
 
@@ -65,54 +65,54 @@ namespace Glue.Contracts.Services.GluedClients
   #region Contract Methods
 
          ///<summary>
-         /// Synchronous invoker for  'Glue.Contracts.Services.IPersonService.Set'.
+         /// Synchronous invoker for  'Glue.Contracts.Services.ISecureService.Echo'.
          /// This is a two-way call per contract specification, meaning - the server sends the result back either
-         ///  returning no exception or RemoteExceptionData instance.
+         ///  returning '@System.@String' or RemoteExceptionData instance.
          /// ClientCallException is thrown if the call could not be placed in the outgoing queue.
          /// RemoteException is thrown if the server generated exception during method execution.
          ///</summary>
-         public void @Set(@Glue.@Contracts.@DataContracts.@Person  @person)
+         public @System.@String @Echo(@System.@String  @message)
          {
-            var call = Async_Set(@person);
-            call.CheckVoidValue();
+            var call = Async_Echo(@message);
+            return call.GetValue<@System.@String>();
          }
 
          ///<summary>
-         /// Asynchronous invoker for  'Glue.Contracts.Services.IPersonService.Set'.
+         /// Asynchronous invoker for  'Glue.Contracts.Services.ISecureService.Echo'.
          /// This is a two-way call per contract specification, meaning - the server sends the result back either
          ///  returning no exception or RemoteExceptionData instance.
          /// CallSlot is returned that can be queried for CallStatus, ResponseMsg and result.
          ///</summary>
-         public CallSlot Async_Set(@Glue.@Contracts.@DataContracts.@Person  @person)
+         public CallSlot Async_Echo(@System.@String  @message)
          {
-            var request = new RequestAnyMsg(s_ts_CONTRACT, @s_ms_Set_0, false, RemoteInstance, new object[]{@person});
+            var request = new RequestAnyMsg(s_ts_CONTRACT, @s_ms_Echo_0, false, RemoteInstance, new object[]{@message});
             return DispatchCall(request);
          }
 
 
 
          ///<summary>
-         /// Synchronous invoker for  'Glue.Contracts.Services.IPersonService.FindByName'.
+         /// Synchronous invoker for  'Glue.Contracts.Services.ISecureService.PresidentEcho'.
          /// This is a two-way call per contract specification, meaning - the server sends the result back either
-         ///  returning '@System.@Collections.@Generic.@List<@Glue.@Contracts.@DataContracts.@Person>' or RemoteExceptionData instance.
+         ///  returning '@System.@String' or RemoteExceptionData instance.
          /// ClientCallException is thrown if the call could not be placed in the outgoing queue.
          /// RemoteException is thrown if the server generated exception during method execution.
          ///</summary>
-         public @System.@Collections.@Generic.@List<@Glue.@Contracts.@DataContracts.@Person> @FindByName(@System.@String  @pattern)
+         public @System.@String @PresidentEcho(@System.@String  @message)
          {
-            var call = Async_FindByName(@pattern);
-            return call.GetValue<@System.@Collections.@Generic.@List<@Glue.@Contracts.@DataContracts.@Person>>();
+            var call = Async_PresidentEcho(@message);
+            return call.GetValue<@System.@String>();
          }
 
          ///<summary>
-         /// Asynchronous invoker for  'Glue.Contracts.Services.IPersonService.FindByName'.
+         /// Asynchronous invoker for  'Glue.Contracts.Services.ISecureService.PresidentEcho'.
          /// This is a two-way call per contract specification, meaning - the server sends the result back either
          ///  returning no exception or RemoteExceptionData instance.
          /// CallSlot is returned that can be queried for CallStatus, ResponseMsg and result.
          ///</summary>
-         public CallSlot Async_FindByName(@System.@String  @pattern)
+         public CallSlot Async_PresidentEcho(@System.@String  @message)
          {
-            var request = new RequestAnyMsg(s_ts_CONTRACT, @s_ms_FindByName_1, false, RemoteInstance, new object[]{@pattern});
+            var request = new RequestAnyMsg(s_ts_CONTRACT, @s_ms_PresidentEcho_1, false, RemoteInstance, new object[]{@message});
             return DispatchCall(request);
          }
 

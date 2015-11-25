@@ -6,13 +6,17 @@ using Glue.Contracts.Services;
 
 namespace Glue.Server.Services
 {
+    /// <summary>
+    /// This class is singleton by contract as it maintains global
+    /// state: m_Persons.
+    /// </summary>
     public class PersonService : IPersonService
     {
-        private List<Person> _persons;
+        private List<Person> m_Persons;
 
         public PersonService()
         {
-            _persons = new List<Person>();
+            m_Persons = new List<Person>();
         }
 
         public List<Person> FindByName(string pattern)
@@ -20,13 +24,16 @@ namespace Glue.Server.Services
             if (pattern.IsNullOrEmpty())
                 return null;
 
-            return _persons.Where(p => p.Name.ToLowerInvariant().Contains(pattern.ToLowerInvariant()))
-                            .ToList();
+            lock(m_Persons)
+                return m_Persons.Where(p => p.Name.ToLowerInvariant().Contains(pattern.ToLowerInvariant()))
+                                .ToList();
         }
 
         public void Set(Person person)
         {
-            _persons.Add(person);
+            if (person == null) return;
+            lock(m_Persons)
+                m_Persons.Add(person);
         }
     }
 }

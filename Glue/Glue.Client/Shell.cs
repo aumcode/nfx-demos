@@ -8,17 +8,15 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using NFX.Environment;
+using NFX.Glue.Protocol;
+using NFX.Security;
 
 namespace Glue.Client
 {
     public partial class Shell : Form
     {
         #region Constants
-
-        private const string ECHO_SERVICE_NODE = "sync://localhost:8080";
-        private const string STATEFUL_SERVICE_NODE = "sync://localhost:8081";
-        private const string DATACONTRACT_SINGLETON_SERVICE_NODE = "sync://localhost:8083";
-        private const string HIGH_LOAD_SERVICE_NODE = "sync://localhost:8084";
 
         private const string PERSON_ADDED_MESSAGE = "Person '{0}' successfully added.";
         private const string NO_PERSON_FOUND_MESSAGE = "No person found";
@@ -33,10 +31,14 @@ namespace Glue.Client
             InitializeComponent();
 
             citizenshipBox.DataSource = Enum.GetValues(typeof(Country));
+            ConfigAttribute.Apply(this, App.ConfigRoot);
+            Text = "Server Node: {0}".Args(m_TestServiceNode);
         }
 
         #region Fields
-
+                   
+        [Config]
+        private string m_TestServiceNode;
         private StatefulServiceClient m_StatefulServiceClient;
 
         #endregion Fields
@@ -47,7 +49,7 @@ namespace Glue.Client
         {
             try
             {
-                using (var client = new EchoServiceClient(ECHO_SERVICE_NODE))
+                using (var client = new EchoServiceClient(m_TestServiceNode))
                 {
                     var responce = client.Echo(inputEcho.Text);
                     responceEcho.Text = responce;
@@ -67,7 +69,7 @@ namespace Glue.Client
         {
             try
             {
-                m_StatefulServiceClient = new StatefulServiceClient(STATEFUL_SERVICE_NODE);
+                m_StatefulServiceClient = new StatefulServiceClient(m_TestServiceNode);
                 m_StatefulServiceClient.Init();
             } 
             catch (Exception error)
@@ -126,7 +128,7 @@ namespace Glue.Client
         {
             try
             {
-                using (var client = new PersonServiceClient(DATACONTRACT_SINGLETON_SERVICE_NODE))
+                using (var client = new PersonServiceClient(m_TestServiceNode))
                 {
                     var person = CreatePerson();
                     client.Set(person);
@@ -144,7 +146,7 @@ namespace Glue.Client
             try
             {
                 List<Person> result;
-                using (var client = new PersonServiceClient(DATACONTRACT_SINGLETON_SERVICE_NODE))
+                using (var client = new PersonServiceClient(m_TestServiceNode))
                 {
                     result = client.FindByName(findBox.Text);
                 }
@@ -181,17 +183,29 @@ namespace Glue.Client
         {
             try
             {
-                using (var client = new HighLoadServiceClient(HIGH_LOAD_SERVICE_NODE))
+                using (var client = new HighLoadServiceClient(m_TestServiceNode))
                 {
+                    highLoadResult.Text = "";
                     var iter = iterationsBox.Text.AsInt(LOAD_WARMUP_ITERATIONS);
                     var timer = new Stopwatch();
                     timer.Start();
 
-                    if (chkParallel.Checked)
-                        Parallel.For(0, iter, i => client.Ping());
+                    if (chkOneWay.Checked)
+                    {
+                        if (chkParallel.Checked)
+                            Parallel.For(0, iter, i => client.Ping1());
+                        else
+                            for (int i = 0; i < iter; i++)
+                                client.Ping1();
+                    }
                     else
-                        for (int i = 0; i < iter; i++)
-                            client.Ping();
+                    {
+                        if (chkParallel.Checked)
+                            Parallel.For(0, iter, i => client.Ping2());
+                        else
+                            for (int i = 0; i < iter; i++)
+                                client.Ping2();
+                    }
 
                     timer.Stop();
 
@@ -206,5 +220,32 @@ namespace Glue.Client
         }
 
         #endregion
+
+        private void btnSecureSend_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (var client = new SecureServiceClient(m_TestServiceNode))
+                {
+                    client.Headers.Add(
+                        new AuthenticationHeader(
+                            new IDPasswordCredentials(tbUID.Text, tbUPwd.Text)));
+
+                    lblSecureResponse.Text = string.Empty;
+                    string response;
+
+                    if (!chkPresident.Checked)
+                        response = client.Echo(tbMessage.Text);
+                    else
+                        response = client.PresidentEcho(tbMessage.Text);
+
+                    lblSecureResponse.Text = response;
+                }
+            }
+            catch (Exception error)
+            {
+                lblSecureResponse.Text = error.ToMessageWithType();
+            }
+        }
     }
 }
