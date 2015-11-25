@@ -117,4 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Stateful server stores its state for each client.
+Client should call method decorated with [Constructor] attribute before any other. Press 'Init' button to do it. 
+Then press 'Add' button to change integer state of the server.
+You can get current state of the server by pressing 'Result' button.
+After you press 'Done' button the server will become inavailable for current client. You can verify it by pressing 'Add' or 'Result' buttons after 'Done'.</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>The demonstration of non-elementary types transferring.
+Fill some person's data below and press 'Add' to send it to the server.
+Enter some text in right textbox and then press 'Find' to find stored persons by name.</value>
+  </data>
 </root>

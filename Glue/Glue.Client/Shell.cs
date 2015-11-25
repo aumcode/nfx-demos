@@ -20,10 +20,6 @@ namespace Glue.Client
         private const string DATACONTRACT_SINGLETON_SERVICE_NODE = "sync://localhost:8083";
         private const string HIGH_LOAD_SERVICE_NODE = "sync://localhost:8084";
 
-        private const string CONNECTION_ERROR = "ERROR: connection failed.";
-        private const string INTEGER_ERROR = "ERROR: please, enter integer number.";
-        private const string STATEFUL_ERROR = "ERROR: unknown state of the service. Try to Init service first.";
-
         private const string PERSON_ADDED_MESSAGE = "Person '{0}' successfully added.";
         private const string NO_PERSON_FOUND_MESSAGE = "No person found";
         private const string PERSONS_FOUND_MESSAGE = "Found persons ({0}):\n{1}";
@@ -134,12 +130,12 @@ namespace Glue.Client
                 {
                     var person = CreatePerson();
                     client.Set(person);
-                    addPersonResult.Text = PERSON_ADDED_MESSAGE.Args(person.Name);
+                    dataContractResult.Text = PERSON_ADDED_MESSAGE.Args(person.Name);
                 }
             }
             catch (Exception error)
             {
-                addPersonResult.Text = error.ToMessageWithType();
+                dataContractResult.Text = error.ToMessageWithType();
             }
         }
 
@@ -154,15 +150,15 @@ namespace Glue.Client
                 }
 
                 if (result == null || !result.Any())
-                    findResult.Text = NO_PERSON_FOUND_MESSAGE;
+                    dataContractResult.Text = NO_PERSON_FOUND_MESSAGE;
                 else
-                    findResult.Text = PERSONS_FOUND_MESSAGE
+                    dataContractResult.Text = PERSONS_FOUND_MESSAGE
                                             .Args(result.Count,
                                                   string.Join(Environment.NewLine, result.Select(p => p.ToString())));
             }
             catch (Exception error)
             {
-                findResult.Text = error.ToMessageWithType();
+                dataContractResult.Text = error.ToMessageWithType();
             }
         }
 
@@ -203,9 +199,9 @@ namespace Glue.Client
                     performance.Text = (iter / timer.Elapsed.TotalSeconds).AsInt().ToString();
                 }
             }
-            catch (Exception)
+            catch (Exception error)
             {
-                performance.Text = CONNECTION_ERROR;
+                highLoadResult.Text = error.ToMessageWithType();
             }
         }
 
