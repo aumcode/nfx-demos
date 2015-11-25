@@ -17,7 +17,7 @@ Run Glue.Server and Glue.Client projects.
 Tabs in the client application contain some examples of NFX.Glue techology usage:
 
 1. Echo Test -          A simple echo server. Type any text in the textbox and press 
-                        'Send' button. You should see server responce below.
+                        'Send' button. You should see server response below.
 
 2. Stateful Test -      Stateful server stores its state for each client.
                         Client should call method decorated with [Constructor] attribute 
@@ -31,6 +31,6 @@ Tabs in the client application contain some examples of NFX.Glue techology usage
                         Fill some person's data below and press 'Add' to send it to the server.
                         Enter some text in right textbox and then press 'Find' to find stored persons by name.
 
-4. High Load Test -     The imitation of hight-load server.
+4. High Load Test -     The imitation of high-load server.
                         Enter iterations number and press 'Start'. 
                         You can also choose between parallel and syncronous version of the test.
