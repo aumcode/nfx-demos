@@ -83,7 +83,7 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>"$(SolutionDir)packages\NFX.2.0.0.10\tools\gluec" "$(OutDir)Glue.Contracts.dll" /o out="$(SolutionDir)Glue\Glue.Client\GluedClients"</PostBuildEvent>
+    <PostBuildEvent>"$(SolutionDir)packages\NFX.2.0.0.10\tools\gluec" "$(OutDir)Glue.Contracts.dll" /o out="$(SolutionDir)Glue\Glue.Client\GluedClients" cl-suffix="AutoClient"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

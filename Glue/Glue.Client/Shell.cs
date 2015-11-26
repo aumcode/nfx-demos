@@ -30,7 +30,7 @@ namespace Glue.Client
         {
             InitializeComponent();
 
-            citizenshipBox.DataSource = Enum.GetValues(typeof(Country));
+            cbCitizenship.DataSource = Enum.GetValues(typeof(Country));
             ConfigAttribute.Apply(this, App.ConfigRoot);
             Text = "Server Node: {0}".Args(m_TestServiceNode);
         }
@@ -39,7 +39,7 @@ namespace Glue.Client
                    
         [Config]
         private string m_TestServiceNode;
-        private StatefulServiceClient m_StatefulServiceClient;
+        private StatefulServiceAutoClient m_StatefulServiceClient;
 
         #endregion Fields
 
@@ -49,15 +49,15 @@ namespace Glue.Client
         {
             try
             {
-                using (var client = new EchoServiceClient(m_TestServiceNode))
+                using (var client = new EchoServiceAutoClient(m_TestServiceNode))
                 {
-                    var responce = client.Echo(inputEcho.Text);
-                    responceEcho.Text = responce;
+                    var responce = client.Echo(tbEcho.Text);
+                    resultEcho.Text = responce;
                 }
             }
             catch (Exception error)
             {
-                responceEcho.Text = error.ToMessageWithType();
+                resultEcho.Text = error.ToMessageWithType();
             }
         }
 
@@ -69,12 +69,12 @@ namespace Glue.Client
         {
             try
             {
-                m_StatefulServiceClient = new StatefulServiceClient(m_TestServiceNode);
+                m_StatefulServiceClient = new StatefulServiceAutoClient(m_TestServiceNode);
                 m_StatefulServiceClient.Init();
             } 
             catch (Exception error)
             {
-                responseState.Text = error.ToMessageWithType();
+                resultStateful.Text = error.ToMessageWithType();
             }
         }
 
@@ -90,7 +90,7 @@ namespace Glue.Client
             } 
             catch (Exception error)
             {
-                responseState.Text = error.ToMessageWithType();
+                resultStateful.Text = error.ToMessageWithType();
             }
         }
 
@@ -98,13 +98,13 @@ namespace Glue.Client
         {
             try
             {
-                int number = inputAdd.Text.AsInt();
+                int number = tbAdd.Text.AsInt();
                 m_StatefulServiceClient.Add(number);
-                responseState.Text = "";
+                resultStateful.Text = "";
             }
             catch (Exception error)
             {
-                responseState.Text = error.ToMessageWithType();
+                resultStateful.Text = error.ToMessageWithType();
             }
         }
 
@@ -112,11 +112,11 @@ namespace Glue.Client
         {
             try
             {
-                responseState.Text = m_StatefulServiceClient.GetValue().ToString();
+                resultStateful.Text = m_StatefulServiceClient.GetValue().ToString();
             }
             catch (Exception error)
             {
-                responseState.Text = error.ToMessageWithType();
+                resultStateful.Text = error.ToMessageWithType();
             }
         }
 
@@ -128,16 +128,16 @@ namespace Glue.Client
         {
             try
             {
-                using (var client = new PersonServiceClient(m_TestServiceNode))
+                using (var client = new PersonServiceAutoClient(m_TestServiceNode))
                 {
                     var person = CreatePerson();
                     client.Set(person);
-                    dataContractResult.Text = PERSON_ADDED_MESSAGE.Args(person.Name);
+                    resultDataContract.Text = PERSON_ADDED_MESSAGE.Args(person.Name);
                 }
             }
             catch (Exception error)
             {
-                dataContractResult.Text = error.ToMessageWithType();
+                resultDataContract.Text = error.ToMessageWithType();
             }
         }
 
@@ -146,31 +146,31 @@ namespace Glue.Client
             try
             {
                 List<Person> result;
-                using (var client = new PersonServiceClient(m_TestServiceNode))
+                using (var client = new PersonServiceAutoClient(m_TestServiceNode))
                 {
-                    result = client.FindByName(findBox.Text);
+                    result = client.FindByName(tbFindPerson.Text);
                 }
 
                 if (result == null || !result.Any())
-                    dataContractResult.Text = NO_PERSON_FOUND_MESSAGE;
+                    resultDataContract.Text = NO_PERSON_FOUND_MESSAGE;
                 else
-                    dataContractResult.Text = PERSONS_FOUND_MESSAGE
+                    resultDataContract.Text = PERSONS_FOUND_MESSAGE
                                             .Args(result.Count,
                                                   string.Join(Environment.NewLine, result.Select(p => p.ToString())));
             }
             catch (Exception error)
             {
-                dataContractResult.Text = error.ToMessageWithType();
+                resultDataContract.Text = error.ToMessageWithType();
             }
         }
 
         private Person CreatePerson()
         {
-            var name = nameBox.Text;
-            var dob = dobBox.Value;
-            int height = heightBox.Text.AsInt();
+            var name = tbName.Text;
+            var dob = dtDOB.Value;
+            int height = tbHeight.Text.AsInt();
             var o = new object();
-            var citizenship = citizenshipBox.SelectedValue.AsEnum<Country>(Country.Unknown);
+            var citizenship = cbCitizenship.SelectedValue.AsEnum<Country>(Country.Unknown);
 
             return new Person { Name = name, DOB = dob, Height = height, Citizenship = citizenship };
         }
@@ -183,10 +183,10 @@ namespace Glue.Client
         {
             try
             {
-                using (var client = new HighLoadServiceClient(m_TestServiceNode))
+                using (var client = new HighLoadServiceAutoClient(m_TestServiceNode))
                 {
                     highLoadResult.Text = "";
-                    var iter = iterationsBox.Text.AsInt(LOAD_WARMUP_ITERATIONS);
+                    var iter = tbIterations.Text.AsInt(LOAD_WARMUP_ITERATIONS);
                     var timer = new Stopwatch();
                     timer.Start();
 
@@ -209,8 +209,8 @@ namespace Glue.Client
 
                     timer.Stop();
 
-                    totalTime.Text = timer.Elapsed.TotalMilliseconds.ToString();
-                    performance.Text = (iter / timer.Elapsed.TotalSeconds).AsInt().ToString();
+                    lbTotalTime.Text = timer.Elapsed.TotalMilliseconds.ToString();
+                    lbPerformance.Text = (iter / timer.Elapsed.TotalSeconds).AsInt().ToString();
                 }
             }
             catch (Exception error)
@@ -225,7 +225,7 @@ namespace Glue.Client
         {
             try
             {
-                using (var client = new SecureServiceClient(m_TestServiceNode))
+                using (var client = new SecureServiceAutoClient(m_TestServiceNode))
                 {
                     client.Headers.Add(
                         new AuthenticationHeader(

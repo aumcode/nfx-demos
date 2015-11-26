@@ -34,3 +34,9 @@ Tabs in the client application contain some examples of NFX.Glue techology usage
 4. High Load Test -     The imitation of high-load server.
                         Enter iterations number and press 'Start'. 
                         You can also choose between parallel and syncronous version of the test.
+
+5. Security Test -      The demonstration of NFX Security model in case of NFX.Glue server.
+                        You can add users with certain credentials and permissions in security/users section 
+                        of *.laconf configuration file. You can then seal any server methods or the whole server
+                        by applying PermissionAttribute which guaranted that only users with appropriate permissions can
+                        access the methods.

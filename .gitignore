@@ -5,6 +5,7 @@
 *.auto.cs
 Output/
 db.auto.*
+*AutoClient.cs
 
 # User-specific files
 *.suo

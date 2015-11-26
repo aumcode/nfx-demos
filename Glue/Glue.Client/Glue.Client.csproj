@@ -72,11 +72,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GluedClients\EchoServiceClient.cs" />
-    <Compile Include="GluedClients\HighLoadServiceClient.cs" />
-    <Compile Include="GluedClients\PersonServiceClient.cs" />
-    <Compile Include="GluedClients\SecureServiceClient.cs" />
-    <Compile Include="GluedClients\StatefulServiceClient.cs" />
+    <Compile Include="GluedClients\EchoServiceAutoClient.cs" />
+    <Compile Include="GluedClients\HighLoadServiceAutoClient.cs" />
+    <Compile Include="GluedClients\PersonServiceAutoClient.cs" />
+    <Compile Include="GluedClients\SecureServiceAutoClient.cs" />
+    <Compile Include="GluedClients\StatefulServiceAutoClient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shell.cs">
