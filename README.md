@@ -44,7 +44,7 @@ Basic demo solution includes three projects:
 
 <a href="https://github.com/aumcode/nfx-demos/tree/master/Glue/Glue.Client">Glue.Client</a> - contains auto generated clients for the services and a simple WindowsForms application that demonstrates some basic capabilities of <a href="https://github.com/aumcode/nfx/tree/master/Source/NFX/Glue">NFX.Glue</a> technology.
 
-Run <a href="https://github.com/aumcode/nfx-demos/tree/master/Glue/Glue.Server">Glue.Server</a> and <a href="https://github.com/aumcode/nfx-demos/tree/master/Glue/Glue.Client">Glue.Client</a> projects.
+Rebuild <a href="https://github.com/aumcode/nfx-demos/tree/master/Glue/Glue.Contracts">Glue.Contracts</a> and then run <a href="https://github.com/aumcode/nfx-demos/tree/master/Glue/Glue.Server">Glue.Server</a> and <a href="https://github.com/aumcode/nfx-demos/tree/master/Glue/Glue.Client">Glue.Client</a> projects.
 Tabs in the client application contain some examples of <a href="https://github.com/aumcode/nfx/tree/master/Source/NFX/Glue">NFX.Glue</a> techology usage:
 
 <ul>
