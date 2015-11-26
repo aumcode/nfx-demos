@@ -14,7 +14,7 @@ Here you can find different demo projects that cover basics and some advanced sc
 NFX.Wave Demos
 </h4>
 
-You can find <a href="https://github.com/aumcode/nfx/tree/master/Source/NFX.Wave">NFX.Wave</a> demo projects in \Wave solution folder.
+<a href="https://github.com/aumcode/nfx/tree/master/Source/NFX.Wave">NFX.Wave</a> technology allows to develop Web applications. It contains a fast web server with handy view engine, classic MVC and no MVC pattern implementation, flexible templatization engine, requests filtering and handling, security and many other features. You can find <a href="https://github.com/aumcode/nfx/tree/master/Source/NFX.Wave">NFX.Wave</a> demo projects in <b>\Wave</b> solution folder.
 
 <a href="https://github.com/aumcode/nfx-demos/tree/master/Wave/Wave.HelloWorld">Wave.HelloWorld</a> - the simplest <b>NFX.Wave</b> application that outputs "Hello WAVE!" message to your browser. MVC approach is used.
 
@@ -34,8 +34,7 @@ You can find <a href="https://github.com/aumcode/nfx/tree/master/Source/NFX.Wave
 NFX.Glue Demos
 </h4>
 
-
-NFX.Glue technology allows to develop distributed, service-oriented applications in a simple and efficient manner with minimal effort. You can find <a href="https://github.com/aumcode/nfx/tree/master/Source/NFX/Glue">NFX.Glue</a> demo projects in \Glue solution folder.
+<a href="https://github.com/aumcode/nfx/tree/master/Source/NFX/Glue">NFX.Glue</a> technology allows to develop distributed, service-oriented applications in a simple and efficient manner with minimal effort. You can find <a href="https://github.com/aumcode/nfx/tree/master/Source/NFX/Glue">NFX.Glue</a> demo projects in <b>\Glue</b> solution folder.
 
 Basic demo solution includes three projects:
 
