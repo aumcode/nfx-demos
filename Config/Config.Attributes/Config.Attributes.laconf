@@ -1,0 +1,56 @@
+﻿application
+{
+  AttrClass
+  {
+    data
+	{
+      pvt-name='private'
+      prot-name='protected'
+      pub-name=public
+      pub-def-format='laconic'
+      age='99'
+      age2='890'
+      the-new-age='1890'
+      bytes='3d,12,ff'
+          
+      pvt-int='-892'
+      pvt-property='23567'
+          
+      pvt-int-extended='892'
+      pvt-property-extended='-23567'
+        
+      extra
+	  {
+        enum='B'
+        when='1982/05/12'
+
+        fuzzy=true{}
+        jazzy=''{}
+          
+        options
+		{
+          hello=YES!{a='1'}
+        }
+	  }
+    }
+  }
+
+  AttrClassExtended2
+  {
+    data
+	{
+	  prot-name='protected'
+      pub-name='public'
+      age='199'
+
+      extra
+      {
+	    enum='C'
+        when='1944/1/1'
+
+        fuzzy=false{}
+        jazzy=''{}
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+﻿root=laconic
+{
+   atr1=val1
+   atr2=val2
+   'atr 3'='value{3}'
+   logs='13 14'{ file='abc.txt' }
+   
+   vars
+   {
+     
+     var1=val1{}
+     var2='$(../var1)'{}
+
+     path1{ value=c:\logs\ }
+     path2{ value=\critical }
+
+     many
+     {
+        a=1{ value=1}
+        a=2{ value=2}
+     }
+
+     var3=$(../var4){}
+     var4=$(../var5){}
+     var5=$(../var3){}
+
+   }
+   
+   
+   data
+   {  
+      extra
+      {
+         enum='B'
+         when='1982/05/12'
+         cycle='$(/vars/var3)'
+		  
+         env=$(~OS)
+		 dt = $(::now)
+      }
+   }//data
+
+  history { name=$(/vars/var1) text='This happened on $(../data/extra/$when).'}
+
+  logger{ location=$(/vars/path1/$value)$(@/vars/path2/$value)}
+
+  bytes='3d,12,ff'
+  
+  vGuid1='{3A7C4641-B24E-453D-9D28-93D96071B575}'
+  vGuid2='3A7C4641-B24E-453D-9D28-93D96071B575'
+  vGuid3='3A7C4641B24E453D9D2893D96071B575'
+
+  optional=$(/non-existent){}
+  required=$(!/non-existent){}
+  varEscaped='$(###)This is not var: $(../AAA)'{}
+
+ }

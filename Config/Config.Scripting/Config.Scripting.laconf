@@ -1,0 +1,63 @@
+﻿root
+{
+   a=3
+   
+   _loop='$(/$a) < 5'
+   {
+      _set{ path=/$a to=$(/$a)+1}
+      sectionLoop { name=section_$(/$a) value='something'}
+   }
+
+   var1=0{script-only=true}
+   var2=175.4{script-only=true}
+   var3=true{script-only=true}
+   
+   _block
+   {
+      _set{ path=/var1 to=(?$(/var2)>10;15;-10)+100 }
+      RESULT1=$(/var1){}
+   }
+
+   _call=/sub_Loop {}
+
+   _block
+   {
+      _set{ path=/var1 to='((?$(/var3);$(/var2);-10)+100)+test' }
+      RESULT2=$(/var1){}
+   }
+   
+   sub_Loop
+   {
+      script-only=true
+      cnt=0{script-only=true}
+      _set{ path=../cnt to=0}
+      _loop='$(../cnt) < 2'
+      {
+         _set{ path=/sub_Loop/cnt to=$(/sub_Loop/cnt)+1}
+                
+         _if='$(/sub_Loop/cnt)==1'
+         {
+            fromSubLoopFOR_ONE { name=section_$(/sub_Loop/cnt) value='1 gets special handling'}
+         }
+         _else
+         {
+            fromSubLoop { name=section_$(/sub_Loop/cnt) value='something'}
+         }
+      }
+   }
+
+   i=0
+   _loop=$(/$i)<2
+   {
+      section_$(/$i) {value='something'}
+      _set{path=/$i to=$(/$i)+1}
+   }
+
+    _set{path=/$i to=0.1}
+   _loop='$(/$i)<=0.3'
+   {
+      section_$(/$i) {}
+      _set{path=/$i to=$(/$i)+0.1}
+   }
+      
+}

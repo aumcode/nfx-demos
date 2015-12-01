@@ -1,0 +1,47 @@
+﻿root
+{
+    section-a
+    {
+       sub1='Sub Value 1'{}
+       sub2='Sub Value 2'{}
+       sub3='Sub Value 3'{}
+                    
+       destination
+       {
+          name='A'
+          type='CSVFile'
+       }
+       destination
+       {
+          name='B'
+          type='SMTPMail'
+       }
+    }
+
+    section-b
+    {
+        _override='attributes'
+        age='32'
+		name='Mike'{}
+    }
+    
+    //section-c='This can not be overridden and exception will be thrown if uncomment' { _override='fail' }
+
+    section-d='This can not be overridden and no exception will be thrown' { _override='stop' }
+
+    section-e
+    {
+        _override='replace'
+        some-attr='123'
+        a{}
+        b{}
+    }
+
+    section-f
+    {
+        _override='sections'
+        some-attr='456'
+        a{}
+        b{}
+    }
+}
