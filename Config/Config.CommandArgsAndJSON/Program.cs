@@ -8,13 +8,13 @@ using System.Linq;
 namespace NFXDemos.Config.CommandArgsAndJSON
 {
 
-    class Program
+    public class Program
     {
 
         public static void CommandArgsToConfig()
         {
             string[] args =
-                            {
+               {
                     @"tool.exe",
                     @"c:\input.file",
                     @"d:\output.file",
@@ -27,6 +27,10 @@ namespace NFXDemos.Config.CommandArgsAndJSON
                     @"-large"
                };
             var conf = new CommandArgsConfiguration(args);
+
+            Console.WriteLine("========== Command args to laconic ==========");
+            Console.WriteLine(conf.ToLaconicString());
+            Console.WriteLine();
 
             Assert.AreEqual(@"tool.exe", conf.Root.AttrByIndex(0).ValueAsString());
             Assert.AreEqual(@"c:\input.file", conf.Root.AttrByIndex(1).ValueAsString());
@@ -45,63 +49,39 @@ namespace NFXDemos.Config.CommandArgsAndJSON
 
         public static void ConfigToJSON()
         {
-            var node = @"opt 
+            var node = @"options 
                   { 
-                    detailed-instrumentation=true 
-                    tables 
+                    details=true 
+                    disks 
                     { 
-                      master { name='tfactory' fields-qty=14} 
-                      slave { name='tdoor' fields-qty=20 important=true} 
+                      master { name='Toshiba' size=50} 
+                      slave { name='Hitachi' size=100 archive=true} 
                     }
                   }".AsLaconicConfig();
 
             var map = node.ToJSONDataMap();
 
-            Assert.AreEqual(2, map.Count);
-            Assert.IsTrue(map["detailed-instrumentation"].AsString() == "true");
-
-            var tablesMap = (JSONDataMap)map["tables"];
-
-            var master = (JSONDataMap)tablesMap["master"];
-            Assert.IsTrue(master["name"].AsString() == "tfactory");
-            Assert.IsTrue(master["fields-qty"].AsString() == "14");
-
-            var slave = (JSONDataMap)tablesMap["slave"];
-            Assert.IsTrue(slave["name"].AsString() == "tdoor");
-            Assert.IsTrue(slave["fields-qty"].AsString() == "20");
-            Assert.IsTrue(slave["important"].AsString() == "true");
+            Console.WriteLine("============== Laconic to JSON ==============");
+            Console.WriteLine(map.ToJSON());
+            Console.WriteLine();
         }
 
         public static void JSONToConfig()
         {
-            var map = (JSONDataMap)@" { 
-                                  'detailed-instrumentation': true, 
-                                  tables:
+            var map = (JSONDataMap)@"{ 
+                                  details: true, 
+                                  disks:
                                   { 
-                                    master: { name: 'tfactory', 'fields-qty': 14}, 
-                                    slave: { name: 'tdoor', 'fields-qty': 20, important: true} 
+                                    master: { name: 'Toshiba', size:50}, 
+                                    slave:  { name: 'Hitachi', size:100, archive: true} 
                                   }
                                 }".JSONToDataObject();
 
             var cfg = map.ToConfigNode();
 
-            Assert.AreEqual(1, cfg.Attributes.Count());
-            Assert.AreEqual(1, cfg.Children.Count());
-
-            Assert.IsTrue(cfg.AttrByName("detailed-instrumentation").ValueAsBool());
-
-            var tablesNode = cfg.Children.Single(ch => ch.Name == "tables");
-
-            var master = cfg.NavigateSection("tables/master");
-            Assert.AreEqual(2, master.Attributes.Count());
-            Assert.IsTrue(master.AttrByName("name").ValueAsString() == "tfactory");
-            Assert.IsTrue(master.AttrByName("fields-qty").ValueAsInt() == 14);
-
-            var slave = cfg.NavigateSection("tables/slave");
-            Assert.AreEqual(3, slave.Attributes.Count());
-            Assert.IsTrue(slave.AttrByName("name").ValueAsString() == "tdoor");
-            Assert.IsTrue(slave.AttrByName("fields-qty").ValueAsInt() == 20);
-            Assert.IsTrue(slave.AttrByName("important").ValueAsBool());
+            Console.WriteLine("============== JSON to laconic ==============");
+            Console.WriteLine(cfg.ToLaconicString());
+            Console.WriteLine();
         }
 
         static void Main(string[] arguments)
@@ -112,7 +92,6 @@ namespace NFXDemos.Config.CommandArgsAndJSON
 
             JSONToConfig();
 
-            Console.WriteLine("Well done!");
             Console.ReadLine();
         }
     }

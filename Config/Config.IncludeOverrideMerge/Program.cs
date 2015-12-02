@@ -92,13 +92,12 @@ namespace NFXDemos.Config.IncludeOverrideMerge
                            destination
                            {
                               name='B'
-                              type='Clock'
+                              type='XML'
                            }
                         }
 
                         section-b
                         {
-                           _override='attributes'
                            age='89'
                            pension='true'
                            name='James'{}
@@ -110,17 +109,15 @@ namespace NFXDemos.Config.IncludeOverrideMerge
 
                         section-e
                         {
-                           _override='replace'
-                           some-attr='992'
+                           some-attr='999'
                            demo='Demo!'
                         }
 
                         section-f
                         {
-                           _override='sections'
-                           some-attr='321'
                            _clear{}
-                           bim { good='yes' }
+                           some-attr='321'
+                           flag { checked='yes' }
                         }
                      }";
 
