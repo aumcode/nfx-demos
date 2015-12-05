@@ -2,8 +2,8 @@
 
 namespace Config.Attributes.Classes
 {
-    [Config("AttrClassExtended2/data")]
-    public class AttrClassExtended2 : AttrClass
+    [Config("SomeClassExtended2/data")]
+    public class SomeClassExtended2 : SomeClass
     {
         //notice no attributes on this level, they will get inherited here
     }

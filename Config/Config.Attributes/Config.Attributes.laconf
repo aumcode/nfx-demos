@@ -1,55 +1,45 @@
-﻿application
+﻿root
 {
-  AttrClass
+  SomeClass
   {
     data
 	{
-      pvt-name='private'
-      prot-name='protected'
-      pub-name=public
-      pub-def-format='laconic'
-      age='99'
-      age2='890'
-      the-new-age='1890'
-      bytes='3d,12,ff'
-          
       pvt-int='-892'
-      pvt-property='23567'
-          
-      pvt-int-extended='892'
-      pvt-property-extended='-23567'
-        
+      prot-name='protected'
+      pub-int=23567
+      pub-def-format='laconic'
+      age1='10'
+      age2='20'
+      age-with-hyphens='30'
+      bytes='3d,12,ff'
       extra
 	  {
         enum='B'
         when='1982/05/12'
-
-        fuzzy=true{}
-        jazzy=''{}
-          
+        fuzzy=true {}
+        jazzy {}
         options
-		{
-          hello=YES!{a='1'}
+	    {
+          hello=YES! { a='1' }
         }
-	  }
+      }
+
+      pvt-int-extended='892'
+      pub-int-extended='-23567'
     }
   }
 
-  AttrClassExtended2
+  SomeClassExtended2
   {
     data
 	{
-	  prot-name='protected'
-      pub-name='public'
-      age='199'
-
+      age1='99'
       extra
       {
-	    enum='C'
+        enum='C'
         when='1944/1/1'
-
-        fuzzy=false{}
-        jazzy=''{}
+        fuzzy=false {}
+        jazzy {}
       }
     }
   }

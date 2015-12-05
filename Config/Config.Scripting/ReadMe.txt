@@ -1,0 +1,1 @@
+﻿The project demonstrates how you can use script inserts in your application config file.

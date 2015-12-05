@@ -1,9 +1,6 @@
 ﻿some-node
 {
   a=200
-  file.b=2
-  sub-sect
-  {
-    name="another one"
-  }
+  file.b=the_file.txt
+  sub-sect { name="another one" }
 }

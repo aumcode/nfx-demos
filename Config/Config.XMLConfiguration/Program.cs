@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Config.XMLConfiguration
+namespace NFXDemos.Config.XMLConfiguration
 {
     class Program
     {
