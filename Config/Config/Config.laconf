@@ -1,0 +1,18 @@
+﻿application
+{
+  text_boxes
+  {
+    text_box
+	{
+	  name='infoAttributes'
+	  path=Resources\Attributes.info
+	  rtf=true
+	}
+    text_box
+	{
+	  name='confAttributes'
+	  path=Resources\Attributes.laconf
+	  rtf=false
+	}
+  }
+}

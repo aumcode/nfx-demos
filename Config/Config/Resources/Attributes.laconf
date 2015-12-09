@@ -1,0 +1,24 @@
+﻿root
+{
+  Person
+  {
+    data
+    {
+      private-salary=3000
+      protected-phone='8-901-900-00-00'
+      public-name='John'
+      DOB='1980/12/05'
+      // height is absent and will be initiated with default value
+      ages-of-children='F,3,8' // hexadecimal only!
+      extra
+      {
+        enum-country=USA
+        address
+        {
+          zipcode=350065 {}
+          city='New York'
+        }
+      }
+    }
+  }
+}
