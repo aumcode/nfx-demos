@@ -8,19 +8,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Config.Classes;
+using LaconicConfig.Demos.Classes;
 using NFX;
 using NFX.Environment;
 
-namespace NFXDemos.Config
+namespace LaconicConfig.Demos
 {
     public partial class Shell : Form
     {
         public Shell()
         {
             InitializeComponent();
-            LoadConfigurationsAndInfos();
-            InitializeResults();
+            loadConfigurationsAndInfos();
         }
 
         private void btnAttributes_Click(object sender, EventArgs e)
@@ -28,18 +27,10 @@ namespace NFXDemos.Config
             try
             {
                 var str = this.confAttributes.Text;
-                if (str.Trim() == "")
-                {
-                    this.resultAttributes.Text = "ERROR: Configuration is empty!";
-                    return;
-                }
                 var conf = LaconicConfiguration.CreateFromString(str);
                 var person = new Person();
                 ConfigAttribute.Apply(person, conf.Root);
-                this.resultAttributes.Text = "The Person instance was created and filled from config:"
-                    + Environment.NewLine
-                    + Environment.NewLine
-                    + person.ToString();
+                this.resultAttributes.Text = person.ToString();
             }
             catch(Exception ex)
             {
@@ -50,7 +41,7 @@ namespace NFXDemos.Config
         /// <summary>
         /// Load text into text boxes from external files using the configuration of the application.
         /// </summary>
-        private void LoadConfigurationsAndInfos()
+        private void loadConfigurationsAndInfos()
         {
             var textBoxes = App.ConfigRoot["text_boxes"];
             if (textBoxes == null)
@@ -80,14 +71,6 @@ namespace NFXDemos.Config
                     textBox.Text = e.ToMessageWithType();
                 }
             }
-        }
-
-        /// <summary>
-        /// Initialize result text boxes with imitation of buttons clicking.
-        /// </summary>
-        private void InitializeResults()
-        {
-            btnAttributes_Click(null, null);
         }
     }
 }

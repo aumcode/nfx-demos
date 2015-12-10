@@ -4,13 +4,13 @@
   {
     text_box
 	{
-	  name='infoAttributes'
+	  name=infoAttributes
 	  path=Resources\Attributes.info
 	  rtf=true
 	}
     text_box
 	{
-	  name='confAttributes'
+	  name=confAttributes
 	  path=Resources\Attributes.laconf
 	  rtf=false
 	}

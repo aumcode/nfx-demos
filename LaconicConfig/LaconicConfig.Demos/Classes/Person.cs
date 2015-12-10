@@ -5,13 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using NFX.Environment;
 
-namespace Config.Classes
+namespace LaconicConfig.Demos.Classes
 {
-    public enum SomeEnum { USA, Canada, Japan }
+    public enum Countries { USA, Canada, Japan }
 
     [Config("Person/data")]
     public class Person
     {
+        private const string PERSON_DATA = "Person data:";
+
         [Config("$private-salary")]
         private int _salary;
 
@@ -28,7 +30,7 @@ namespace Config.Classes
         public int Height { get; set; }
 
         [Config("extra/$enum-country")]
-        public SomeEnum Country { get; set; }
+        public Countries Country { get; set; }
 
         [Config]
         public byte[] AgesOfChildren;
@@ -46,24 +48,25 @@ namespace Config.Classes
             return _phone;
         }
 
-
         public override string ToString()
         {
             var res = new StringBuilder();
+            res.AppendLine(PERSON_DATA);
+            res.AppendLine();
             res.AppendLine("Salary = " + GetSalary());
             res.AppendLine("Phone = " + GetPhone());
             res.AppendLine("Name = " + Name);
             res.AppendLine("DOB = " + DOB.ToShortDateString());
             res.AppendLine("Height = " + Height);
             res.AppendLine("Country = " + Country);
-            res.AppendLine("Ages of children = " + BytesToString());
+            res.AppendLine("Ages of children = " + bytesToString());
             res.AppendLine(@"// Instance of configuration node");
             res.AppendLine("Address[\"zipcode\"] = " + Address["zipcode"].Value);
             res.AppendLine("Address.AttrByName(\"city\") = " + Address.AttrByName("city").Value);
             return res.ToString();
         }
 
-        private string BytesToString()
+        private string bytesToString()
         {
             if (AgesOfChildren == null)
                 return "null";

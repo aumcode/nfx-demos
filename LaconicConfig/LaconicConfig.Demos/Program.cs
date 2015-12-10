@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
+using LaconicConfig.Demos;
 using NFX.WinForms;
 
-namespace NFXDemos.Config
+namespace NFXDemos.LaconicConfig.Demos
 {
     static class Program
     {
