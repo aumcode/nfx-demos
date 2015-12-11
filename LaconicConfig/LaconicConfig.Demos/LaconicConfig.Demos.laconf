@@ -14,5 +14,23 @@
 	  path=Resources\Attributes.laconf
 	  rtf=false
 	}
+    text_box
+	{
+	  name=infoMerge
+	  path=Resources\Merge.info
+	  rtf=true
+	}
+    text_box
+	{
+	  name=confMergeA
+	  path=Resources\MergeA.laconf
+	  rtf=false
+	}
+    text_box
+	{
+	  name=confMergeB
+	  path=Resources\MergeB.laconf
+	  rtf=false
+	}
   }
 }

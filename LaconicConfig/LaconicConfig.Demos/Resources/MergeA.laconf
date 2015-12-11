@@ -1,0 +1,50 @@
+﻿root
+{
+  // The section for simple merging example - the combination of new and old nodes will be a result.
+  // In case of coincidence the value of old node will be replaced with value of new one.
+  section-a
+  {
+    husband="John Smith"{}
+    wife="Helen Black"{}
+    child
+    {
+      name="James"
+      age=10
+    }
+    child
+    {
+      name="Ann"
+      age=13
+    }
+  }
+
+  // The section where only old attributes will be replaced. The sub-sections will remain without changing. 
+  section-b
+  {
+    _override=attributes
+    name="Mark Johnson" {}
+    age=32
+  }
+    
+  // If uncomment this section exception will be thrown while merging due to "fail" flag.
+  //section-c="Exception will be thrown if uncomment." { _override=fail }
+
+  // Just read-only section without exception generation.
+  section-d="This can not be overridden but no exception will be thrown." { _override=stop }
+
+  // The section will be replaced completely with new one.
+  section-e
+  {
+    _override=replace
+    name="Henry Gold" {}
+    age=99
+  }
+
+  // The section where only old sub-sections will be replaced. The attributes will remain without changing. 
+  section-f
+  {
+    _override='sections'
+    name="David Crowman" {}
+    age=18
+  }
+}

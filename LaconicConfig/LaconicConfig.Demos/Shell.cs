@@ -38,6 +38,22 @@ namespace LaconicConfig.Demos
             }
         }
 
+        private void btnMerge_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var confA = LaconicConfiguration.CreateFromString(this.confMergeA.Text);
+                var confB = LaconicConfiguration.CreateFromString(this.confMergeB.Text);
+                var conf = new MemoryConfiguration();
+                conf.CreateFromMerge(confA.Root, confB.Root);
+                this.resultMerge.Text = conf.ToLaconicString();
+            }
+            catch (Exception ex)
+            {
+                this.resultMerge.Text = ex.ToMessageWithType();
+            }
+        }
+
         /// <summary>
         /// Load text into text boxes from external files using the configuration of the application.
         /// </summary>
