@@ -52,15 +52,15 @@ Tabs in the client application contain some examples of <a href="https://github.
 <b>Echo Test</b> - A simple echo server. Type any text in the textbox and press 'Send' button. You should see server response below.
 </li>
 <li>
-<b>Stateful Test</b> - Stateful server stores its state for each client.Client should call method decorated with ConstructorAttribute before any other. Press 'Init' button to do it. Then press 'Add' button to change integer state of the server.You can get current state of the server by pressing 'Result' button.After you press 'Done' button the server will become inavailable for current client. You can verify it by pressing 'Add' or 'Result' buttons after 'Done'.
+<b>Stateful Test</b> - Stateful server stores its state for each client.Client should call method decorated with ConstructorAttribute before any other. Press 'Init' button to do it. Then press 'Add' button to change integer state of the server.You can get current state of the server by pressing 'Result' button.After you press 'Done' button the server will become unavailable for the current client (deallocated). You can verify it by pressing 'Add' or 'Result' buttons after pressing 'Done'. What is interesting is that stateful servers SURVIVE the process RESTART as they keep their state in the ObjectStore which is a part of NFX Application container
 </li>
 <li>
 <b>Data Contract Test</b> - The demonstration of non-elementary types transferring. Fill some person's data below and press 'Add' to send it to the server. Enter some text in right textbox and then press 'Find' to find stored persons by name.
 </li>
 <li>
-<b>High Load Test</b> - The imitation of high-load server. Enter iterations number and press 'Start'. You can also choose between parallel and syncronous version of the test.
+<b>High Load Test</b> - The imitation of high-load server. Enter iterations number and press 'Start'. You can also choose between parallel and syncronous version of the test. Do not be surprised to see tens of thousands of 2 way calls a second even on a simple machine
 </li>
 <li>
-<b>Security Test</b> - The demonstration of NFX Security model in case of NFX.Glue server.You can add users with certain credentials and permissions in security/users section of *.laconf configuration file. You can then seal any server methods or the whole serverby applying PermissionAttribute which guaranted that only users with appropriate permissions canaccess the methods.
+<b>Security Test</b> - The demonstration of NFX Security model in case of NFX.Glue server.You can add users with certain credentials and permissions in security/users section of *.laconf configuration file. You can then seal any server methods or the whole server by applying PermissionAttribute which guaranted that only users with appropriate permissions can access the methods.
 </li>
 </ul>
