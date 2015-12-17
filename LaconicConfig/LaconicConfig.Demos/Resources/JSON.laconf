@@ -1,0 +1,13 @@
+﻿root
+{ 
+  name="David Crocket"
+  contacts
+  { 
+    address
+    {
+      zipcode=10010
+      city="New York"
+    } 
+    phone { mobile=891245783968 } 
+  }
+}

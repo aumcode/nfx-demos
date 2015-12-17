@@ -1,0 +1,16 @@
+﻿{\rtf1\ansi To get a link to some node in your configuration tree you can use two ways:\line
+  1. "Step-by-step" access. This way can be used in application only and supposes the using of next methods
+of \b NFX.Environment.ConfigNode\b0 :\line
+indexer \b [<subsection_name>]\b0  - for access to subsection,\line
+\b AttrByName(<name_of_attribute>)\b0  or \b AttrByIndex(<index_of_attribute>)\b0  - for access to attribute.\line
+  2. Paths. This way can be use directly in the configuration. Use:\line
+\b/\b0  - as leading char for root,\line
+\b..\b0  - for step up,\line
+\b$\b0  - for attribute name,\line
+\b[int]\b0  - for access to subsection or attribute by index,\line
+\b section[value]\b0  - for access using value comparison of named section,\line
+\b section[attr=value]\b0  - for access using value of sections named attr.\line
+Multiple paths may be coalesced using \b|\b0  or \b;\b0. If path starts from \b!\b0  then exception will be thrown if such
+node does not exist. In application you can use \b NFX.Environment.ConfigNode.Navigate(<path>)\b0  which navigates 
+the \b<path>\b0  and return the appropriate node.\line
+To return path from the root to the node \b NFX.Environment.ConfigNode.RootPath()\b0  is used.}

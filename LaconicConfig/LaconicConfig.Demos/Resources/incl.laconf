@@ -1,0 +1,4 @@
+﻿department
+{
+  doctor { name="Joe Cooper" }
+}

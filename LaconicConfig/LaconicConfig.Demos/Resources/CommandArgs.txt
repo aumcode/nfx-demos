@@ -1,0 +1,1 @@
+﻿tool.exe c:\input.file d:\output.file -compress level=10 method=zip -shadow fast swap=1024 /large

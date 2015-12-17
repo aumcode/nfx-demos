@@ -108,7 +108,7 @@ namespace NFXDemos.Config.NavigationAndEvaluation
                             {"Greeting", "Hello"},
                             {"Age", "25"}}));
                     Console.WriteLine(" This happened in $(~C::as-dateTime fmt=\"{0:MM/yyyy}\") = " + "This happened in $(~C::as-dateTime fmt=\"{0:MM/yyyy}\")".EvaluateVars(resolver));
-                    Console.WriteLine(" $(/$name::as-string dflt=\"James\"), the value is $(/dont-exist::as-int dflt=\"12\"). = " +
+                    Console.WriteLine(" $(/$name::as-string ), the value is $(/dont-exist::as-int dflt=\"12\"). = " +
                                      "$(/$name::as-string dflt=\"James\"), the value is $(/dont-exist::as-int dflt=\"12\").".EvaluateVars());
                     Console.WriteLine(" $(~name::as-string dflt=\"James\"), the value is $(/dont-exist::as-int dflt=\"12\"). = " +
                                     "$(~name::as-string dflt=\"James\"), the value is $(/dont-exist::as-int dflt=\"12\").".EvaluateVars(

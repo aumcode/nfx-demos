@@ -1,0 +1,1 @@
+﻿{\rtf1\ansi You can make script inserts in your configuration. To execute configuration scripts use \b NFX.Environment.ScriptRunner.Execute() \b0.}

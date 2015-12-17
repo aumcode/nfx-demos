@@ -3,23 +3,70 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using LaconicConfig.Demos.Classes;
 using NFX;
 using NFX.Environment;
+using NFX.Serialization.JSON;
 
 namespace LaconicConfig.Demos
 {
     public partial class Shell : Form
     {
+        private const string INCLUDE_FILE_PATH = "Resources\\incl.laconf";
+        private const string TEXT_BOXES_NODE = "text_boxes";
+        private const string TEXT_BOX_ATTR_NAME = "name";
+        private const string TEXT_BOX_ATTR_PATH = "path";
+        private const string TEXT_BOX_ATTR_RTF = "rtf";
+
         public Shell()
         {
             InitializeComponent();
             loadConfigurationsAndInfos();
+            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+        }
+
+        /// <summary>
+        /// Load text into text boxes from external files using the configuration of the application.
+        /// </summary>
+        private void loadConfigurationsAndInfos()
+        {
+            var textBoxes = App.ConfigRoot[TEXT_BOXES_NODE];
+            if (textBoxes == null)
+                return;
+
+            foreach (var tb in textBoxes.Children)
+            {
+                var controlName = tb.AttrByName(TEXT_BOX_ATTR_NAME).Value;
+                var path = tb.AttrByName(TEXT_BOX_ATTR_PATH).Value;
+                var isRTF = tb.AttrByName(TEXT_BOX_ATTR_RTF).ValueAsBool();
+
+                var searchResult = this.Controls.Find(controlName, true);
+                if (searchResult.Count() == 0)
+                    continue;
+                var textBox = searchResult[0] as RichTextBox;
+
+                try
+                {
+                    if (isRTF)
+                    {
+                        var txt = File.ReadAllText(path);
+                        textBox.Rtf = txt;
+                    }
+                    else
+                        textBox.LoadFile(path, RichTextBoxStreamType.PlainText);
+                }
+                catch (Exception e)
+                {
+                    textBox.Text = e.ToMessageWithType();
+                }
+            }
         }
 
         private void btnAttributes_Click(object sender, EventArgs e)
@@ -29,7 +76,9 @@ namespace LaconicConfig.Demos
                 var str = this.confAttributes.Text;
                 var conf = LaconicConfiguration.CreateFromString(str);
                 var person = new Person();
+
                 ConfigAttribute.Apply(person, conf.Root);
+
                 this.resultAttributes.Text = person.ToString();
             }
             catch(Exception ex)
@@ -45,7 +94,9 @@ namespace LaconicConfig.Demos
                 var confA = LaconicConfiguration.CreateFromString(this.confMergeA.Text);
                 var confB = LaconicConfiguration.CreateFromString(this.confMergeB.Text);
                 var conf = new MemoryConfiguration();
+
                 conf.CreateFromMerge(confA.Root, confB.Root);
+
                 this.resultMerge.Text = conf.ToLaconicString();
             }
             catch (Exception ex)
@@ -54,38 +105,148 @@ namespace LaconicConfig.Demos
             }
         }
 
-        /// <summary>
-        /// Load text into text boxes from external files using the configuration of the application.
-        /// </summary>
-        private void loadConfigurationsAndInfos()
+        private void btnInclude_Click(object sender, EventArgs e)
         {
-            var textBoxes = App.ConfigRoot["text_boxes"];
-            if (textBoxes == null)
-                return;
-
-            foreach (var tb in textBoxes.Children)
+            try
             {
-                var controlName = tb.AttrByName("name").Value;
-                var path = tb.AttrByName("path").Value;
-                var isRTF = tb.AttrByName("rtf").ValueAsBool();
-                var searchResult = this.Controls.Find(controlName, true);
-                if (searchResult.Count() == 0)
-                    continue;
-                var textBox = searchResult[0] as RichTextBox;
-                try
+                this.confIncludeFile.SaveFile(INCLUDE_FILE_PATH, RichTextBoxStreamType.PlainText);
+                var confA = LaconicConfiguration.CreateFromString(this.confIncludeA.Text);
+
+                if (confA.Root.HasChildren)
                 {
-                    if (isRTF)
-                    {
-                        var txt = File.ReadAllText(path);
-                        textBox.Rtf = txt;
-                    }
-                    else
-                        textBox.LoadFile(path, RichTextBoxStreamType.PlainText);
+                    var rootConfB = this.confIncludeB.Text.AsLaconicConfig();
+                    confA.Include(confA.Root[0], rootConfB);
                 }
-                catch (Exception e)
-                {
-                    textBox.Text = e.ToMessageWithType();
-                }
+                confA.Root.ProcessIncludePragmas(true);
+
+                this.resultInclude.Text = confA.ToLaconicString();
+            }
+            catch (Exception ex)
+            {
+                this.resultInclude.Text = ex.ToMessageWithType();
+            }
+        }
+
+        private void btnLaconicToJson_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var node = this.txtLaconic.Text.AsLaconicConfig();
+                var map = node.ToJSONDataMap();
+                this.txtJSON.Text = map.ToJSON(JSONWritingOptions.PrettyPrint);
+            }
+            catch (Exception ex)
+            {
+                this.txtJSON.Text = ex.ToMessageWithType();
+            }
+        }
+
+        private void btnJsonToLaconic_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var map = (JSONDataMap)this.txtJSON.Text.JSONToDataObject();
+                var node = map.ToConfigNode();
+                this.txtLaconic.Text = node.ToLaconicString();
+            }
+            catch (Exception ex)
+            {
+                this.txtLaconic.Text = ex.ToMessageWithType();
+            }
+        }
+
+        private void btnCommandArgs_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var args = this.txtCommandArgs.Text.Split(new char[] {' '} ,StringSplitOptions.RemoveEmptyEntries);
+                var conf = new CommandArgsConfiguration(args);
+                this.resultCommandArgs.Text = conf.ToLaconicString();
+            }
+            catch (Exception ex)
+            {
+                this.resultCommandArgs.Text = ex.ToMessageWithType();
+            }
+        }
+
+        private void btnScripting_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var src = LaconicConfiguration.CreateFromString(this.sourceScripting.Text);
+                var res = new LaconicConfiguration();
+                var runner = new ScriptRunner();
+                runner.Execute(src, res);
+                this.resultScripting.Text = res.SaveToString();
+            }
+            catch (Exception ex)
+            {
+                this.resultScripting.Text = ex.ToMessageWithType();
+            }
+        }
+
+        private void btnVariables_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var conf = LaconicConfiguration.CreateFromString(this.confVariables.Text);
+                var src = this.exprVariables.Text;
+                var res = src.EvaluateVarsInConfigScope(conf);
+                this.resultVariables.Text = res;
+            }
+            catch (Exception ex)
+            {
+                this.resultVariables.Text = ex.ToMessageWithType();
+            }
+        }
+
+        private void btnVariablesClear_Click(object sender, EventArgs e)
+        {
+            this.exprVariables.Clear();
+        }
+
+        private void btnNavigate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var root = this.confNavigate.Text.AsLaconicConfig();
+                var path = this.txtNavigatePath.Text;
+                this.txtNavigateValue.Text = root.Navigate(path).Value;
+            }
+            catch (Exception ex)
+            {
+                this.txtNavigateValue.Text=ex.ToMessageWithType();
+            }
+        }
+
+        private void shellLoad(object sender, EventArgs e)
+        {
+            fillExamplesStepByStepAccess();
+        }
+
+        private void fillExamplesStepByStepAccess()
+        {
+            try
+            {
+                var root = this.confNavigate.Text.AsLaconicConfig();
+                var sb = new StringBuilder();
+                sb.AppendLine("root.Name = " + root.Name);
+                sb.AppendLine("root.Value = " + root.Value);
+                sb.AppendLine("root[\"name\"] = " + root["name"].Value);
+                sb.AppendLine("root.AttrByName(\"age\") = " + root.AttrByName("age").Value);
+                sb.AppendLine("root.AttrByIndex(0) = " + root.AttrByIndex(0).Value);
+                sb.AppendLine("root[\"contacts\"].AttrByName(\"e-mail\") = " + root["contacts"].AttrByName("e-mail").Value);
+                sb.AppendLine("root[\"contacts\"][\"phone\"] = " + root["contacts"]["phone"].Value);
+                sb.AppendLine("root[\"income\"][1] = " + root["income"][1].Value);
+                sb.AppendLine();
+                sb.AppendLine("root[\"contacts\"].AttrByIndex(0).RootPath = " + root["contacts"].AttrByIndex(0).RootPath);
+                sb.AppendLine("root[\"income\"][\"type\"].AttrByIndex(0).RootPath = " + root["income"]["type"].AttrByIndex(0).RootPath);
+                sb.AppendLine("root[\"income\"][1].AttrByName(\"value\").RootPath = " + root["income"][1].AttrByName("value").RootPath);
+                this.examplesStepByStepAccess.Text = sb.ToString();
+            }
+            catch (Exception ex)
+            {
+                this.examplesStepByStepAccess.Text = ex.ToMessageWithType();
             }
         }
     }

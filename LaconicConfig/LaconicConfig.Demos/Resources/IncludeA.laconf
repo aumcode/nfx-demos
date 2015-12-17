@@ -1,0 +1,17 @@
+﻿staff
+{
+  employee { name="Scott Black" }
+  employee { name="Mark Green" }
+                     
+  _include
+  {
+    name=NewDepartment
+    file=$"Resources\incl.laconf"
+  }
+
+  _include
+  {
+    //without name
+    file=$"Resources\incl.laconf"
+  }
+}
