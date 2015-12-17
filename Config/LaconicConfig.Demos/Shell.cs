@@ -228,25 +228,25 @@ namespace LaconicConfig.Demos
         {
             try
             {
-                var root = this.confNavigate.Text.AsLaconicConfig();
-                var sb = new StringBuilder();
-                sb.AppendLine("root.Name = " + root.Name);
-                sb.AppendLine("root.Value = " + root.Value);
-                sb.AppendLine("root[\"name\"] = " + root["name"].Value);
-                sb.AppendLine("root.AttrByName(\"age\") = " + root.AttrByName("age").Value);
-                sb.AppendLine("root.AttrByIndex(0) = " + root.AttrByIndex(0).Value);
-                sb.AppendLine("root[\"contacts\"].AttrByName(\"e-mail\") = " + root["contacts"].AttrByName("e-mail").Value);
-                sb.AppendLine("root[\"contacts\"][\"phone\"] = " + root["contacts"]["phone"].Value);
-                sb.AppendLine("root[\"income\"][1] = " + root["income"][1].Value);
-                sb.AppendLine();
-                sb.AppendLine("root[\"contacts\"].AttrByIndex(0).RootPath = " + root["contacts"].AttrByIndex(0).RootPath);
-                sb.AppendLine("root[\"income\"][\"type\"].AttrByIndex(0).RootPath = " + root["income"]["type"].AttrByIndex(0).RootPath);
-                sb.AppendLine("root[\"income\"][1].AttrByName(\"value\").RootPath = " + root["income"][1].AttrByName("value").RootPath);
-                this.examplesStepByStepAccess.Text = sb.ToString();
+                //var root = this.confNavigate.Text.AsLaconicConfig();
+                //var sb = new StringBuilder();
+                //sb.AppendLine("root.Name = " + root.Name);
+                //sb.AppendLine("root.Value = " + root.Value);
+                //sb.AppendLine("root[\"name\"] = " + root["name"].Value);
+                //sb.AppendLine("root.AttrByName(\"age\") = " + root.AttrByName("age").Value);
+                //sb.AppendLine("root.AttrByIndex(0) = " + root.AttrByIndex(0).Value);
+                //sb.AppendLine("root[\"contacts\"].AttrByName(\"e-mail\") = " + root["contacts"].AttrByName("e-mail").Value);
+                //sb.AppendLine("root[\"contacts\"][\"phone\"] = " + root["contacts"]["phone"].Value);
+                //sb.AppendLine("root[\"income\"][1] = " + root["income"][1].Value);
+                //sb.AppendLine();
+                //sb.AppendLine("root[\"contacts\"].AttrByIndex(0).RootPath = " + root["contacts"].AttrByIndex(0).RootPath);
+                //sb.AppendLine("root[\"income\"][\"type\"].AttrByIndex(0).RootPath = " + root["income"]["type"].AttrByIndex(0).RootPath);
+                //sb.AppendLine("root[\"income\"][1].AttrByName(\"value\").RootPath = " + root["income"][1].AttrByName("value").RootPath);
+                //this.examplesStepByStepAccess.Text = sb.ToString();
             }
             catch (Exception ex)
             {
-                this.examplesStepByStepAccess.Text = ex.ToMessageWithType();
+                //this.examplesStepByStepAccess.Text = ex.ToMessageWithType();
             }
         }
     }

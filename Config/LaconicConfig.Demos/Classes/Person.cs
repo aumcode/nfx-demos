@@ -15,11 +15,11 @@ namespace LaconicConfig.Demos.Classes
         private const string PERSON_DATA = "Person data:";
 
         [Config("$private-salary")]
-        private int _salary;
+        private int m_salary;
 
         [Config("$protected-phone")]
-        protected string _phone;
-
+        protected string m_phone;
+        
         [Config("$public-name")]
         public string Name { get; set; }
 
@@ -40,12 +40,12 @@ namespace LaconicConfig.Demos.Classes
 
         public int GetSalary()
         {
-            return _salary ;
+            return m_salary ;
         }
 
         public string GetPhone()
         {
-            return _phone;
+            return m_phone;
         }
 
         public override string ToString()

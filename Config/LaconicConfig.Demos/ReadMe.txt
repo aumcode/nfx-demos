@@ -40,9 +40,8 @@ delimited by '='. Argument options are written as attribute nodes of their corre
 without name (without '=') then option is auto-named.
 
 Navigation
-To get a link to some node in your configuration tree you can use two ways:
-  1. "Step-by-step" access. This way can be used in application only and supposes the using of next methods
-of 'NFX.Environment.ConfigNode':
+To get an access to some node in your configuration tree you can use two ways:
+  1. Using DOM. This way can be used in application only and supposes the using of next methods of 'NFX.Environment.ConfigNode':
 indexer '[<subsection_name>]' - for access to subsection
 'AttrByName(<name_of_attribute>)' or 'AttrByIndex(<index_of_attribute>)' - for access to attribute
   2. Paths. This way can be use directly in the configuration. Use:
