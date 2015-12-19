@@ -18,7 +18,7 @@ namespace LaconicConfig.Demos.Classes
         private int m_salary;
 
         [Config("$protected-phone")]
-        protected string m_phone;
+        protected string m_Phone;
         
         [Config("$public-name")]
         public string Name { get; set; }
@@ -45,7 +45,7 @@ namespace LaconicConfig.Demos.Classes
 
         public string GetPhone()
         {
-            return m_phone;
+            return m_Phone;
         }
 
         public override string ToString()

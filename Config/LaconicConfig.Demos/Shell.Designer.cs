@@ -1255,7 +1255,6 @@
             this.Controls.Add(this.tabControl);
             this.Name = "Shell";
             this.Text = "Laconic configuration demos";
-            this.Load += new System.EventHandler(this.shellLoad);
             this.tabControl.ResumeLayout(false);
             this.tabAttributes.ResumeLayout(false);
             this.tableLayoutAttributes.ResumeLayout(false);
