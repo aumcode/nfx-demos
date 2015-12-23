@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using NFX.WinForms;
 
-namespace LaconicConfig.Demos
+namespace Config.LaconicConfig
 {
     static class Program
     {

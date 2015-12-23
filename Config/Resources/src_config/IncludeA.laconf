@@ -6,12 +6,12 @@
   _include
   {
     name=NewDepartment
-    file=$"Resources\incl.laconf"
+    file=$"Resources\src_config\incl.laconf"
   }
 
   _include
   {
     //without name
-    file=$"Resources\incl.laconf"
+    file=$"Resources\src_config\incl.laconf"
   }
 }

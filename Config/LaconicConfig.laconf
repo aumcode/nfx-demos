@@ -5,121 +5,121 @@
     text_box
 	{
 	  name=infoAttributes
-	  path=Resources\Attributes.info
+	  path=Resources\src_config\Attributes.info
 	  rtf=true
 	}
     text_box
 	{
 	  name=confAttributes
-	  path=Resources\Attributes.laconf
+	  path=Resources\src_config\Attributes.laconf
 	  rtf=false
 	}
     text_box
 	{
 	  name=infoMerge
-	  path=Resources\Merge.info
+	  path=Resources\src_config\Merge.info
 	  rtf=true
 	}
     text_box
 	{
 	  name=confMergeA
-	  path=Resources\MergeA.laconf
+	  path=Resources\src_config\MergeA.laconf
 	  rtf=false
 	}
     text_box
 	{
 	  name=confMergeB
-	  path=Resources\MergeB.laconf
+	  path=Resources\src_config\MergeB.laconf
 	  rtf=false
 	}
     text_box
 	{
 	  name=infoInclude
-	  path=Resources\Include.info
+	  path=Resources\src_config\Include.info
 	  rtf=true
 	}
     text_box
 	{
 	  name=confIncludeA
-	  path=Resources\IncludeA.laconf
+	  path=Resources\src_config\IncludeA.laconf
 	  rtf=false
 	}
     text_box
 	{
 	  name=confIncludeB
-	  path=Resources\IncludeB.laconf
+	  path=Resources\src_config\IncludeB.laconf
 	  rtf=false
 	}
     text_box
 	{
 	  name=confIncludeFile
-	  path=Resources\incl.laconf
+	  path=Resources\src_config\incl.laconf
 	  rtf=false
 	}
     text_box
 	{
 	  name=infoJSON
-	  path=Resources\JSON.info
+	  path=Resources\src_config\JSON.info
 	  rtf=true
 	}
     text_box
 	{
 	  name=txtLaconic
-	  path=Resources\JSON.laconf
+	  path=Resources\src_config\JSON.laconf
 	  rtf=false
 	}
     text_box
 	{
 	  name=infoCommandArgs
-	  path=Resources\CommandArgs.info
+	  path=Resources\src_config\CommandArgs.info
 	  rtf=true
 	}
     text_box
 	{
 	  name=txtCommandArgs
-	  path=Resources\CommandArgs.txt
+	  path=Resources\src_config\CommandArgs.txt
 	  rtf=false
 	}
     text_box
 	{
 	  name=infoScripting
-	  path=Resources\Scripting.info
+	  path=Resources\src_config\Scripting.info
 	  rtf=true
 	}
     text_box
 	{
 	  name=sourceScripting
-	  path=Resources\Scripting.laconf
+	  path=Resources\src_config\Scripting.laconf
 	  rtf=false
 	}
     text_box
 	{
 	  name=infoVariables
-	  path=Resources\Variables.info
+	  path=Resources\src_config\Variables.info
 	  rtf=true
 	}
     text_box
 	{
 	  name=confVariables
-	  path=Resources\Variables.laconf
+	  path=Resources\src_config\Variables.laconf
 	  rtf=false
 	}
     text_box
 	{
 	  name=infoNavigate
-	  path=Resources\Navigate.info
+	  path=Resources\src_config\Navigate.info
 	  rtf=true
     }
     text_box
 	{
 	  name=confNavigate
-	  path=Resources\Navigate.laconf
+	  path=Resources\src_config\Navigate.laconf
 	  rtf=false
 	}
     text_box
 	{
 	  name=examplesNavigate
-	  path=Resources\examplesNavigate.txt
+	  path=Resources\src_config\examplesNavigate.txt
 	  rtf=false
 	}
   }

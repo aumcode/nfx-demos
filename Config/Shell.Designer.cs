@@ -1,4 +1,4 @@
-﻿namespace LaconicConfig.Demos
+﻿namespace Config.LaconicConfig
 {
     partial class Shell
     {
@@ -34,6 +34,7 @@
             this.infoAttributes = new System.Windows.Forms.RichTextBox();
             this.confAttributes = new System.Windows.Forms.RichTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.resultAttributes = new System.Windows.Forms.RichTextBox();
             this.btnAttributes = new System.Windows.Forms.Button();
             this.tabMerge = new System.Windows.Forms.TabPage();
             this.tableLayoutЬMerge = new System.Windows.Forms.TableLayoutPanel();
@@ -92,6 +93,9 @@
             this.label18 = new System.Windows.Forms.Label();
             this.btnNavigate = new System.Windows.Forms.Button();
             this.txtNavigatePath = new System.Windows.Forms.TextBox();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.confNavigate = new System.Windows.Forms.RichTextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.tabVariables = new System.Windows.Forms.TabPage();
             this.tableLayoutVariables = new System.Windows.Forms.TableLayoutPanel();
             this.panel12 = new System.Windows.Forms.Panel();
@@ -116,10 +120,6 @@
             this.resultScripting = new System.Windows.Forms.RichTextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.infoScripting = new System.Windows.Forms.RichTextBox();
-            this.resultAttributes = new System.Windows.Forms.RichTextBox();
-            this.panel15 = new System.Windows.Forms.Panel();
-            this.label17 = new System.Windows.Forms.Label();
-            this.confNavigate = new System.Windows.Forms.RichTextBox();
             this.tabControl.SuspendLayout();
             this.tabAttributes.SuspendLayout();
             this.tableLayoutAttributes.SuspendLayout();
@@ -143,6 +143,7 @@
             this.tabNavigation.SuspendLayout();
             this.tableLayoutNavigation.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.panel15.SuspendLayout();
             this.tabVariables.SuspendLayout();
             this.tableLayoutVariables.SuspendLayout();
             this.panel12.SuspendLayout();
@@ -152,7 +153,6 @@
             this.tableLayoutScripting.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel11.SuspendLayout();
-            this.panel15.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -241,6 +241,16 @@
             this.panel1.Size = new System.Drawing.Size(390, 502);
             this.panel1.TabIndex = 3;
             // 
+            // resultAttributes
+            // 
+            this.resultAttributes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.resultAttributes.Location = new System.Drawing.Point(0, 0);
+            this.resultAttributes.Name = "resultAttributes";
+            this.resultAttributes.ReadOnly = true;
+            this.resultAttributes.Size = new System.Drawing.Size(390, 502);
+            this.resultAttributes.TabIndex = 0;
+            this.resultAttributes.Text = "";
+            // 
             // btnAttributes
             // 
             this.btnAttributes.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -292,9 +302,9 @@
             // label2
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(299, 126);
+            this.label2.Location = new System.Drawing.Point(300, 126);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(290, 31);
+            this.label2.Size = new System.Drawing.Size(291, 31);
             this.label2.TabIndex = 3;
             this.label2.Text = "Configuration B";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -320,7 +330,7 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(3, 126);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(290, 31);
+            this.label1.Size = new System.Drawing.Size(291, 31);
             this.label1.TabIndex = 1;
             this.label1.Text = "Configuration A";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -331,7 +341,7 @@
             this.confMergeA.Font = new System.Drawing.Font("Verdana", 9.75F);
             this.confMergeA.Location = new System.Drawing.Point(3, 160);
             this.confMergeA.Name = "confMergeA";
-            this.confMergeA.Size = new System.Drawing.Size(290, 471);
+            this.confMergeA.Size = new System.Drawing.Size(291, 471);
             this.confMergeA.TabIndex = 2;
             this.confMergeA.Text = "";
             // 
@@ -339,18 +349,18 @@
             // 
             this.confMergeB.Dock = System.Windows.Forms.DockStyle.Fill;
             this.confMergeB.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.confMergeB.Location = new System.Drawing.Point(299, 160);
+            this.confMergeB.Location = new System.Drawing.Point(300, 160);
             this.confMergeB.Name = "confMergeB";
-            this.confMergeB.Size = new System.Drawing.Size(290, 471);
+            this.confMergeB.Size = new System.Drawing.Size(291, 471);
             this.confMergeB.TabIndex = 3;
             this.confMergeB.Text = "";
             // 
             // label4
             // 
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(661, 126);
+            this.label4.Location = new System.Drawing.Point(663, 126);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(293, 31);
+            this.label4.Size = new System.Drawing.Size(291, 31);
             this.label4.TabIndex = 6;
             this.label4.Text = "Merge B into A";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -359,7 +369,7 @@
             // 
             this.btnMerge.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnMerge.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnMerge.Location = new System.Drawing.Point(595, 365);
+            this.btnMerge.Location = new System.Drawing.Point(597, 365);
             this.btnMerge.Name = "btnMerge";
             this.btnMerge.Size = new System.Drawing.Size(60, 60);
             this.btnMerge.TabIndex = 1;
@@ -373,9 +383,9 @@
             this.resultMerge.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.resultMerge.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resultMerge.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.resultMerge.Location = new System.Drawing.Point(661, 160);
+            this.resultMerge.Location = new System.Drawing.Point(663, 160);
             this.resultMerge.Name = "resultMerge";
-            this.resultMerge.Size = new System.Drawing.Size(293, 471);
+            this.resultMerge.Size = new System.Drawing.Size(291, 471);
             this.resultMerge.TabIndex = 4;
             this.resultMerge.Text = "";
             // 
@@ -514,7 +524,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(291, 30);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Resources\\incl.laconf";
+            this.label6.Text = "incl.laconf";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel5
@@ -930,6 +940,35 @@
             this.txtNavigatePath.TabIndex = 0;
             this.txtNavigatePath.Text = "/name";
             // 
+            // panel15
+            // 
+            this.panel15.Controls.Add(this.confNavigate);
+            this.panel15.Controls.Add(this.label17);
+            this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel15.Location = new System.Drawing.Point(3, 131);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(375, 506);
+            this.panel15.TabIndex = 3;
+            // 
+            // confNavigate
+            // 
+            this.confNavigate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.confNavigate.Location = new System.Drawing.Point(0, 25);
+            this.confNavigate.Name = "confNavigate";
+            this.confNavigate.Size = new System.Drawing.Size(375, 481);
+            this.confNavigate.TabIndex = 1;
+            this.confNavigate.Text = "";
+            // 
+            // label17
+            // 
+            this.label17.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label17.Location = new System.Drawing.Point(0, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(375, 25);
+            this.label17.TabIndex = 0;
+            this.label17.Text = "Configuration";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // tabVariables
             // 
             this.tabVariables.Controls.Add(this.tableLayoutVariables);
@@ -1208,45 +1247,6 @@
             this.infoScripting.TabIndex = 3;
             this.infoScripting.Text = "";
             // 
-            // resultAttributes
-            // 
-            this.resultAttributes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resultAttributes.Location = new System.Drawing.Point(0, 0);
-            this.resultAttributes.Name = "resultAttributes";
-            this.resultAttributes.ReadOnly = true;
-            this.resultAttributes.Size = new System.Drawing.Size(390, 502);
-            this.resultAttributes.TabIndex = 0;
-            this.resultAttributes.Text = "";
-            // 
-            // panel15
-            // 
-            this.panel15.Controls.Add(this.confNavigate);
-            this.panel15.Controls.Add(this.label17);
-            this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel15.Location = new System.Drawing.Point(3, 131);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(375, 506);
-            this.panel15.TabIndex = 3;
-            // 
-            // label17
-            // 
-            this.label17.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label17.Location = new System.Drawing.Point(0, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(375, 25);
-            this.label17.TabIndex = 0;
-            this.label17.Text = "Configuration";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // confNavigate
-            // 
-            this.confNavigate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.confNavigate.Location = new System.Drawing.Point(0, 25);
-            this.confNavigate.Name = "confNavigate";
-            this.confNavigate.Size = new System.Drawing.Size(375, 481);
-            this.confNavigate.TabIndex = 1;
-            this.confNavigate.Text = "";
-            // 
             // Shell
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1279,6 +1279,7 @@
             this.tableLayoutNavigation.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panel15.ResumeLayout(false);
             this.tabVariables.ResumeLayout(false);
             this.tableLayoutVariables.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
@@ -1290,7 +1291,6 @@
             this.tableLayoutScripting.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
-            this.panel15.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

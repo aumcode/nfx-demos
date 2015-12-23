@@ -7,8 +7,8 @@
     <ProjectGuid>{3DDC64BC-A2AC-4613-BF09-ACEA864E1656}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LaconicConfig.Demos</RootNamespace>
-    <AssemblyName>LaconicConfig.Demos</AssemblyName>
+    <RootNamespace>LaconicConfig</RootNamespace>
+    <AssemblyName>LaconicConfig</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\Output\Debug\</OutputPath>
+    <OutputPath>..\Output\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -35,27 +35,27 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NFX.2.0.0.13\lib\MySql.Data.dll</HintPath>
+      <HintPath>..\packages\NFX.2.0.0.17\lib\MySql.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NFX, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NFX.2.0.0.13\lib\NFX.dll</HintPath>
+      <HintPath>..\packages\NFX.2.0.0.17\lib\NFX.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NFX.MySQL, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NFX.2.0.0.13\lib\NFX.MySQL.dll</HintPath>
+      <HintPath>..\packages\NFX.2.0.0.17\lib\NFX.MySQL.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NFX.Wave, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NFX.2.0.0.13\lib\NFX.Wave.dll</HintPath>
+      <HintPath>..\packages\NFX.2.0.0.17\lib\NFX.Wave.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NFX.Web, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NFX.2.0.0.13\lib\NFX.Web.dll</HintPath>
+      <HintPath>..\packages\NFX.2.0.0.17\lib\NFX.Web.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NFX.WinForms, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NFX.2.0.0.13\lib\NFX.WinForms.dll</HintPath>
+      <HintPath>..\packages\NFX.2.0.0.17\lib\NFX.WinForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -93,17 +93,17 @@
     <EmbeddedResource Include="Shell.resx">
       <DependentUpon>Shell.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="LaconicConfig.Demos.laconf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ReadMe.md" />
-    <None Include="Resources\config\Attributes.info">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\config\Attributes.laconf">
+    <None Include="LaconicConfig.laconf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+    <None Include="ReadMe.md" />
+    <None Include="Resources\src_config\Attributes.info">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\src_config\Attributes.laconf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -113,60 +113,60 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\config\CommandArgs.info">
+    <None Include="Resources\src_config\CommandArgs.info">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\config\incl.laconf">
+    <None Include="Resources\src_config\incl.laconf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\config\Include.info">
+    <None Include="Resources\src_config\Include.info">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\config\IncludeA.laconf">
+    <None Include="Resources\src_config\IncludeA.laconf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\config\IncludeB.laconf">
+    <None Include="Resources\src_config\IncludeB.laconf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\config\JSON.info">
+    <None Include="Resources\src_config\JSON.info">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\config\JSON.laconf">
+    <None Include="Resources\src_config\JSON.laconf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\config\Merge.info">
+    <None Include="Resources\src_config\Merge.info">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\config\MergeA.laconf">
+    <None Include="Resources\src_config\MergeA.laconf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\config\MergeB.laconf">
+    <None Include="Resources\src_config\MergeB.laconf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\config\Navigate.info">
+    <None Include="Resources\src_config\Navigate.info">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\config\Navigate.laconf">
+    <None Include="Resources\src_config\Navigate.laconf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\config\Scripting.info">
+    <None Include="Resources\src_config\Scripting.info">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\config\Scripting.laconf">
+    <None Include="Resources\src_config\Scripting.laconf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\config\Variables.info">
+    <None Include="Resources\src_config\Variables.info">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\config\Variables.laconf">
+    <None Include="Resources\src_config\Variables.laconf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\config\CommandArgs.txt">
+    <Content Include="Resources\src_config\CommandArgs.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\config\examplesNavigate.txt">
+    <Content Include="Resources\src_config\examplesNavigate.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

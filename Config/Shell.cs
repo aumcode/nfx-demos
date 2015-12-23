@@ -1,25 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
-using LaconicConfig.Demos.Classes;
+using Config.LaconicConfig.Classes;
 using NFX;
 using NFX.Environment;
 using NFX.Serialization.JSON;
 
-namespace LaconicConfig.Demos
+namespace Config.LaconicConfig
 {
     public partial class Shell : Form
     {
-        private const string INCLUDE_FILE_PATH = "Resources\\incl.laconf";
+        private const string INCLUDE_FILE_PATH = "Resources\\src_config\\incl.laconf";
         private const string TEXT_BOXES_NODE = "text_boxes";
         private const string TEXT_BOX_ATTR_NAME = "name";
         private const string TEXT_BOX_ATTR_PATH = "path";

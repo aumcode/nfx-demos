@@ -32,7 +32,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Glue.Server", "Glue\Glue.Se
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{25317679-8650-4147-B838-38C1708CC97B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaconicConfig.Demos", "Config\LaconicConfig.Demos\LaconicConfig.Demos.csproj", "{3DDC64BC-A2AC-4613-BF09-ACEA864E1656}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaconicConfig", "Config\LaconicConfig.csproj", "{3DDC64BC-A2AC-4613-BF09-ACEA864E1656}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
