@@ -1,0 +1,36 @@
+﻿root
+{
+  name="Jake"
+  last_name="Snowman"
+  full_name="$(/$name) $(/$last_name)" {}
+  DOB="1982/05/12"
+   
+  details
+  {
+    doc1=c:\documents\
+    doc2=\snowman
+
+    var1=$(../var2) {}
+    var2=$(../var1) {}
+
+    env_var=$(~USERNAME) // "~" - environment variable
+    nowis=$(::now) // "::" - macro
+  }
+}
+
+/*
+   Examples of expressions
+
+$(/$name)
+$(/full_name)
+$(/details/$doc1)$(/details/$doc2)
+"@" - transform result to path string: $(/details/$doc1)$(@/details/$doc2)
+Empty result: $(/non-existent)
+"|" - use alternative path: $(/non-existent|/$name)
+"!" = "required" (exception): $(!/non-existent)
+Endless loop (exception): $(/details/var1)
+Username is $(/details/$env_var).
+Now is $(/details/$nowis).
+Hello Mr. $(/just_name::as-string dflt="Anderson")!
+
+*/

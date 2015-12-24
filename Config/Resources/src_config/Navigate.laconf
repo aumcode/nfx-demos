@@ -1,0 +1,17 @@
+﻿root=person
+{
+  name="Scott Freeman" {}
+  age=43
+  
+  contacts
+  {
+    e-mail=sf@mail.net
+    phone=mobile { value=893457218902 }
+  }
+  
+  income
+  {
+    type=salary { value=1000 }
+    type=bonus { value=100 }
+  }
+}

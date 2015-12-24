@@ -1,0 +1,35 @@
+﻿root
+{
+  section-a
+  {
+    wife="Olga Smith" {}
+    child
+    {
+      name="Mary" //try to put "Ann" instead of
+      age=8
+    }
+    city="New York"
+  }
+
+  section-b
+  {
+    name="Lisa Stone" {}
+    age=10
+  } 
+
+  section-c="Could cause failure while merging." {}
+
+  section-d="This value will be ignored." { name="Peter"{} }
+
+  section-e
+  {
+    name="Harold Snow" {}
+    age=25
+  }
+
+  section-f
+  {
+    name="Jane Wood" {}
+    age=50
+  }
+}

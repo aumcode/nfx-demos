@@ -1,0 +1,9 @@
+﻿/name
+/$age
+/contacts/$e-mail
+/contacts/phone
+/contacts/phone/$value
+/contacts/[0]
+/contacts/phone/$[0]
+/income/type[salary]/$value
+/income/type[value=100]
