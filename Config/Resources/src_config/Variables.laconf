@@ -18,15 +18,19 @@
   }
 }
 
-// Examples of expressions
-// $(/$name)
-// $(/full_name)
-// $(/details/$doc1)$(/details/$doc2)
-// "@" - transform result to path string: $(/details/$doc1)$(@/details/$doc2)
-// Empty result: $(/non-existent)
-// "|" - use alternative path: $(/non-existent|/$name)
-// "!" = "required" (exception): $(!/non-existent)
-// Endless loop (exception): $(/details/var1)
-// Username is $(/details/$env_var).
-// Now is $(/details/$nowis).
-// Hello Mr. $(/just_name::as-string dflt="Anderson")!
+/*
+   Examples of expressions
+
+$(/$name)
+$(/full_name)
+$(/details/$doc1)$(/details/$doc2)
+"@" - transform result to path string: $(/details/$doc1)$(@/details/$doc2)
+Empty result: $(/non-existent)
+"|" - use alternative path: $(/non-existent|/$name)
+"!" = "required" (exception): $(!/non-existent)
+Endless loop (exception): $(/details/var1)
+Username is $(/details/$env_var).
+Now is $(/details/$nowis).
+Hello Mr. $(/just_name::as-string dflt="Anderson")!
+
+*/
