@@ -44,3 +44,5 @@ In your configurations you can use variables which can take values of configurat
 
 ##### Scripts
 You can make script inserts in your configuration. To execute configuration scripts use `NFX.Environment.ScriptRunner.Execute()`.
+
+Video in russian: https://youtu.be/dejXycdb_dk
