@@ -1,0 +1,15 @@
+﻿{\rtf1 To get an access to some node in your configuration tree you can use two ways.\line
+  1. Using DOM. This way can be used in application only and supposes the using of next methods of {\b NFX.Environment.ConfigNode}:\line
+indexer {\b [subsection_name]} - for access to subsection,\line
+{\b AttrByName(name_of_attribute)}  or {\b AttrByIndex(index_of_attribute)} - for access to attribute.\line
+  2. Paths. This way can be use directly in the configuration. Use:\line
+{\b /} - as leading char for root,\line
+{\b ..} - for step up,\line
+{\b $} - for attribute name,\line
+{\b [int]} - for access to subsection or attribute by index,\line
+{\b section[value]} - for access using value comparison of named section,\line
+{\b section[attr=value]} - for access using value of sections named {\i attr}.\line
+Multiple paths may be coalesced using {\b |} or {\b ;}. If path starts from {\b !}  then exception will be thrown if such
+node does not exist. In application you can use {\b NFX.Environment.ConfigNode.Navigate(path)}  which navigates 
+the {\i path} and return the appropriate node.\line
+To return path from the root to the node {\b NFX.Environment.ConfigNode.RootPath()} is used.}
