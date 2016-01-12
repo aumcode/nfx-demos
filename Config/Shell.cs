@@ -2,7 +2,6 @@
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Threading;
 using System.Windows.Forms;
 using Config.LaconicConfig.Classes;
 using NFX;
@@ -23,7 +22,7 @@ namespace Config.LaconicConfig
         {
             InitializeComponent();
             loadConfigurationsAndInfos();
-            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+            CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
         }
 
         /// <summary>
@@ -170,6 +169,7 @@ namespace Config.LaconicConfig
                 var src = LaconicConfiguration.CreateFromString(this.sourceScripting.Text);
                 var res = new LaconicConfiguration();
                 var runner = new ScriptRunner();
+                runner.TimeoutMs = 500; // for slow computers may be increased
                 runner.Execute(src, res);
                 this.resultScripting.Text = res.SaveToString();
             }

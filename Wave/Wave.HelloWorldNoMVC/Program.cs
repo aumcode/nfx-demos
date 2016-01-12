@@ -2,7 +2,7 @@
 using NFX.ApplicationModel;
 using NFX.Wave;
 
-namespace Config.Wave.HelloWorldNoMVC
+namespace NFXDemos.Wave.HelloWorldNoMVC
 {
     class Program
     {
