@@ -64,3 +64,8 @@ Tabs in the client application contain some examples of <a href="https://github.
 <b>Security Test</b> - The demonstration of NFX Security model in case of NFX.Glue server.You can add users with certain credentials and permissions in security/users section of *.laconf configuration file. You can then seal any server methods or the whole server by applying PermissionAttribute which guaranted that only users with appropriate permissions can access the methods.
 </li>
 </ul>
+
+<h4>
+NFX.Environment Configuration Demos
+</h4>
+<a href="https://github.com/aumcode/nfx/tree/master/Source/NFX/Environment">NFX.Environment</a> contains handy instruments that allow configure NFX applications and their components with laconic-formatted (or XML) configuration files and according in-memory trees. Demo project <a href="https://github.com/aumcode/nfx-demos/tree/master/Config">Config</a> represents main features of configuration in NFX.
