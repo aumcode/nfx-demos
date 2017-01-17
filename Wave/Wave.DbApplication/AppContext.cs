@@ -1,6 +1,5 @@
 ﻿using System;
 using NFX;
-using NFX.Wave.Client;
 using NFX.DataAccess.MySQL;
 using NFX.Serialization.JSON;
 using Wave.DbApplication.Models;
@@ -16,7 +15,8 @@ namespace Wave.DbApplication
 
         public static string FormJSON(Person person, Exception validationError = null)
         {
-            return RecordModelGenerator.RowToRecordInitJSON(person, validationError).ToJSON();
+            var generator = new NFX.Wave.Client.RecordModelGenerator();
+            return generator.RowToRecordInitJSON(person, validationError).ToJSON();
         }
     }
 }

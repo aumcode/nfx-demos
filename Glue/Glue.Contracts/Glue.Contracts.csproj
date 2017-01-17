@@ -30,28 +30,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NFX.2.0.0.10\lib\MySql.Data.dll</HintPath>
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NFX.3.1.0.0\lib\MySql.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="NFX, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NFX.2.0.0.10\lib\NFX.dll</HintPath>
+    <Reference Include="NFX, Version=3.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NFX.3.1.0.0\lib\NFX.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="NFX.MySQL, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NFX.2.0.0.10\lib\NFX.MySQL.dll</HintPath>
+    <Reference Include="NFX.Erlang, Version=3.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NFX.3.1.0.0\lib\NFX.Erlang.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="NFX.Wave, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NFX.2.0.0.10\lib\NFX.Wave.dll</HintPath>
+    <Reference Include="NFX.MySQL, Version=3.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NFX.3.1.0.0\lib\NFX.MySQL.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="NFX.Web, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NFX.2.0.0.10\lib\NFX.Web.dll</HintPath>
+    <Reference Include="NFX.Wave, Version=3.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NFX.3.1.0.0\lib\NFX.Wave.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="NFX.WinForms, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NFX.2.0.0.10\lib\NFX.WinForms.dll</HintPath>
+    <Reference Include="NFX.Web, Version=3.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NFX.3.1.0.0\lib\NFX.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NFX.WinForms, Version=3.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NFX.3.1.0.0\lib\NFX.WinForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -83,7 +87,7 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>"$(SolutionDir)packages\NFX.2.0.0.10\tools\gluec" "$(OutDir)Glue.Contracts.dll" /o out="$(SolutionDir)Glue\Glue.Client\GluedClients" cl-suffix="AutoClient"</PostBuildEvent>
+    <PostBuildEvent>"$(SolutionDir)packages\NFX.3.1.0.0\tools\gluec" "$(OutDir)Glue.Contracts.dll" /o out="$(SolutionDir)Glue\Glue.Client\GluedClients" cl-suffix="AutoClient"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

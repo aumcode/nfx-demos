@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using NFX.WinForms;
+using NFX.ApplicationModel;
 
 namespace Glue.Client
 {
@@ -12,7 +12,7 @@ namespace Glue.Client
         [STAThread]
         static void Main(string[] args)
         {
-            using (var application = new BaseApplication(args, null))
+            using (var application = new ServiceBaseApplication(args, null))
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);

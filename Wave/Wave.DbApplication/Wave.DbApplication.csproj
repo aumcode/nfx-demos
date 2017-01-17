@@ -34,28 +34,32 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NFX.2.0.0.10\lib\MySql.Data.dll</HintPath>
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NFX.3.1.0.0\lib\MySql.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="NFX, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NFX.2.0.0.10\lib\NFX.dll</HintPath>
+    <Reference Include="NFX, Version=3.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NFX.3.1.0.0\lib\NFX.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="NFX.MySQL, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NFX.2.0.0.10\lib\NFX.MySQL.dll</HintPath>
+    <Reference Include="NFX.Erlang, Version=3.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NFX.3.1.0.0\lib\NFX.Erlang.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="NFX.Wave, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NFX.2.0.0.10\lib\NFX.Wave.dll</HintPath>
+    <Reference Include="NFX.MySQL, Version=3.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NFX.3.1.0.0\lib\NFX.MySQL.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="NFX.Web, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NFX.2.0.0.10\lib\NFX.Web.dll</HintPath>
+    <Reference Include="NFX.Wave, Version=3.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NFX.3.1.0.0\lib\NFX.Wave.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="NFX.WinForms, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NFX.2.0.0.10\lib\NFX.WinForms.dll</HintPath>
+    <Reference Include="NFX.Web, Version=3.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NFX.3.1.0.0\lib\NFX.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NFX.WinForms, Version=3.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NFX.3.1.0.0\lib\NFX.WinForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -111,8 +115,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>"$(SolutionDir)packages\NFX.2.0.0.10\tools\ntc" "$(ProjectDir)Pages\*.htm" -r -ext ".auto.cs" /src
-"$(SolutionDir)packages\NFX.2.0.0.10\tools\rsc" "$(ProjectDir)Data\Schema\database-schema.rschema" /o out-name-prefix=db.auto.
+    <PreBuildEvent>"$(SolutionDir)packages\NFX.3.1.0.0\tools\ntc" "$(ProjectDir)Pages\*.htm" -r -ext ".auto.cs" /src
+"$(SolutionDir)packages\NFX.3.1.0.0\tools\rsc" "$(ProjectDir)Data\Schema\database-schema.rschema" /o out-name-prefix=db.auto.
 if not exist "$(TargetDir)resources" mkdir "$(TargetDir)resources"</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
