@@ -31,13 +31,13 @@
             {
                 name="sync"
                 type="NFX.Glue.Native.SyncBinding, NFX"
-				server-transport
-				{
-					rcv-buf-size=131072
-					snd-buf-size=131072
-					rcv-timeout=15000
-					snd-timeout=15000
-				}
+                server-transport
+                {
+                    rcv-buf-size=131072
+                    snd-buf-size=131072
+                    rcv-timeout=15000
+                    snd-timeout=15000
+                }
             }
         }
         
@@ -47,44 +47,44 @@
             {
                 node="sync://localhost:8080"
                 contract-servers=$"
-					Glue.Server.Services.EchoService, Glue.Server;
-					Glue.Server.Services.StatefulService, Glue.Server;
-					Glue.Server.Services.PersonService, Glue.Server;
-					Glue.Server.Services.HighLoadService, Glue.Server;
-					Glue.Server.Services.SecureService, Glue.Server"
+                    Glue.Server.Services.EchoService, Glue.Server;
+                    Glue.Server.Services.StatefulService, Glue.Server;
+                    Glue.Server.Services.PersonService, Glue.Server;
+                    Glue.Server.Services.HighLoadService, Glue.Server;
+                    Glue.Server.Services.SecureService, Glue.Server"
             }
         }
     }
-	
-	security
-	{
-		users
-		{
-			user
-			{
-				name="Clinton"
-				description="Bill Clinton"
-				id="clinton"
-				password="89c246298be2b6113fb10ba80f3c6956" // phash billy
-				rights
-				{
-					specialized	{ superman {level=1} president {level=1} }
-					gov	{ executive {level=0} } // he is not president
-				}
-			}
-			
-			user
-			{
-				name="Obama"
-				description="Barak Obama"
-				id="obama"
-				password="10189466c646898c1fcf2363b5cf038d" // phash chicago
-				rights
-				{
-					specialized	{ superman {level=1} president {level=1} }
-					gov	{ executive {level=1} } // he is current president
-				}
-			}
-	    }
-	}
+    
+    security
+    {
+        users
+        {
+            user
+            {
+                name="Clinton"
+                description="Bill Clinton"
+                id="clinton"
+                password='{"algo":"MD5","fam":"Text","hash":"QuVsrT54Kx0AhzU3APk1KA==","salt":"Vc3RQR1lCeyv1hJ5QvyGGy+gTvSf2bK9O8981QSa"}' // phash billy
+                rights
+                {
+                    specialized    { superman {level=1} president {level=1} }
+                    gov    { executive {level=0} } // he is not president
+                }
+            }
+            
+            user
+            {
+                name="Obama"
+                description="Barak Obama"
+                id="obama"
+                password='{"algo":"MD5","fam":"Text","hash":"D7Q4NlMQYnxZwiGGV4xHRg==","salt":"d8SJa/mr9jfRnPdlxdyN41bJqsaW"}' // phash chicago
+                rights
+                {
+                    specialized    { superman {level=1} president {level=1} }
+                    gov    { executive {level=1} } // he is current president
+                }
+            }
+        }
+    }
 }

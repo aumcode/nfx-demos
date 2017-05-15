@@ -35,31 +35,31 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\NFX.3.1.0.0\lib\MySql.Data.dll</HintPath>
+      <HintPath>..\packages\NFX.3.4.0.1\lib\MySql.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NFX, Version=3.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\NFX.3.1.0.0\lib\NFX.dll</HintPath>
+      <HintPath>..\packages\NFX.3.4.0.1\lib\NFX.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NFX.Erlang, Version=3.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\NFX.3.1.0.0\lib\NFX.Erlang.dll</HintPath>
+      <HintPath>..\packages\NFX.3.4.0.1\lib\NFX.Erlang.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NFX.MySQL, Version=3.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\NFX.3.1.0.0\lib\NFX.MySQL.dll</HintPath>
+      <HintPath>..\packages\NFX.3.4.0.1\lib\NFX.MySQL.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NFX.Wave, Version=3.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\NFX.3.1.0.0\lib\NFX.Wave.dll</HintPath>
+      <HintPath>..\packages\NFX.3.4.0.1\lib\NFX.Wave.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NFX.Web, Version=3.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\NFX.3.1.0.0\lib\NFX.Web.dll</HintPath>
+      <HintPath>..\packages\NFX.3.4.0.1\lib\NFX.Web.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NFX.WinForms, Version=3.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\NFX.3.1.0.0\lib\NFX.WinForms.dll</HintPath>
+      <HintPath>..\packages\NFX.3.4.0.1\lib\NFX.WinForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

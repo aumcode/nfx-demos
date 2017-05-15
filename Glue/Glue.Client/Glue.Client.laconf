@@ -1,6 +1,6 @@
 ﻿application
 {    
-	test-service-node="sync://localhost:8080"
+    test-service-node="sync://localhost:8080"
 
     glue
     {   
@@ -10,13 +10,13 @@
             {
                 name="sync"
                 type="NFX.Glue.Native.SyncBinding, NFX"
-				client-transport
-				{
-					rcv-buf-size=131072
-					snd-buf-size=131072
-					rcv-timeout=15000
-					snd-timeout=15000
-				}
+                client-transport
+                {
+                    rcv-buf-size=131072
+                    snd-buf-size=131072
+                    rcv-timeout=15000
+                    snd-timeout=15000
+                }
             }
         }
     }

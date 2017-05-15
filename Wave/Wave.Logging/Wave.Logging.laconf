@@ -11,7 +11,7 @@
             // this is the path to your log file on disk relative to executing 
             // assembly. Empty path in quotes corresponds project *.exe location.
             // Ensure the path physically exists before use it here.
-            path=$"logs/"   
+            path=$"logs/"
                        
             name-time-format='yyyyMMdd' 
             generate-failover-msg=false 
